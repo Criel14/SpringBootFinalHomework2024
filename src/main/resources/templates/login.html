@@ -1,0 +1,24 @@
+<!-- 登录/注册框 -->
+<div id="login-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="form-container">
+            <div class="form-tabs">
+                <button class="tab-btn active" data-target="#login-form">登录</button>
+                <button class="tab-btn" data-target="#register-form">注册</button>
+            </div>
+            <form id="login-form" class="active" method="post" action="/login">
+                <input type="email" placeholder="电子邮箱" required>
+                <input type="password" placeholder="密码" required>
+                <button type="submit">登录</button>
+            </form>
+            <form id="register-form" method="post" action="/register">
+                <input type="text" placeholder="用户名" required>
+                <input type="email" placeholder="电子邮箱" required>
+                <input type="password" placeholder="密码" required>
+                <input type="password" placeholder="确认密码" required>
+                <button type="submit">注册</button>
+            </form>
+        </div>
+    </div>
+</div>
