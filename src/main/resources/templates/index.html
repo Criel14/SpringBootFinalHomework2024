@@ -29,12 +29,12 @@
                 <button class="tab-btn active" data-target="#login-form">登录</button>
                 <button class="tab-btn" data-target="#register-form">注册</button>
             </div>
-            <form id="login-form" class="active">
+            <form id="login-form" class="active" method="post" action="/login">
                 <input type="email" placeholder="电子邮箱" required>
                 <input type="password" placeholder="密码" required>
                 <button type="submit">登录</button>
             </form>
-            <form id="register-form">
+            <form id="register-form" method="post" action="/register">
                 <input type="text" placeholder="用户名" required>
                 <input type="email" placeholder="电子邮箱" required>
                 <input type="password" placeholder="密码" required>
