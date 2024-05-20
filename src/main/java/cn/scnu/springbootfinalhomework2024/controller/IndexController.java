@@ -12,7 +12,4 @@ public class IndexController {
         return "index";
     }
 
-    // 写个login
-    // 11111
-
 }
