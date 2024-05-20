@@ -1,45 +1,121 @@
-body {
+/* 重置浏览器默认样式 */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
 }
 
-.container {
+/* 头部导航 */
+header {
+    background-color: #2d2f33;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
-.background {
-    position: relative;
-    width: 100%;
-    height: 100%;
+nav ul li {
+    margin-right: 20px;
 }
 
-.background img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
 }
 
-.overlay {
-    position: absolute;
-    top: 0;
+/* 主体内容 */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section h1, section h2 {
+    margin-bottom: 10px;
+}
+
+section ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section ul li {
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+section ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+section ul li a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* 页脚 */
+footer {
+    background-color: #2d2f33;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+/* 登录/注册框 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    position: relative;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .form-container {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     width: 100%;
 }
