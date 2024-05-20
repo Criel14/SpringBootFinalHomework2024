@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class Staff {
-    private int staff_id;
-    private int movie_id;
-    private String staff_name;
-    private int staff_role;
+    private int staffId;
+    private int movieId;
+    private String staffName;
+    private int staffRole;
 }

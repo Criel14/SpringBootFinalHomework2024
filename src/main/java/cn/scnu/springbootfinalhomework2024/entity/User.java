@@ -4,10 +4,10 @@ import lombok.Data;
 
 @Data
 public class User {
-    private int user_id;
+    private int userId;
     private String username;
     private String password;
-    private String phone_number;
+    private String phoneNumber;
     private String image;
-    private int is_vip;
+    private int isVip;
 }

@@ -6,14 +6,14 @@ import java.util.Date;
 
 @Data
 public class Movie {
-    private int movie_id;
-    private String movie_title;
-    private String movie_cover_url;
-    private String movie_description;
-    private Date release_date;
-    private int need_vip;
-    private String movie_local_url;
-    private String movie_region;
-    private String movie_type;
-    private double movie_score;
+    private int movieId;
+    private String movieTitle;
+    private String movieCoverUrl;
+    private String movieDescription;
+    private Date releaseDate;
+    private int needVip;
+    private String movieLocalUrl;
+    private String movieRegion;
+    private String movieType;
+    private double movieScore;
 }
