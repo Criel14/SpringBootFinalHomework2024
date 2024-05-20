@@ -14,73 +14,73 @@ SpringBoot + Mybatis + Redis + Thymeleaf
 
 **(1) user(用户表)**
 
-<u>user_id</u> (用户主键)
+<u>userId</u> (用户主键)
 
 username (用户名)
 
-phone_number (手机号)
+phoneNumber (手机号)
 
 password (密码)
 
 image(头像)
 
-is_vip (角色, 0: 普通用户, 1: VIP用户)
+isVip (角色, 0: 普通用户, 1: VIP用户)
 
 
 
 **(2) movie(电影表)**
 
-<u>movie_id</u> (电影主键)
+<u>movieId</u> (电影主键)
 
-movie_title (电影标题)
+movieTitle (电影标题)
 
-movie_cover_url (电影封面路径)
+movieCoverUrl (电影封面路径)
 
-movie_description (电影描述)
+movieDescription (电影描述)
 
-release_date (上映日期)
+releaseDate (上映日期)
 
-need_vip (是否VIP影片, 0: 否, 1: 是)
+needVip (是否VIP影片, 0: 否, 1: 是)
 
-movie_ local_url (电影视频路径)
+movieLocalUrl (电影视频路径)
 
-movie_region (电影地区)
+movieRegion (电影地区)
 
-movie_type (电影类型)
+movieType (电影类型)
 
-movie_score (电影评分)
+movieScore (电影评分)
 
 
 
 **(3) staff(主创人员表)**
 
-<u>staff_id</u> (主键)
+<u>staffId</u> (主键)
 
-movie_id (电影外键)
+movieId (电影外键)
 
-staff_name (姓名)
+staffName (姓名)
 
-staff_role (角色,0:演员,1:导演)
-
-
-
-**(4) movie_playback(电影播放)**
-
-<u>movie_id</u> (电影外键)
-
-play_date (日期)
-
-play_one_day (当日播放)
+staffRole (角色,0:演员,1:导演)
 
 
 
-**(5) user_playback_history(个人播放历史)**
+**(4) moviePlayback(电影播放)**
 
-user_id (用户外键)
+<u>movieId</u> (电影外键)
 
-movie_id (电影外键)
+playDate (日期)
 
-viewing_timestamp (观看时间)
+playOneDay (当日播放)
+
+
+
+**(5) userPlaybackHistory(个人播放历史)**
+
+userId (用户外键)
+
+movieId (电影外键)
+
+viewingTimestamp (观看时间)
 
 
 
