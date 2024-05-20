@@ -32,7 +32,7 @@ CREATE TABLE staff (
     movieId INT NOT NULL,
     staffName VARCHAR(50) NOT NULL,
     staffRole TINYINT NOT NULL,
-    FOREIGN KEY (movie_id) REFERENCES movie(movie_id)
+    FOREIGN KEY (movieId) REFERENCES movie(movieId)
 );
 
 -- 创建电影播放表
@@ -40,8 +40,8 @@ CREATE TABLE moviePlayback (
     movieId INT NOT NULL,
     playOneDay INT NOT NULL DEFAULT 0,
     playDate DATE,
-    PRIMARY KEY (movie_id),
-    FOREIGN KEY (movie_id) REFERENCES movie(movie_id)
+    PRIMARY KEY (movieId),
+    FOREIGN KEY (movieId) REFERENCES movie(movieId)
 );
 
 -- 创建个人播放历史表
@@ -49,8 +49,8 @@ CREATE TABLE userPlaybackHistory (
     userId INT NOT NULL,
     movieId INT NOT NULL,
     viewingTimestamp DATETIME NOT NULL,
-    PRIMARY KEY (user_id, movie_id),
-    FOREIGN KEY (user_id) REFERENCES user(user_id),
-    FOREIGN KEY (movie_id) REFERENCES movie(movie_id)
+    PRIMARY KEY (userId, movieId),
+    FOREIGN KEY (userId) REFERENCES user(userId),
+    FOREIGN KEY (movieId) REFERENCES movie(movieId)
 );
 
