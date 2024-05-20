@@ -1,88 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>电影频道 - 热门好看的电影大全 - 正版高清电影在线观看 - 爱奇艺</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册/登录示例</title>
     <link rel="stylesheet" type="text/css" href="../static/css/index.css">
 </head>
 <body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#">电影</a></li>
-            <li><a href="#">电视剧</a></li>
-            <li><a href="#">综艺</a></li>
-            <li><a href="#">动漫</a></li>
-            <li><a href="#">纪录片</a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#">登录/注册</a></li></li>
-        </ul>
-    </nav>
-</header>
-
-<main>
-    <section>
-        <h1>电影首页</h1>
-        <ul>
-            <li><a href="#">网络电影</a></li>
-            <li><a href="#">预告片</a></li>
-            <li><a href="#">系列电影</a></li>
-            <li><a href="#">VIP精选</a></li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>片库</h2>
-        <ul>
-            <li><a href="#">近期热门</a></li>
-            <li><a href="#">免费电影</a></li>
-            <li><a href="#">会员专享</a></li>
-            <li><a href="#">最新上线</a></li>
-            <li><a href="#">院线大片</a></li>
-            <li><a href="#">评分最高</a></li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>地区</h2>
-        <ul>
-            <li><a href="#">华语</a></li>
-            <li><a href="#">美国</a></li>
-            <li><a href="#">欧洲</a></li>
-            <li><a href="#">日本</a></li>
-            <li><a href="#">韩国</a></li>
-            <li><a href="#">泰国</a></li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>分类</h2>
-        <ul>
-            <li><a href="#">喜剧</a></li>
-            <li><a href="#">悲剧</a></li>
-            <li><a href="#">爱情</a></li>
-            <li><a href="#">动作</a></li>
-            <li><a href="#">枪战</a></li>
-            <li><a href="#">犯罪</a></li>
-            <li><a href="#">恐怖</a></li>
-            <li><a href="#">悬疑</a></li>
-            <li><a href="#">动画</a></li>
-            <li><a href="#">家庭</a></li>
-            <li><a href="#">魔幻</a></li>
-            <li><a href="#">科幻</a></li>
-            <li><a href="#">战争</a></li>
-            <li><a href="#">青春</a></li>
-        </ul>
-    </section>
-</main>
-
-<footer>
-    <p>&copy; 2024 爱奇艺 All Rights Reserved</p>
-</footer>
+<div class="container">
+    <div class="background">
+        <div class="overlay">
+            <div class="form-container">
+                <div class="form-tabs">
+                    <button class="tab-btn active" data-target="#login-form">登录</button>
+                    <button class="tab-btn" data-target="#register-form">注册</button>
+                </div>
+                <form id="login-form" class="active">
+                    <input type="email" placeholder="电子邮箱" required>
+                    <input type="password" placeholder="密码" required>
+                    <button type="submit">登录</button>
+                </form>
+                <form id="register-form">
+                    <input type="text" placeholder="用户名" required>
+                    <input type="email" placeholder="电子邮箱" required>
+                    <input type="password" placeholder="密码" required>
+                    <input type="password" placeholder="确认密码" required>
+                    <button type="submit">注册</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../static/js/index.js"></script>
 </body>
 </html>
