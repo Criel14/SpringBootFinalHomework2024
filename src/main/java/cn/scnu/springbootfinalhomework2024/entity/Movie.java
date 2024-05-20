@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class movie {
+public class Movie {
     private int movie_id;
     private String movie_title;
     private String movie_cover_url;
