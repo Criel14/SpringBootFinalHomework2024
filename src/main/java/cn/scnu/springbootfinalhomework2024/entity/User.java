@@ -1,5 +1,6 @@
 package cn.scnu.springbootfinalhomework2024.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 @Data
