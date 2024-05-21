@@ -2,10 +2,10 @@
 
     <div class="navMenu">
         <!--主标题-->
-        <div class="navTitle" th:if="${user}">
+        <div class="navTitle" th:if="${user!=null}">
             <span th:text="${user.getUsername()}"></span>
         </div>
-        <div class="navTitle" th:unless="${user}">
+        <div class="navTitle" th:unless="${user!=null}">
             <span th:text="用户"></span>
         </div>
         <!--子标题-->

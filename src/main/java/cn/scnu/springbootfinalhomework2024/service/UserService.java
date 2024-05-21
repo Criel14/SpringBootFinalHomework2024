@@ -15,9 +15,9 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     @Autowired
     UserMapper userMapper;
 
-    public User ConFirmLogin(User user) {
+    public User confirmLogin(User user) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("username", user.getUsername());
+        queryWrapper.eq("userId", user.getUserId());
         List<User> userList = userMapper.selectList(queryWrapper);
         return userList.size() == 0 ? null : userList.get(0);
     }
