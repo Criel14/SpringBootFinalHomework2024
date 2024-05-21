@@ -82,3 +82,4 @@ function showRegisterError(message) {
     const errorDiv = document.getElementById('registerError');
     errorDiv.textContent = message;
 }
+
