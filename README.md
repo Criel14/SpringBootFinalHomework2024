@@ -64,7 +64,7 @@ staff_role (角色,0:演员,1:导演)
 
 
 
-**(4) moviePlayback(电影播放)**
+**(4) movie_playback(电影播放)**
 
 <u>movie_id</u> (电影外键)
 
@@ -74,7 +74,7 @@ play_one_day (当日播放)
 
 
 
-**(5) userPlaybackHistory(个人播放历史)**
+**(5) user_playback_history(个人播放历史)**
 
 user_id (用户外键)
 
