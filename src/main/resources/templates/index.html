@@ -7,28 +7,23 @@
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" type="text/css" href="/css/login.css">
     <link rel="stylesheet" type="text/css" href="/css/navBar.css">
-    <script src="/js/index.js"></script>
+    <script src="/js/login.js"></script>
 </head>
 
 <body>
-<!--导航栏-->
-<header>
+    <!--顶部导航栏-->
     <div th:insert="headNavBar.html"></div>
-</header>
+    <!--侧边导航栏-->
+    <div th:insert="sideNavBar.html"></div>
 
-<!--主要内容-->
-<main>
+    <!--主要内容-->
     <div class="content"></div>
-</main>
 
-<!--页脚-->
-<footer>
+
+    <!--页脚-->
     <div th:insert="foot.html"></div>
-</footer>
-
-<!--登录注册框-->
-<div th:insert="login.html"></div>
-
+    <!--登录注册框-->
+    <div th:insert="login.html"></div>
 </body>
 
 </html>
