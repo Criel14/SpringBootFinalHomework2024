@@ -2,7 +2,12 @@
 
     <div class="navMenu">
         <!--主标题-->
-        <div class="navTitle">用户</div>
+        <div class="navTitle" th:if="${user}">
+            <span th:text="${user.getUsername()}"></span>
+        </div>
+        <div class="navTitle" th:unless="${user}">
+            <span th:text="用户"></span>
+        </div>
         <!--子标题-->
         <div class="navContent">
             <!--未完成：用Thymeleaf做个判断，有登录和没登录显示不一样的内容-->
