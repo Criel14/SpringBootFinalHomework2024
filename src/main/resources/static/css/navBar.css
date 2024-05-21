@@ -1,6 +1,6 @@
-/* 导航栏 */
+/* 上侧导航栏 */
 .navbar {
-    background-color: #000;
+    background-color: #000000;
     color: #fff;
     height: 60px;
     display: flex;
@@ -8,12 +8,12 @@
     justify-content: space-between;
 }
 
-/* 返回时首页按钮 */
+/* 返回时首页按钮G543 */
 .navbar .toIndex {
     width: 100px;
     height: 60px;
     line-height: 60px;
-    background-color: #000;
+    background-color: #000000;
     color: #fff;
     text-decoration: none;
     padding-left: 20px;
@@ -21,7 +21,12 @@
 }
 
 .navbar .toIndex:hover {
-    background-color: #333;
+    background-color: #333333;
+}
+
+.navbar .toIndex span {
+    color: white;
+    font-size: 20px;
 }
 
 .navbar span {
@@ -34,7 +39,7 @@
 .navbar .search-box {
     width: 80px;
     height: 40px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 20px;
     margin-right: 20px;
     text-align: center;
@@ -44,4 +49,46 @@
     color: black;
     font-size: 16px;
     line-height: 40px;
+}
+
+
+
+/*侧边导航栏*/
+.sideNavBar {
+    height: 100%;
+    width: 120px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #2f2f2f;
+    overflow-x: hidden;
+    padding-top: 10px;
+    margin-top: 60px; /* 与 headNavBar的高度相同 */
+    border-radius: 10px;
+}
+
+.sideNavBar a {
+    line-height: 30px;
+    font-size: 16px;
+    color: #9a9a9a;
+    display: block;
+}
+
+.sideNavBar a:hover {
+    transition: 0.1s;
+    color: #f1f1f1;
+}
+
+.sideNavBar div {
+    width: 120px;  /* 和sideNavBar相同 */
+    height: 30px;  /* 和a的line-height相同 */
+    background-color: #2f2f2f;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.sideNavBar div:hover {
+    transition: 0.1s;
+    background-color: #3d3d3d;
 }
