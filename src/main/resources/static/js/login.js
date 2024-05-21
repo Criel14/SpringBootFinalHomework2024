@@ -1,4 +1,3 @@
-window.onload = function () {
 // 获取登录/注册链接和模态框元素
     const loginLink = document.getElementById('login-link');
     const loginModal = document.getElementById('login-modal');
@@ -37,4 +36,3 @@ window.onload = function () {
             target.classList.add('active');
         });
     });
-}

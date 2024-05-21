@@ -7,26 +7,51 @@
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" type="text/css" href="/css/login.css">
     <link rel="stylesheet" type="text/css" href="/css/navBar.css">
-    <script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="/js/login.js"></script>
 </head>
 
 <body>
-    <!--顶部导航栏-->
-    <div th:insert="headNavBar.html"></div>
-    <!--侧边导航栏-->
-    <div th:insert="sideNavBar.html"></div>
+<!--顶部导航栏-->
+<div th:insert="headNavBar.html"></div>
+<!--侧边导航栏-->
+<div th:insert="sideNavBar.html"></div>
 
-    <!--主要内容-->
-    <div class="content"></div>
+<!--主要内容-->
+<div class="content">
+
+    <!--图片轮播-->
+    <div class="carousel">
+        <div class="slide">
+            <a href="#"><img src="/images/image001.png" alt="Image_1" ></a>
+        </div>
+        <div class="slide">
+            <a href="#"><img src="/images/image002.png" alt="Image_2"></a>
+        </div>
+        <div class="slide">
+            <a href="#"><img src="/images/image003.png" alt="Image_3"></a>
+        </div>
+        <div class="slide">
+            <a href="#"><img src="/images/image004.png" alt="Image_4"></a>
+        </div>
+        <div class="slide">
+            <a href="#"><img src="/images/image005.png" alt="Image_5"></a>
+        </div>
+        <div class="prev-arrow">&#8249;</div>
+        <div class="next-arrow">&#8250;</div>
+    </div>
 
 
-    <!--页脚-->
-    <div th:insert="foot.html"></div>
-    <!--登录注册框-->
-    <div th:insert="login.html"></div>
+</div>
+
+
+<!--页脚-->
+<div th:insert="foot.html"></div>
+<!--登录注册框-->
+<div th:insert="login.html"></div>
 </body>
 
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/index.js"></script>
 <script>
     // 用户-登录按钮的隐藏与显示
     $(function () {
