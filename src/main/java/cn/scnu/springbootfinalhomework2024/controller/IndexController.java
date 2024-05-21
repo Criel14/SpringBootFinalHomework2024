@@ -18,21 +18,20 @@ public class IndexController {
     }
 
     @RequestMapping("/login")
-    public String login(User user, Model model){
+    public String login(User user, Model model) {
         System.out.println(user);
-        User LoginUser = userService.ConFirmLogin(user);
-        if(LoginUser == null) return "index";
-        else{
-            model.addAttribute("user",LoginUser);
-            return "index";
+        User loginUser = userService.ConFirmLogin(user);
+        if (loginUser != null) {
+            model.addAttribute("user", loginUser);
         }
+        return "index";
     }
 
     @RequestMapping("/register")
-    public String register(User user,Model model){
+    public String register(User user, Model model) {
         String str = userService.register(user);
-        if(str == "注册成功"){
-            model.addAttribute("success","注册成功");
+        if ("注册成功".equals(str)) {
+            model.addAttribute("success", "注册成功");
         }
         return "index";
     }
