@@ -1,29 +1,36 @@
 <div class="sideNavBar">
 
+    <!--下拉菜单-->
     <div class="navMenu">
-        <!--主标题-->
         <div class="navTitle" th:if="${user!=null}">
-            <span th:text="${user.getUsername()}"></span>
+            <span th:text="${user.getUsername()}">user1</span>
         </div>
-        <div class="navTitle" th:unless="${user!=null}">
+        <div class="navTitle" th:if="${user==null}">
             <span th:text="用户"></span>
         </div>
-        <!--子标题-->
-        <div class="navContent">
+        <!--子标题——未登录-->
+        <div class="navContent" th:if="${user==null}">
             <!--未完成：用Thymeleaf做个判断，有登录和没登录显示不一样的内容-->
             <a href="#" id="login-link">
                 <div class="item2">登录</div>
             </a>
         </div>
+        <!--子标题——已登录-->
+        <div class="navContent" th:if="${user!=null}">
+            <!--未完成：用Thymeleaf做个判断，有登录和没登录显示不一样的内容-->
+            <a href="#">
+                <div class="item2">观看历史</div>
+            </a>
+        </div>
+        <div class="navContent" th:if="${user!=null}">
+            <!--未完成：用Thymeleaf做个判断，有登录和没登录显示不一样的内容-->
+            <a href="#">
+                <div class="item2">会员中心</div>
+            </a>
+        </div>
     </div>
-    <a href="#">
-        <div class="item">观看历史</div>
-    </a>
-    <a href="#">
-        <div class="item">会员中心</div>
-    </a>
-    <br>
 
+    <br>
     <a href="#">
         <div class="item">首页</div>
     </a>
