@@ -36,3 +36,49 @@
             target.classList.add('active');
         });
     });
+
+function registerUser() {
+    const registerForm = document.getElementById('register-form');
+    const username = registerForm.username.value;
+    const phoneNumber = registerForm.phoneNumber.value;
+    const password = registerForm.password.value;
+    const confirmPassword = registerForm.confirmPassword.value;
+
+    // 进行前端验证
+    if (password !== confirmPassword) {
+        showRegisterError('两次输入的密码不一致');
+        return;
+    }
+
+    // 发送注册请求
+    fetch('/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: username,
+            phoneNumber: phoneNumber,
+            password: password
+        })
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // 注册成功,跳转到其他页面
+                window.location.href = '/index';
+            } else {
+                // 注册失败,显示错误信息
+                showRegisterError(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('注册请求出错:', error);
+            showRegisterError('注册请求出错');
+        });
+}
+
+function showRegisterError(message) {
+    const errorDiv = document.getElementById('registerError');
+    errorDiv.textContent = message;
+}
