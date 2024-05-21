@@ -8,7 +8,7 @@ CREATE TABLE user (
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL,
     phoneNumber VARCHAR(15) NOT NULL ,
-    image VARCHAR(200) NOT NULL,
+    image VARCHAR(200)  DEFAULT null,
     isVip TINYINT NOT NULL DEFAULT 0
 );
 
@@ -54,3 +54,4 @@ CREATE TABLE userPlaybackHistory (
     FOREIGN KEY (movieId) REFERENCES movie(movieId)
 );
 
+insert into user(username,phoneNumber,password) VALUES('aa','123456','123456');
