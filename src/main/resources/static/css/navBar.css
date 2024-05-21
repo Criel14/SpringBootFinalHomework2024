@@ -69,7 +69,7 @@
 }
 
 .sideNavBar a {
-    line-height: 30px;
+    line-height: 40px;
     font-size: 16px;
     color: #9a9a9a;
     display: block;
@@ -80,15 +80,45 @@
     color: #f1f1f1;
 }
 
-.sideNavBar div {
+.sideNavBar .item {
     width: 120px;  /* 和sideNavBar相同 */
-    height: 30px;  /* 和a的line-height相同 */
+    height: 40px;  /* 和a的line-height相同 */
     background-color: #2f2f2f;
     padding-left: 20px;
-    margin-bottom: 10px;
 }
 
-.sideNavBar div:hover {
+.sideNavBar .item:hover {
+    transition: 0.1s;
+    background-color: #3d3d3d;
+}
+
+.navTitle {
+    width: 120px;  /* 和sideNavBar相同 */
+    height: 40px;
+    line-height: 40px;
+    color: #9a9a9a;
+    font-size: 16px;
+    background-color: #2f2f2f;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.navTitle:hover {
+    transition: 0.1s;
+    background-color: #3d3d3d;
+}
+
+/*用户按钮下拉菜单样式*/
+.sideNavBar .item2 {
+    width: 120px;  /* 和sideNavBar相同 */
+    height: 40px;  /* 和a的line-height相同 */
+    color: #858383;
+    font-size: 14px;
+    background-color: #212121;
+    padding-left: 20px;
+}
+
+.sideNavBar .item2:hover {
     transition: 0.1s;
     background-color: #3d3d3d;
 }
