@@ -17,14 +17,14 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 
     public User confirmLogin(User user) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("phoneNumber", user.getPhoneNumber());
+        queryWrapper.eq("phone_number", user.getPhoneNumber());
         List<User> userList = userMapper.selectList(queryWrapper);
         return userList.size() == 0 ? null : userList.get(0);
     }
 
     public String register(User user) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("phoneNumber", user.getPhoneNumber());
+        queryWrapper.eq("phone_number", user.getPhoneNumber());
         List<User> UserList = userMapper.selectList(queryWrapper);
         if(UserList.size() == 0){
             userMapper.insert(user);
