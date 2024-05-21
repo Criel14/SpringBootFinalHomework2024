@@ -12,16 +12,21 @@
 <body>
 <!--顶部导航栏-->
 <div th:insert="headNavBar.html"></div>
-<!--侧边导航栏-->
-<div th:insert="sideNavBar.html"></div>
+
 
 <!--主要内容-->
 <div class="content">
 
+    <!--侧边导航栏-->
+    <div th:insert="sideNavBar.html"></div>
+
+    <!--主体-->
+    <div class="main">
+
         <!--图片轮播-->
         <div class="carousel">
             <div class="slide">
-                <a href="#"><img src="/images/image001.png" alt="Image_1" ></a>
+                <a href="#"><img src="/images/image001.png" alt="Image_1"></a>
             </div>
             <div class="slide">
                 <a href="#"><img src="/images/image002.png" alt="Image_2"></a>
@@ -40,7 +45,7 @@
         </div>
     </div>
 
-
+</div>
 
 
 </div>
