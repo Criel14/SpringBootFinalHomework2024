@@ -17,7 +17,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 
     public User confirmLogin(User user) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("userId", user.getUserId());
+        queryWrapper.eq("phoneNumber", user.getPhoneNumber());
         List<User> userList = userMapper.selectList(queryWrapper);
         return userList.size() == 0 ? null : userList.get(0);
     }
