@@ -20,10 +20,11 @@ public class IndexController {
     UserService userService;
 
     @RequestMapping("/index")
-    public String index(HttpSession httpSession,Model model) {
+    public String index(HttpSession httpSession,Model model,String category) {
         if(httpSession.getAttribute("user")!=null){
             model.addAttribute("user", httpSession.getAttribute("user"));
         }
+        System.out.println(category);
         return "index";
     }
 
