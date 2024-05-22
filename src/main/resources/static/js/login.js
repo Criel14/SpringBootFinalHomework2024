@@ -66,7 +66,7 @@ function registerUser() {
         .then(data => {
             if (data.success) {
                 // 注册成功,跳转到其他页面
-                window.location.href = '/index';
+                showRegisterSuccess('注册成功!请重新登陆');
             } else {
                 // 注册失败,显示错误信息
                 showRegisterError(data.message);
@@ -81,5 +81,10 @@ function registerUser() {
 function showRegisterError(message) {
     const errorDiv = document.getElementById('registerError');
     errorDiv.textContent = message;
+}
+
+function showRegisterSuccess(message) {
+    const successDiv = document.getElementById('registerSuccess');
+    successDiv.textContent = message;
 }
 
