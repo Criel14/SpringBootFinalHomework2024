@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,17 +70,16 @@ public class IndexController {
     }
 
 
-    @RequestMapping("/index/movieDetail")
-    public String SelectMovie(HttpSession httpSession,Model model,String category) {
+    @RequestMapping(value = "/index", method = RequestMethod.POST)
+    public String SelectMovie(HttpSession httpSession, Model model, @RequestParam("category") String category) {
         List<Movie> movieList = new ArrayList<>();
-        if(regions.contains(category)){
-            movieList = movieService.findMovie(category,null);
-        }
-        else{
-            movieList = movieService.findMovie(null,category);
+        if (regions.contains(category)) {
+            movieList = movieService.findMovie(category, null);
+        } else {
+            movieList = movieService.findMovie(null, category);
         }
         System.out.println(movieList);
-        model.addAttribute("movieList",movieList);
+        model.addAttribute("movieList", movieList);
         return "index";
     }
 }
