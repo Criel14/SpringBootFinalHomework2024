@@ -69,7 +69,7 @@
         <div class="movieList">
             <div th:each="movie:${movieList}">
                 <div class="movieItem">
-                    <a th:href="'/index/movieDetail?movieId='+${movie.movieId}">
+                    <a href="#">
                         <img th:src="@{'/cover/'+${movie.movieCoverUrl}}" alt="电影封面"/>
                     </a>
                     <span class="movieTitle" th:text="${movie.movieTitle}">电影名</span>
@@ -83,7 +83,6 @@
 <!--                </a>-->
 <!--                <span class="movieTitle">周处除三害</span>-->
 <!--            </div>-->
-
 
         </div>
 
