@@ -16,6 +16,7 @@ a {
 
 .content {
     margin-left: 120px; /* 与 sideNavBar的宽度相同 */
+    margin-top: 60px; /* 与 headNavBar的宽度相同 */
     width: 100%;
     height: 100vh; /* 设置高度为视窗高度 */
     position: relative;
@@ -88,23 +89,31 @@ a {
 
 /*分类选项*/
 .classify {
-    width: 100%;
-    height: 60px;
-    padding: 0 30px 0 30px;
-    background-color: red;
+    width: 1000px;
+    height: 40px;
+    padding: 0 60px 0 60px;
+    /*background-color: red;*/
     position: absolute;
     top: 420px;
+    left: 48%;
+    transform: translate(-50%, 0);
 }
 
 .classifyItem {
-    width: 80px;
+    width: 100px;
     height: 40px;
-    background-color: #2f2f2f;
+    background-color: #333333;
     border-radius: 10px;
-    color: white;
+    color: #e5e5e5;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
     margin-left: 20px;
+    float: left;
 }
 
 .classifyItem:hover {
+    transition: 0.1s;
     background-color: #414141;
 }

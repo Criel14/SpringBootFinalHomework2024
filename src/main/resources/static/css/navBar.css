@@ -1,11 +1,16 @@
 /* 上侧导航栏 */
 .navbar {
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.9);
     color: #fff;
     height: 60px;
-    display: flex;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 /* 返回时首页按钮G543 */

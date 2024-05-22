@@ -34,8 +34,22 @@ slides.forEach(slide => {
 });
 
 
+
 // 分类展示电影的表单提交
-function submitForm(query) {
-    document.getElementById('query').value = query;
-    document.forms[0].submit();
+function searchMovies(category) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/search?category=${category}`, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const movies = JSON.parse(xhr.responseText);
+            const movieList = document.getElementById('movieList');
+            movieList.innerHTML = '';
+            movies.forEach(movie => {
+                const movieElement = document.createElement('div');
+                movieElement.textContent = movie.title;
+                movieList.appendChild(movieElement);
+            });
+        }
+    };
+    xhr.send();
 }

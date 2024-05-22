@@ -13,7 +13,6 @@
 <!--顶部导航栏-->
 <div th:insert="headNavBar.html"></div>
 
-
 <!--主要内容-->
 <div class="content">
 
@@ -46,24 +45,33 @@
 
         <!--电影分类选项-->
         <div class="classify">
-            <form method="post" action="/index">
-                <a href="#" onclick="submitForm('allMovie'); return false;">
-                    <div class="classifyItem">全部</div>
-                </a>
-                <a href="#" onclick="submitForm('domesticMovie'); return false;">
-                    <div class="classifyItem">内地</div>
-                </a>
-                <a href="#" onclick="submitForm('foreignMovie'); return false;">
-                    <div class="classifyItem">欧美</div>
-                </a>
-            </form>
+            <a href="#" onclick="searchMovies('hot'); return false;">
+                <div class="classifyItem">热播</div>
+            </a>
+            <a href="#" onclick="searchMovies('domestic'); return false;">
+                <div class="classifyItem" style="margin-left: 40px">内地</div>
+            </a>
+            <a href="#" onclick="searchMovies('foreign'); return false;">
+                <div class="classifyItem">国外</div>
+            </a>
+            <a href="#" onclick="searchMovies('comedy'); return false;">
+                <div class="classifyItem" style="margin-left: 40px">喜剧</div>
+            </a>
+            <a href="#" onclick="searchMovies('action'); return false;">
+                <div class="classifyItem">动作</div>
+            </a>
+            <a href="#" onclick="searchMovies('animation'); return false;">
+                <div class="classifyItem">动画</div>
+            </a>
+
         </div>
 
+        <!--电影展示-->
+        <div id="movieList"></div>
 
     </div>
 
 </div>
-
 
 </div>
 
