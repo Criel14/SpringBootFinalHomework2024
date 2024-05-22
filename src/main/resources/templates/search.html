@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>G543电影网</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #202124;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: -100px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            width: 500px;
+            border: 1px solid #5f6368;
+            border-radius: 24px;
+            padding: 10px 20px;
+            background-color: #303134;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            background: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        .search-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-button img {
+            width: 20px;
+            height: 20px;
+            filter: invert(61%) sepia(8%) saturate(0%) hue-rotate(189deg) brightness(85%) contrast(82%);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a th:href="index" style="text-decoration: none; color: inherit;">
+        <div class="logo">G543</div>
+    </a>
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search">
+        <button class="search-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Magnifying_glass_icon.svg/512px-Magnifying_glass_icon.svg.png" alt="Search">
+        </button>
+    </div>
+</div>
+</body>
+</html>

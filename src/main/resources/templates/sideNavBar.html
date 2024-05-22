@@ -8,6 +8,7 @@
         <div class="navTitle" th:if="${user==null}">
             <span th:text="用户"></span>
         </div>
+
         <!--子标题——未登录-->
         <div class="navContent" th:if="${user==null}">
             <!--未完成：用Thymeleaf做个判断，有登录和没登录显示不一样的内容-->
@@ -15,6 +16,7 @@
                 <div class="item2">登录</div>
             </a>
         </div>
+
         <!--子标题——已登录-->
         <div class="navContent" th:if="${user!=null}">
             <!--未完成：用Thymeleaf做个判断，有登录和没登录显示不一样的内容-->
@@ -28,6 +30,7 @@
                 <div class="item2">会员中心</div>
             </a>
         </div>
+
     </div>
 
     <br>

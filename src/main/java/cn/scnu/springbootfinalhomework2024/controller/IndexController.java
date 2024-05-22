@@ -34,7 +34,6 @@ public class IndexController {
         return "index";
     }
 
-
     @RequestMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user, Model model, HttpSession httpSession) {
         System.out.println(user);
@@ -49,5 +48,10 @@ public class IndexController {
         } else {
             return ResponseEntity.badRequest().body(new RegisterResponse(false, "手机号码已被注册！"));
         }
+    }
+
+    @RequestMapping("/search")
+    public String search() {
+        return "search";
     }
 }
