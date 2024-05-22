@@ -28,9 +28,7 @@ public class IndexController {
     public String login(User user, Model model) {
         System.out.println(user);
         User loginUser = userService.confirmLogin(user);/////
-        if (loginUser != null) {
-            model.addAttribute("user", loginUser);
-        }
+        model.addAttribute("user", loginUser);
         return "index";
     }
 
