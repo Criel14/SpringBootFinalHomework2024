@@ -41,6 +41,7 @@
             border-radius: 24px;
             padding: 10px 20px;
             background-color: #303134;
+            margin-bottom: 20px;
         }
 
         .search-input {
@@ -61,7 +62,55 @@
         .search-button img {
             width: 20px;
             height: 20px;
-            filter: invert(61%) sepia(8%) saturate(0%) hue-rotate(189deg) brightness(85%) contrast(82%);
+            filter: invert(100%);
+        }
+
+        .trending {
+            width: 500px;
+            text-align: left;
+            color: #e8eaed;
+            margin-top: 30px;
+        }
+
+        .trending h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .trending ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .trending li {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            /*border-bottom: 1px solid #5f6368;*/
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .trending li:hover {
+            background-color: #3c4043;
+        }
+
+        .trending li span {
+            margin-right: 10px;
+        }
+
+        .trending .rank {
+            background-color: #5f6368;
+            color: white;
+            border-radius: 5px;
+            padding: 5px 7px;
+            font-size: 10px;
+            display: inline-block;
+            text-align: center;
+            width: 10px;
+            height: 10px;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -73,8 +122,23 @@
     <div class="search-bar">
         <input type="text" class="search-input" placeholder="Search">
         <button class="search-button">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Magnifying_glass_icon.svg/512px-Magnifying_glass_icon.svg.png" alt="Search">
+            <img src="/images/searchIcon2.png" alt="Search">
         </button>
+    </div>
+    <div class="trending">
+        <h2>热门搜索</h2>
+        <ul>
+            <li><span class="rank" style="background-color: #ff183e">1</span> 周处除三害 </li>
+            <li><span class="rank" style="background-color: #ff5c38">2</span> 黄处除三害 </li>
+            <li><span class="rank" style="background-color: #ffb821">3</span> 黄处除三害2 </li>
+            <li><span class="rank">4</span> 黄处除三害3 </li>
+            <li><span class="rank">5</span> 黄处除三害444444 </li>
+            <li><span class="rank">6</span> 黄处除三害555 </li>
+            <li><span class="rank">7</span> 黄处除三害32 </li>
+            <li><span class="rank">8</span> 黄处除三害13 </li>
+            <li><span class="rank">9</span> 黄处除三害1212 </li>
+            <li><span class="rank">10</span> 黄处除三害121212 </li>
+        </ul>
     </div>
 </div>
 </body>
