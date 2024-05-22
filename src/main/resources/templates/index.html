@@ -66,8 +66,23 @@
         </div>
 
         <!--电影展示-->
-        <div id="movieList">
+        <div class="movieList">
+            <div th:each="movie:${movieList}">
+                <div class="movieItem">
+                    <a href="#">
+                        <img th:src="@{'/cover/'+${movie.movieCoverUrl}}" alt="电影封面"/>
+                    </a>
+                    <span class="movieTitle" th:text="${movie.movieTitle}">电影名</span>
+                </div>
+            </div>
 
+            <!--下面是测试-->
+<!--            <div class="movieItem">-->
+<!--                <a href="#">-->
+<!--                    <img src="/cover/cover000.jpg" alt="电影封面"/>-->
+<!--                </a>-->
+<!--                <span class="movieTitle">周处除三害</span>-->
+<!--            </div>-->
 
         </div>
 

@@ -1,8 +1,10 @@
 package cn.scnu.springbootfinalhomework2024.controller;
 
 
+import cn.scnu.springbootfinalhomework2024.entity.Movie;
 import cn.scnu.springbootfinalhomework2024.entity.RegisterResponse;
 import cn.scnu.springbootfinalhomework2024.entity.User;
+import cn.scnu.springbootfinalhomework2024.service.MovieService;
 import cn.scnu.springbootfinalhomework2024.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +15,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class IndexController {
 
     @Autowired
     UserService userService;
 
+    @Autowired
+    MovieService movieService;
+
+    List<String> regions = List.of("domestic","foreign");
+    List<String> types = List.of("comedy","action","animation");
+
     @RequestMapping("/index")
     public String index(HttpSession httpSession,Model model,String category) {
         if(httpSession.getAttribute("user")!=null){
             model.addAttribute("user", httpSession.getAttribute("user"));
         }
-        System.out.println(category);
         return "index";
     }
 
@@ -59,5 +69,20 @@ public class IndexController {
     @RequestMapping("/search")
     public String search() {
         return "search";
+    }
+
+
+    @RequestMapping("/index/movieDetail")
+    public String SelectMovie(HttpSession httpSession,Model model,String category) {
+        List<Movie> movieList = new ArrayList<>();
+        if(regions.contains(category)){
+            movieList = movieService.findMovie(category,null);
+        }
+        else{
+            movieList = movieService.findMovie(null,category);
+        }
+        System.out.println(movieList);
+        model.addAttribute("movieList",movieList);
+        return "index";
     }
 }

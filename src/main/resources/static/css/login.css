@@ -76,7 +76,7 @@ input {
     border-radius: 5px;
 }
 
-button[type="submit"] {
+.loginAndRegister{
     width: 100%;
     padding: 10px;
     background-color: #007bff;

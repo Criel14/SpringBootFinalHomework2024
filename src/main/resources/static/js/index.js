@@ -38,7 +38,8 @@ slides.forEach(slide => {
 // 分类展示电影的表单提交
 function searchMovies(category) {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `/index?category=${category}`, true);
+    xhr.open('POST', '/index/movieDetail', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             const movies = JSON.parse(xhr.responseText);
@@ -51,5 +52,5 @@ function searchMovies(category) {
             });
         }
     };
-    xhr.send();
+    xhr.send('category=' + encodeURIComponent(category));
 }

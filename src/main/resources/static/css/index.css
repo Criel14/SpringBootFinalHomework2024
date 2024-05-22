@@ -92,7 +92,7 @@ a {
     width: 1000px;
     height: 40px;
     padding: 0 60px 0 60px;
-    /*background-color: red;*/
+    background-color: red;
     position: absolute;
     top: 420px;
     left: 48%;
@@ -106,7 +106,6 @@ a {
     border-radius: 10px;
     color: #e5e5e5;
     font-size: 18px;
-    /*font-weight: bold;*/
     line-height: 40px;
     text-align: center;
     margin-left: 20px;
@@ -116,4 +115,33 @@ a {
 .classifyItem:hover {
     transition: 0.1s;
     background-color: #414141;
+}
+
+/*展示电影列表*/
+.movieList {
+    width: 88%;
+    height: 1500px;
+    position: absolute;
+    top: 480px;
+    /*background-color: aqua;*/
+    left: 50%;
+    transform: translateX(-54%);
+    overflow: hidden;
+}
+
+.movieList .movieItem {
+    width: 270px;
+    height: 460px;
+    /*background-color: #333333;*/
+    margin-left: 40px;
+    float: left;
+}
+
+.movieList .movieItem .movieTitle{
+    font-size: 18px;
+    color: white;
+}
+
+.movieList .movieItem img{
+    border-radius: 10px;
 }
