@@ -92,7 +92,7 @@ a {
     width: 1000px;
     height: 40px;
     padding: 0 60px 0 60px;
-    background-color: red;
+    /*background-color: red;*/
     position: absolute;
     top: 420px;
     left: 48%;

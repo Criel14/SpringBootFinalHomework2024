@@ -40,6 +40,8 @@ function searchMovies(category) {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/index/movieList', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+        location.reload();
+    };
     xhr.send('category=' + encodeURIComponent(category));
-    window.location.reload();
 }
