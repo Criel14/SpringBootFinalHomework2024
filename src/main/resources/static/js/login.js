@@ -66,7 +66,8 @@ function registerUser() {
         .then(data => {
             if (data.success) {
                 // 注册成功,跳转到其他页面
-                showRegisterSuccess('注册成功!请重新登陆');
+                // showRegisterSuccess('注册成功!请重新登陆');
+                window.location.href = '/index';
             } else {
                 // 注册失败,显示错误信息
                 showRegisterError(data.message);

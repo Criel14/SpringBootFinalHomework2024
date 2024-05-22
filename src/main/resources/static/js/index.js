@@ -38,7 +38,7 @@ slides.forEach(slide => {
 // 分类展示电影的表单提交
 function searchMovies(category) {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `/search?category=${category}`, true);
+    xhr.open('GET', `/index?category=${category}`, true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             const movies = JSON.parse(xhr.responseText);
