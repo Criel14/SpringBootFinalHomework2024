@@ -32,3 +32,10 @@ slides.forEach(slide => {
         slideInterval = setInterval(nextSlide, 3000);
     });
 });
+
+
+// 分类展示电影的表单提交
+function submitForm(query) {
+    document.getElementById('query').value = query;
+    document.forms[0].submit();
+}

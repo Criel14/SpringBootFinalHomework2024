@@ -25,6 +25,7 @@ a {
 .main {
     flex-grow: 1; /* 让 main 占据剩余空间 */
     display: flex;
+    /*background-color: blueviolet;*/
 }
 
 
@@ -37,6 +38,7 @@ a {
     left: 50%;
     transform: translateX(-64%);
     overflow: hidden;
+    /*background-color: orange;*/
 }
 
 .slide {
@@ -87,8 +89,11 @@ a {
 /*分类选项*/
 .classify {
     width: 100%;
-    height: 40px;
+    height: 60px;
     padding: 0 30px 0 30px;
+    background-color: red;
+    position: absolute;
+    top: 420px;
 }
 
 .classifyItem {
