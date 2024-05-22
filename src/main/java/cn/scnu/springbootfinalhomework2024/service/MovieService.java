@@ -26,8 +26,6 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         }
 
         List<Movie> movieList = movieMapper.selectList(queryWrapper);
-        System.out.println(movieList);
-        System.out.println(1);
         return movieList;
     }
 }

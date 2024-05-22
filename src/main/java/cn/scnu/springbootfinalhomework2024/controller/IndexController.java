@@ -33,6 +33,9 @@ public class IndexController {
         if(httpSession.getAttribute("user")!=null){
             model.addAttribute("user", httpSession.getAttribute("user"));
         }
+        if(httpSession.getAttribute("movieList")!=null){
+            model.addAttribute("movieList", httpSession.getAttribute("movieList"));
+        }
         return "index";
     }
 
@@ -44,8 +47,8 @@ public class IndexController {
 //        }
         System.out.println(user);
         User loginUser = userService.confirmLogin(user);
-        model.addAttribute("user", loginUser);
-        return "index";
+        httpSession.setAttribute("user", loginUser);
+        return "redirect:/index";
     }
 
     @RequestMapping("/register")
@@ -70,7 +73,7 @@ public class IndexController {
     }
 
 
-    @RequestMapping(value = "/index", method = RequestMethod.POST)
+    @RequestMapping( "/index/movieList")
     public String SelectMovie(HttpSession httpSession, Model model, @RequestParam("category") String category) {
         List<Movie> movieList = new ArrayList<>();
         if (regions.contains(category)) {
@@ -80,6 +83,7 @@ public class IndexController {
         }
         System.out.println(movieList);
         model.addAttribute("movieList", movieList);
+        httpSession.setAttribute("movieList", movieList);
         return "index";
     }
 }

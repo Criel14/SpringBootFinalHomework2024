@@ -38,7 +38,8 @@ slides.forEach(slide => {
 // 分类展示电影的表单提交
 function searchMovies(category) {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/index', true);
+    xhr.open('POST', '/index/movieList', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send('category=' + encodeURIComponent(category));
+    window.location.reload();
 }
