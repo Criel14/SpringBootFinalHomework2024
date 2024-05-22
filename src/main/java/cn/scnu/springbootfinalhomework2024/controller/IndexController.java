@@ -35,7 +35,6 @@ public class IndexController {
         if(httpSession.getAttribute("user")!=null){
             model.addAttribute("user", httpSession.getAttribute("user"));
         }
-        System.out.println(category);
         return "index";
     }
 
@@ -75,15 +74,12 @@ public class IndexController {
 
     @RequestMapping("/index/movieDetail")
     public String SelectMovie(HttpSession httpSession,Model model,String category) {
-        System.out.println(category);
         List<Movie> movieList = new ArrayList<>();
         if(regions.contains(category)){
             movieList = movieService.findMovie(category,null);
-            System.out.println("a");
         }
         else{
             movieList = movieService.findMovie(null,category);
-            System.out.println("b");
         }
         System.out.println(movieList);
         model.addAttribute("movieList",movieList);
