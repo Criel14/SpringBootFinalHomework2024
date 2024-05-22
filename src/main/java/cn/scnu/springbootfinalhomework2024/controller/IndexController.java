@@ -25,9 +25,13 @@ public class IndexController {
     }
 
     @RequestMapping("/login")
-    public String login(User user, Model model) {
+    public String login(User user, Model model,HttpSession httpSession) {
+//        if(httpSession.getAttribute("user")!=null){
+//            model.addAttribute("user", httpSession.getAttribute("user"));
+//            return "index";
+//        }
         System.out.println(user);
-        User loginUser = userService.confirmLogin(user);/////
+        User loginUser = userService.confirmLogin(user);
         model.addAttribute("user", loginUser);
         return "index";
     }
