@@ -67,8 +67,14 @@
 
         <!--电影展示-->
         <div id="movieList">
-
-
+            <div th:each="movie:${movieList}">
+                <div class="">
+                    <a th:href="'/index/movieDetail?movieId='+${movie.movieId}">
+                        <img th:src="@{'/cover/'+${movie.movieCoverUrl}}"/>
+                    </a>
+                    <div id="prod_name_div" th:text = "${movie.movieTitle}">周处除三害</div>
+                </div>
+            </div>
         </div>
 
     </div>
