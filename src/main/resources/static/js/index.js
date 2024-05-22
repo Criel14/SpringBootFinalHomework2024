@@ -10,6 +10,10 @@ function showSlide(n) {
     slides[currentSlide].classList.add('active');
 }
 
+document.addEventListener("DOMContentLoaded", function (){
+    slides[currentSlide].classList.add('active');
+});
+
 function nextSlide() {
     showSlide(currentSlide + 1);
 }
@@ -32,8 +36,6 @@ slides.forEach(slide => {
         slideInterval = setInterval(nextSlide, 3000);
     });
 });
-
-
 
 // 分类展示电影的表单提交
 function searchMovies(category) {
