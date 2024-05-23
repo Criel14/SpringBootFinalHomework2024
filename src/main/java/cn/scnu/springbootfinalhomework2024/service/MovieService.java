@@ -28,4 +28,11 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         List<Movie> movieList = movieMapper.selectList(queryWrapper);
         return movieList;
     }
+
+    public List<Movie> queryMovie(String query) {
+        QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("movie_title", query);
+        List<Movie> movieList = movieMapper.selectList(queryWrapper);
+        return movieList;
+    }
 }

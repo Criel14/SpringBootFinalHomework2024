@@ -9,114 +9,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>搜索</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #202124;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            margin-top: -100px;
-            text-align: center;
-        }
-
-        .logo {
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-            width: 500px;
-            border: 1px solid #5f6368;
-            border-radius: 24px;
-            padding: 10px 20px;
-            background-color: #303134;
-            margin-bottom: 20px;
-        }
-
-        .search-input {
-            flex-grow: 1;
-            border: none;
-            outline: none;
-            background: none;
-            color: white;
-            font-size: 16px;
-        }
-
-        .search-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .search-button img {
-            width: 20px;
-            height: 20px;
-            filter: invert(100%);
-        }
-
-        .trending {
-            width: 500px;
-            text-align: left;
-            color: #e8eaed;
-            margin-top: 30px;
-        }
-
-        .trending h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .trending ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .trending li {
-            display: flex;
-            align-items: center;
-            padding: 10px 0;
-            /*border-bottom: 1px solid #5f6368;*/
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .trending li:hover {
-            background-color: #3c4043;
-        }
-
-        .trending li span {
-            margin-right: 10px;
-        }
-
-        .trending .rank {
-            background-color: #5f6368;
-            color: white;
-            border-radius: 5px;
-            padding: 5px 7px;
-            font-size: 10px;
-            display: inline-block;
-            text-align: center;
-            width: 10px;
-            height: 10px;
-            margin-right: 10px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/search.css">
+    <script src="/js/search.js"></script>
 </head>
 <body>
 <div class="container">
-    <a th:href="index" style="text-decoration: none; color: inherit;">
+    <a class="logo-link" th:href="index">
         <div class="logo">G543</div>
     </a>
     <div class="search-bar">
@@ -138,6 +36,14 @@
             <li><span class="rank">8</span> 黄处除三害13 </li>
             <li><span class="rank">9</span> 黄处除三害1212 </li>
             <li><span class="rank">10</span> 黄处除三害121212 </li>
+        </ul>
+    </div>
+    <div class="results-container">
+        <ul class="movie-list">
+            <li  class="movie-item">
+                <img>
+                <div class="name"></div>
+            </li>
         </ul>
     </div>
 </div>
