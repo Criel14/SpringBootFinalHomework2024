@@ -33,6 +33,7 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String index(@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+                        @RequestParam(name = "movieId", defaultValue = "1") Integer movieId,
                         HttpSession httpSession, Model model) {
         // 根据登录成功的user返回给前端
         if (httpSession.getAttribute("user") != null) {
@@ -49,7 +50,7 @@ public class IndexController {
         Integer pageCount = (totalRecords % pageSize == 0) ? (totalRecords / pageSize) : (totalRecords / pageSize + 1);
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("pageCount", pageCount);
-//        model.addAttribute("pageSize", pageSize);
+        model.addAttribute("movieId", movieId);
         model.addAttribute("movieList", movieList);
         return "index";
     }

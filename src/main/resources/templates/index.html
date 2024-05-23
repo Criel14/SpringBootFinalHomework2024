@@ -79,19 +79,19 @@
 
             <!--分页按钮-->
             <div class="pagination">
-                <span><a th:href="@{/index(pageNo=1)}">第一页</a></span>
+                <span><a th:href="@{/index(pageNo=1, movieId=${movieId})}">第一页</a></span>
                 <span th:switch="${currentPage}">
-                <a th:case="1" th:href="@{/index(pageNo=${currentPage})}">上一页</a>
-                <a th:case="*" th:href="@{/index(pageNo=${currentPage - 1})}">上一页</a>
+                <a th:case="1" th:href="@{/index(pageNo=${currentPage}, movieId=${movieId})}">上一页</a>
+                <a th:case="*" th:href="@{/index(pageNo=${currentPage - 1}, movieId=${movieId})}">上一页</a>
                 </span>
                 <span th:if="${currentPage}==${pageCount}">
-                    <a th:href="@{/index(pageNo=${pageCount})}">下一页</a>&nbsp;&nbsp;
+                    <a th:href="@{/index(pageNo=${pageCount}, movieId=${movieId})}">下一页</a>&nbsp;&nbsp;
                 </span>
                 <span th:unless="${currentPage}==${pageCount}">
-                    <a th:href="@{/index(pageNo=${currentPage + 1})}">下一页</a>
+                    <a th:href="@{/index(pageNo=${currentPage + 1}, movieId=${movieId})}">下一页</a>
                 </span>
                 <span>
-                    <a th:href="@{/index(pageNo=${pageCount})}">尾页</a>
+                    <a th:href="@{/index(pageNo=${pageCount}, movieId=${movieId})}">尾页</a>
                 </span>
             </div>
 
