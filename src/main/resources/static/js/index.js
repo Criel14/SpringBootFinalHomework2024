@@ -37,7 +37,7 @@ slides.forEach(slide => {
     });
 });
 
-// 分类展示电影的表单提交
+// 分类展示电影提交
 function searchMovies(category) {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/index/movieList', true);

@@ -148,14 +148,9 @@ a {
 
 
 /*分页*/
-#pagination {
+.pagination {
     position: absolute;
     top: 420px;
     left: 100px;
     background-color: #ff0000;
-}
-
-#pagination button {
-    padding: 5px 10px;
-    margin: 0 5px;
 }

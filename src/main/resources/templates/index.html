@@ -65,14 +65,9 @@
             </a>
         </div>
 
-        <!--分页按钮-->
-        <div id="pagination">
-            <button id="prevPage" disabled>&larr; 上一页</button>
-            <span id="pageInfo">1/1</span>
-            <button id="nextPage">下一页 &rarr;</button>
-        </div>
         <!--电影展示-->
         <div class="movieList" id="movieList">
+
             <div th:each="movie:${movieList}">
                 <div class="movieItem">
                     <a href="#">
@@ -81,6 +76,26 @@
                     <span class="movieTitle" th:text="${movie.movieTitle}">电影名</span>
                 </div>
             </div>
+
+            <!--分页按钮-->
+            <div class="pagination">
+                <span><a th:href="@{/index(pageNo=1)}">第一页</a></span>
+                <span th:switch="${currentPage}">
+                <a th:case="1" th:href="@{/index(pageNo=${currentPage})}">上一页</a>
+                <a th:case="*" th:href="@{/index(pageNo=${currentPage - 1})}">上一页</a>
+                </span>
+                <span th:if="${currentPage}==${pageCount}">
+                    <a th:href="@{/index(pageNo=${pageCount})}">下一页</a>&nbsp;&nbsp;
+                </span>
+                <span th:unless="${currentPage}==${pageCount}">
+                    <a th:href="@{/index(pageNo=${currentPage + 1})}">下一页</a>
+                </span>
+                <span>
+                    <a th:href="@{/index(pageNo=${pageCount})}">尾页</a>
+                </span>
+            </div>
+
+
         </div>
 
     </div>
@@ -137,7 +152,7 @@
 
 
     // 分页按钮
-    $(document).ready(function() {
+    $(document).ready(function () {
         var currentPage = 1;
         var totalPages = 1;
         var movieList = $('#movieList');
@@ -150,7 +165,7 @@
                     page: page,
                     pageSize: pageSize
                 },
-                success: function(data) {
+                success: function (data) {
                     currentPage = data.currentPage;
                     totalPages = data.totalPages;
                     updatePagination();
@@ -196,13 +211,13 @@
             }
         }
 
-        $('#prevPage').click(function() {
+        $('#prevPage').click(function () {
             if (currentPage > 1) {
                 fetchMovies(currentPage - 1);
             }
         });
 
-        $('#nextPage').click(function() {
+        $('#nextPage').click(function () {
             if (currentPage < totalPages) {
                 fetchMovies(currentPage + 1);
             }

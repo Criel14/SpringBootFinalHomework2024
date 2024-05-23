@@ -8,6 +8,4 @@ import java.util.List;
 
 @Mapper
 public interface MovieMapper extends BaseMapper<Movie> {
-
-    List<Movie> selectAll();
 }

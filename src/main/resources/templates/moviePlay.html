@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>G543电影网——电影播放</title>
+    <link rel="stylesheet" href="/css/moviePlay.css">
+</head>
+<body>
+
+    <div id="moviePlayer"></div>
+
+</body>
+<script>
+    $(document).ready(function() {
+        const movieId = window.location.pathname.split('/').pop(); // 从URL中获取电影ID
+
+        // 发送AJAX请求获取电影信息
+        $.ajax({
+            url: `/movie/${movieId}`, // 后端API路径
+            method: 'GET',
+            success: function(data) {
+                const movieUrl = data.movieLocalUrl; // 后端返回的数据中包含movieLocalUrl字段
+
+                // 创建视频播放器
+                const player = videojs('moviePlayer', {
+                    sources: [{
+                        src: movieUrl,
+                        type: 'video/mp4' // 根据实际视频格式进行调整
+                    }]
+                });
+            },
+            error: function() {
+                console.error('Failed to load movie data');
+            }
+        });
+    });
+</script>
+</html>

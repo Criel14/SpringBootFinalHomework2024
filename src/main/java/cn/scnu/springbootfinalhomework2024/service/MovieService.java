@@ -6,14 +6,14 @@ import cn.scnu.springbootfinalhomework2024.entity.User;
 import cn.scnu.springbootfinalhomework2024.mapper.MovieMapper;
 import cn.scnu.springbootfinalhomework2024.mapper.UserMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class MovieService extends ServiceImpl<MovieMapper, Movie> {
@@ -63,17 +63,21 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieList;
     }
 
-    public PagedData<Movie> getMovies(int page, int pageSize) {
-        PageHelper.startPage(page, pageSize);
-        // 这里需要改查询
-        List<Movie> movies = movieMapper.selectAll();
-        PageInfo<Movie> pageInfo = new PageInfo<>(movies);
-        PagedData<Movie> pagedData = new PagedData<>(
-                pageInfo.getPageNum(),
-                pageInfo.getPages(),
-                pageInfo.getTotal(),
-                movies
-        );
-        return pagedData;
+    // 分页查询
+    public Map<String, Object> queryPage(Integer movieId, Integer pageNo, Integer pageSize) {
+        QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
+
+        if (movieId != null) {
+            queryWrapper.eq("movieId", movieId);
+        }
+        int count = movieMapper.selectCount(queryWrapper).intValue();
+
+        Page<Movie> page = new Page<>(pageNo, pageSize);
+        Page<Movie> moviePage = movieMapper.selectPage(page, queryWrapper);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("count", count);
+        map.put("records", page.getRecords());
+        return map;
     }
 }

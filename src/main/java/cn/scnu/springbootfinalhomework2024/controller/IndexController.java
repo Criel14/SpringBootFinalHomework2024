@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class IndexController {
@@ -27,26 +28,34 @@ public class IndexController {
 
     User loginedUser = new User();
 
-    List<String> regions = List.of("domestic","foreign");
-    List<String> types = List.of("comedy","action","animation");
+    List<String> regions = List.of("domestic", "foreign");
+    List<String> types = List.of("comedy", "action", "animation");
 
     @RequestMapping("/index")
-    public String index(HttpSession httpSession,Model model,String category) {
-        if(httpSession.getAttribute("user")!=null){
+    public String index(@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+                        HttpSession httpSession, Model model) {
+        // 根据登录成功的user返回给前端
+        if (httpSession.getAttribute("user") != null) {
             model.addAttribute("user", httpSession.getAttribute("user"));
         }
-        if(httpSession.getAttribute("movieList")!=null){
-            model.addAttribute("movieList", httpSession.getAttribute("movieList"));
-        }
-        else{
-            List<Movie> movieList = movieService.findAllMovie();
-            model.addAttribute("movieList", movieList);
-        }
+
+        // 分页查询部分
+        Integer pageSize = 8;
+        Map<String, Object> map = movieService.queryPage(null, pageNo, pageSize);
+        int totalRecords = (Integer) map.get("count");
+        List<Movie> movieList = (List<Movie>) map.get("records");
+
+        // 计算总页数
+        Integer pageCount = (totalRecords % pageSize == 0) ? (totalRecords / pageSize) : (totalRecords / pageSize + 1);
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("pageCount", pageCount);
+//        model.addAttribute("pageSize", pageSize);
+        model.addAttribute("movieList", movieList);
         return "index";
     }
 
     @RequestMapping("/login")
-    public String login(User user, Model model,HttpSession httpSession) {
+    public String login(User user, Model model, HttpSession httpSession) {
 //        if(httpSession.getAttribute("user")!=null){
 //            model.addAttribute("user", httpSession.getAttribute("user"));
 //            return "index";
@@ -58,7 +67,7 @@ public class IndexController {
     }
 
     @RequestMapping("/logout")
-    public String logout(HttpSession httpSession, Model model){
+    public String logout(HttpSession httpSession, Model model) {
         httpSession.removeAttribute("user");
         return "redirect:/index";
     }
@@ -85,7 +94,7 @@ public class IndexController {
     }
 
 
-    @RequestMapping( "/index/movieList")
+    @RequestMapping("/index/movieList")
     public String SelectMovie(HttpSession httpSession, Model model, @RequestParam("category") String category) {
         List<Movie> movieList = new ArrayList<>();
         if (regions.contains(category)) {
@@ -100,16 +109,18 @@ public class IndexController {
     }
 
     @RequestMapping("/index/selectVipMovie")
-    public String selectVipMovie(HttpSession httpSession, Model model){
+    public String selectVipMovie(HttpSession httpSession, Model model) {
         List<Movie> movieList = movieService.showMovieByVip(true);
         httpSession.setAttribute("vipMovieList", movieList);
         return "index";
     }
 
     @RequestMapping("/index/selectFreeMovie")
-    public String selectFreeMovie(HttpSession httpSession, Model model){
+    public String selectFreeMovie(HttpSession httpSession, Model model) {
         List<Movie> movieList = movieService.showMovieByVip(false);
         httpSession.setAttribute("vipMovieList", movieList);
         return "index";
     }
+
+
 }
