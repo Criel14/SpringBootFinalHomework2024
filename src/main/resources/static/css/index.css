@@ -97,9 +97,10 @@ a {
     top: 420px;
     left: 48%;
     transform: translate(-50%, 0);
+    z-index: 1;
 }
 
-.classifyItem {
+.classify-item {
     width: 100px;
     height: 40px;
     background-color: #333333;
@@ -112,45 +113,93 @@ a {
     float: left;
 }
 
-.classifyItem:hover {
+.classify-item:hover {
     transition: 0.1s;
     background-color: #414141;
 }
 
 /*展示电影列表*/
-.movieList {
-    width: 88%;
+.movie-list {
+    width: 90%;
     height: 1500px;
     position: absolute;
-    top: 480px;
-    /*background-color: aqua;*/
+    top: 420px;
+    padding-top: 60px;
+    /*background-color: rgba(0, 255, 255, 0.45);*/
     left: 50%;
     transform: translateX(-54%);
     overflow: hidden;
 }
 
-.movieList .movieItem {
+.movie-list .movie-item {
     width: 270px;
-    height: 460px;
+    height: 480px;
     /*background-color: #333333;*/
-    margin-left: 40px;
+    margin-left: 30px;
     float: left;
 }
 
-.movieList .movieItem .movieTitle{
+.movie-list .movie-item .movie-title{
     font-size: 18px;
     color: white;
 }
 
-.movieList .movieItem img{
+.movie-list .movie-item img{
     border-radius: 10px;
+}
+
+.movie-list-detail {
+
 }
 
 
 /*分页*/
 .pagination {
     position: absolute;
-    top: 420px;
-    left: 100px;
-    background-color: #ff0000;
+    top: 0;
+    right: 100px;
+    width: 160px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 10px;
+    margin: auto;
+    font-weight: bold;
+}
+
+.pagination button {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 40px;
+    border-radius: 5px;
+}
+
+.pagination button:hover {
+    background-color: #414141;
+    transition: 0.1s;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination .current-page,
+.pagination .total-pages {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 5px;
+    background-color: #333;
+}
+
+.pagination span {
+    color: #fff;
+    font-size: 20px;
 }

@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,26 +33,7 @@ public class IndexController {
     List<String> types = List.of("comedy", "action", "animation");
 
     @RequestMapping("/index")
-    public String index(@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
-                        @RequestParam(name = "movieId", defaultValue = "1") Integer movieId,
-                        HttpSession httpSession, Model model) {
-        // 根据登录成功的user返回给前端
-        if (httpSession.getAttribute("user") != null) {
-            model.addAttribute("user", httpSession.getAttribute("user"));
-        }
-
-        // 分页查询部分
-        Integer pageSize = 8;
-        Map<String, Object> map = movieService.queryPage(null, pageNo, pageSize);
-        int totalRecords = (Integer) map.get("count");
-        List<Movie> movieList = (List<Movie>) map.get("records");
-
-        // 计算总页数
-        Integer pageCount = (totalRecords % pageSize == 0) ? (totalRecords / pageSize) : (totalRecords / pageSize + 1);
-        model.addAttribute("currentPage", pageNo);
-        model.addAttribute("pageCount", pageCount);
-        model.addAttribute("movieId", movieId);
-        model.addAttribute("movieList", movieList);
+    public String index() {
         return "index";
     }
 
@@ -95,19 +77,26 @@ public class IndexController {
     }
 
 
+    // 前端点击分类，后端查询电影列表
     @RequestMapping("/index/movieList")
-    public String SelectMovie(HttpSession httpSession, Model model, @RequestParam("category") String category) {
-        List<Movie> movieList = new ArrayList<>();
-        if (regions.contains(category)) {
-            movieList = movieService.findMovie(category, null);
-        } else {
-            movieList = movieService.findMovie(null, category);
-        }
-        System.out.println(movieList);
-        model.addAttribute("movieList", movieList);
-        httpSession.setAttribute("movieList", movieList);
-        return "index";
+    @ResponseBody
+    public Map<String, Object> selectMovie(
+            @RequestParam("query") String query,
+            @RequestParam("page") int page,
+            @RequestParam("size") int size) {
+        Map<String, Object> response = new HashMap<>();
+        List<Movie> allMovies = movieService.queryMovie(query);
+
+        int fromIndex = Math.min(page * size, allMovies.size());
+        int toIndex = Math.min((page + 1) * size, allMovies.size());
+        List<Movie> paginatedMovies = allMovies.subList(fromIndex, toIndex);
+
+        response.put("movies", paginatedMovies);
+        response.put("total", Math.ceil((double) allMovies.size() / size));
+
+        return response;
     }
+
 
     @RequestMapping("/index/selectVipMovie")
     public String selectVipMovie(HttpSession httpSession, Model model) {

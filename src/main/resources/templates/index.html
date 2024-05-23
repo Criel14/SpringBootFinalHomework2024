@@ -45,56 +45,42 @@
 
         <!--电影分类选项-->
         <div class="classify">
-            <a href="#" onclick="searchMovies('热播'); return false;">
-                <div class="classifyItem">热播</div>
+            <a href="#" onclick="searchMovies('1'); return false;">
+                <div class="classify-item">热播</div>
             </a>
             <a href="#" onclick="searchMovies('中国'); return false;">
-                <div class="classifyItem" style="margin-left: 40px">内地</div>
+                <div class="classify-item" style="margin-left: 40px">内地</div>
             </a>
             <a href="#" onclick="searchMovies('国外'); return false;">
-                <div class="classifyItem">国外</div>
+                <div class="classify-item">国外</div>
             </a>
             <a href="#" onclick="searchMovies('喜剧'); return false;">
-                <div class="classifyItem" style="margin-left: 40px">喜剧</div>
+                <div class="classify-item" style="margin-left: 40px">喜剧</div>
             </a>
             <a href="#" onclick="searchMovies('动作'); return false;">
-                <div class="classifyItem">动作</div>
+                <div class="classify-item">动作</div>
             </a>
             <a href="#" onclick="searchMovies('动画'); return false;">
-                <div class="classifyItem">动画</div>
+                <div class="classify-item">动画</div>
             </a>
         </div>
 
         <!--电影展示-->
-        <div class="movieList" id="movieList">
-
-            <div th:each="movie:${movieList}">
-                <div class="movieItem">
-                    <a href="#">
-                        <img th:src="@{'/cover/'+${movie.movieCoverUrl}}" alt="电影封面"/>
-                    </a>
-                    <span class="movieTitle" th:text="${movie.movieTitle}">电影名</span>
-                </div>
-            </div>
-
+        <div class="movie-list" id="movieList">
+            <!--展示内容-->
+            <ul class="movie-list-detail"></ul>
             <!--分页按钮-->
             <div class="pagination">
-                <span><a th:href="@{/index(pageNo=1, movieId=${movieId})}">第一页</a></span>
-                <span th:switch="${currentPage}">
-                <a th:case="1" th:href="@{/index(pageNo=${currentPage}, movieId=${movieId})}">上一页</a>
-                <a th:case="*" th:href="@{/index(pageNo=${currentPage - 1}, movieId=${movieId})}">上一页</a>
-                </span>
-                <span th:if="${currentPage}==${pageCount}">
-                    <a th:href="@{/index(pageNo=${pageCount}, movieId=${movieId})}">下一页</a>&nbsp;&nbsp;
-                </span>
-                <span th:unless="${currentPage}==${pageCount}">
-                    <a th:href="@{/index(pageNo=${currentPage + 1}, movieId=${movieId})}">下一页</a>
-                </span>
-                <span>
-                    <a th:href="@{/index(pageNo=${pageCount}, movieId=${movieId})}">尾页</a>
-                </span>
+                <button class="prev-page">
+                    <span>&lt;</span>
+                </button>
+                <span class="current-page">1</span>
+                <span>/</span>
+                <span class="total-pages">1</span>
+                <button class="next-page">
+                    <span>&gt;</span>
+                </button>
             </div>
-
 
         </div>
 
@@ -148,82 +134,6 @@
                 $(".content").html($(this).html());
             });
         });
-    });
-
-
-    // 分页按钮
-    $(document).ready(function () {
-        var currentPage = 1;
-        var totalPages = 1;
-        var movieList = $('#movieList');
-        var pageSize = 10; // 每页显示的电影数量
-
-        function fetchMovies(page) {
-            $.ajax({
-                url: '/movies',
-                data: {
-                    page: page,
-                    pageSize: pageSize
-                },
-                success: function (data) {
-                    currentPage = data.currentPage;
-                    totalPages = data.totalPages;
-                    updatePagination();
-                    renderMovies(data.data);
-                }
-            });
-        }
-
-        function renderMovies(movies) {
-            movieList.empty();
-            var start = (currentPage - 1) * pageSize;
-            var end = start + pageSize;
-            for (var i = start; i < end && i < movies.length; i++) {
-                var movie = movies[i];
-                var movieItem = $('<div class="movieItem"></div>');
-                var movieLink = $('<a href="#"></a>');
-                var movieImage = $('<img>').attr('src', '/cover/' + movie.movieCoverUrl).attr('alt', '电影封面');
-                var movieTitle = $('<span class="movieTitle"></span>').text(movie.movieTitle);
-
-                movieLink.append(movieImage);
-                movieItem.append(movieLink, movieTitle);
-                movieList.append(movieItem);
-            }
-        }
-
-        function updatePagination() {
-            var pageInfo = $('#pageInfo');
-            pageInfo.text(currentPage + '/' + totalPages);
-
-            var prevPageButton = $('#prevPage');
-            var nextPageButton = $('#nextPage');
-
-            if (currentPage === 1) {
-                prevPageButton.prop('disabled', true);
-            } else {
-                prevPageButton.prop('disabled', false);
-            }
-
-            if (currentPage === totalPages) {
-                nextPageButton.prop('disabled', true);
-            } else {
-                nextPageButton.prop('disabled', false);
-            }
-        }
-
-        $('#prevPage').click(function () {
-            if (currentPage > 1) {
-                fetchMovies(currentPage - 1);
-            }
-        });
-
-        $('#nextPage').click(function () {
-            if (currentPage < totalPages) {
-                fetchMovies(currentPage + 1);
-            }
-        });
-
-        fetchMovies(1);
     });
 </script>
 

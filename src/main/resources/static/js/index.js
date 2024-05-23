@@ -37,13 +37,75 @@ slides.forEach(slide => {
     });
 });
 
+
 // 分类展示电影提交
-function searchMovies(category) {
+var currentPage = 0;
+var pageSize = 6;
+var total = 0;
+var nowQuery = ""
+
+function fetchMovies(query, page) {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/index/movieList', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function() {
-        location.reload();
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            var movieList = response.movies;
+            total = response.total;
+            console.log(movieList);
+            console.log(total);
+            console.log(currentPage);
+            var resultsList = document.querySelector('.movie-list ul');
+            resultsList.innerHTML = '';
+
+            if (movieList.length !== 0) {
+                movieList.forEach(function (movie) {
+                    var li = document.createElement('li');
+                    li.classList.add('movie-item');
+
+                    var img = document.createElement('img');
+                    img.src = '/cover/' + movie.movieCoverUrl;
+                    img.alt = movie.movieTitle;
+
+                    var name = document.createElement('div');
+                    name.classList.add('movie-title');
+                    name.textContent = movie.movieTitle;
+
+                    li.appendChild(img);
+                    li.appendChild(name);
+                    resultsList.appendChild(li);
+                });
+
+                // 更新当前页显示
+                document.querySelector('.current-page').textContent = page + 1;
+                document.querySelector('.total-pages').textContent = total;
+            }
+        } else {
+            console.error('Error:', xhr.statusText);
+        }
     };
-    xhr.send('category=' + encodeURIComponent(category));
+    xhr.send('query=' + encodeURIComponent(query) + '&page=' + page + '&size=' + pageSize);
 }
+
+// 点击分类按钮进入此方法
+function searchMovies(query) {
+    nowQuery = query;
+    // 进入新的分类，则重置当前页码
+    currentPage = 0;
+    fetchMovies(query, currentPage);
+}
+
+document.querySelector('.prev-page').addEventListener('click', function() {
+    if (currentPage > 0) {
+        currentPage--;
+        fetchMovies(nowQuery, currentPage);
+    }
+});
+
+document.querySelector('.next-page').addEventListener('click', function() {
+    if (currentPage < total - 1) {
+        currentPage++;
+        fetchMovies(nowQuery, currentPage);
+    }
+});
