@@ -1,78 +1,100 @@
-function search(content) {
-    var query = document.querySelector('.search-input').value;
-    if (content != null) query = content; //此函数默认选择搜索栏的字符串为查询参数
+document.addEventListener('DOMContentLoaded', function() {
+    var searchInput = document.querySelector('.search-input');
+    var searchButton = document.querySelector('.search-button');
+    var currentPage = 0;
+    var pageSize = 5;
+    var total = 0;
 
-    if (query) {
-        // 发送搜索请求到后端
+    function fetchMovies(query, page) {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '/search/movieList', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onload = function () {
             if (xhr.status === 200) {
-                document.querySelector('.trending').classList.add('hidden');
-                var searchBar = document.querySelector('.search-bar');
-                var logoLink = document.querySelector('.logo-link');
-                searchBar.classList.add('top-bar');
-                searchBar.insertBefore(logoLink, searchBar.firstChild); // 将logoLink插入到searchBar的最前面
-
-                // 处理 JSON 响应
-                var movieList = JSON.parse(xhr.responseText);
+                var response = JSON.parse(xhr.responseText);
+                var movieList = response.movies;
+                total = response.total;
                 console.log(movieList);
+                console.log(total);
+                console.log(currentPage);
+                var resultsList = document.querySelector('.results-container ul');
+                resultsList.innerHTML = '';
+
                 if (movieList.length === 0) {
-                    document.querySelector('.empty-result').classList.remove('hidden');
+                    document.querySelector('.no-results').classList.remove('hidden');
                 } else {
                     document.querySelector('.results-container').classList.remove('hidden');
-                    var resultsList = document.querySelector('.results-container ul');
-                    resultsList.innerHTML = '';
-
+                    document.querySelector('.pagination').classList.remove('hidden');
                     movieList.forEach(function (movie) {
                         var li = document.createElement('li');
                         li.classList.add('movie-item');
+
                         var img = document.createElement('img');
-                        img.src = "/cover/"
-                        img.src += movie.movieCoverUrl; // 使用 movieCoverUrl 属性
-                        img.alt = movie.movieTitle; // 使用 movieTitle 属性
+                        img.src = '/cover/' + movie.movieCoverUrl;
+                        img.alt = movie.movieTitle;
+
                         var name = document.createElement('div');
                         name.classList.add('name');
-                        name.textContent = movie.movieTitle; // 使用 movieTitle 属性
+                        name.textContent = movie.movieTitle;
+
                         li.appendChild(img);
                         li.appendChild(name);
                         resultsList.appendChild(li);
                     });
+
+                    // 更新当前页显示
+                    document.querySelector('.current-page').textContent = page + 1;
+                    document.querySelector('.total-pages').textContent = total;
                 }
             } else {
-                console.error('Error:', xhr.statusText); // 错误处理
+                console.error('Error:', xhr.statusText);
             }
         };
-        xhr.send('query=' + encodeURIComponent(query)); // 编码后发送请求参数
+        xhr.send('query=' + encodeURIComponent(query) + '&page=' + page + '&size=' + pageSize);
     }
-}
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.empty-result').classList.add('hidden');
-    document.querySelector('.results-container').classList.add('hidden');
-    var searchInput = document.querySelector('.search-input');
-    var searchButton = document.querySelector('.search-button');
+    function search() {
+        var query = searchInput.value;
+        if (query) {
+            document.querySelector('.trending').classList.add('hidden');
+            var searchBar = document.querySelector('.search-bar');
+            var logoLink = document.querySelector('.logo-link');
+            searchBar.classList.add('top-bar');
+            searchBar.insertBefore(logoLink, searchBar.firstChild);
 
-    // 点击搜索按钮时进行搜索
-    searchButton.addEventListener('click', function () {
-        search();
-    });
+            // 重置当前页为0
+            currentPage = 0;
+            fetchMovies(query, currentPage);
+        }
+    }
 
-    // 按下回车键时进行搜索
+    searchButton.addEventListener('click', search);
     searchInput.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
             search();
         }
     });
 
-    // 点击热搜条目时进行搜索
     var trendingItems = document.querySelectorAll('.trending li');
     trendingItems.forEach(function(item) {
         item.addEventListener('click', function() {
             var query = item.textContent.trim().slice(2);
-            document.querySelector('.search-input').value = query;
-            search(query);
+            searchInput.value = query;
+            search();
         });
+    });
+
+    document.querySelector('.prev-page').addEventListener('click', function() {
+        if (currentPage > 0) {
+            currentPage--;
+            fetchMovies(searchInput.value, currentPage);
+        }
+    });
+
+    document.querySelector('.next-page').addEventListener('click', function() {
+        if (currentPage < total - 1) {
+            currentPage++;
+            fetchMovies(searchInput.value, currentPage);
+        }
     });
 });

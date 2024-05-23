@@ -8,12 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,15 +20,23 @@ public class SearchController {
     @Autowired
     private MovieService movieService;
 
-    @PostMapping("/search/movieList")
-    public ResponseEntity<List<Movie>> SelectMovie(@RequestParam("query") String query) {
-        List<Movie> movieList = new ArrayList<>();
+    @RequestMapping("/search/movieList")
+    @ResponseBody
+    public Map<String, Object> selectMovie(
+            @RequestParam("query") String query,
+            @RequestParam("page") int page,
+            @RequestParam("size") int size) {
+        Map<String, Object> response = new HashMap<>();
+        List<Movie> allMovies = movieService.queryMovie(query);
 
-        System.out.println("------\n");
-        System.out.println(query);
+        int fromIndex = Math.min(page * size, allMovies.size());
+        int toIndex = Math.min((page + 1) * size, allMovies.size());
+        List<Movie> paginatedMovies = allMovies.subList(fromIndex, toIndex);
 
-        movieList = movieService.queryMovie(query);
+        response.put("movies", paginatedMovies);
+        response.put("total", Math.ceil((double)allMovies.size() / size));
 
-        return new ResponseEntity<>(movieList, HttpStatus.OK);
+        return response;
     }
+
 }

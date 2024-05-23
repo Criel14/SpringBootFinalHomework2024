@@ -174,3 +174,33 @@ a.logo-link {
     margin-top: 10px;
     font-size: 16px;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #5f6368;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.pagination .current-page {
+    color: #e8eaed;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.no-results {
+    text-align: center;
+    color: #ffffff;
+    margin-top: 20px;
+    font-size: 18px;
+}
