@@ -25,6 +25,8 @@ public class IndexController {
     @Autowired
     MovieService movieService;
 
+    User loginedUser = new User();
+
     List<String> regions = List.of("domestic","foreign");
     List<String> types = List.of("comedy","action","animation");
 
@@ -52,6 +54,12 @@ public class IndexController {
         System.out.println(user);
         User loginUser = userService.confirmLogin(user);
         httpSession.setAttribute("user", loginUser);
+        return "redirect:/index";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpSession httpSession, Model model){
+        httpSession.removeAttribute("user");
         return "redirect:/index";
     }
 
@@ -88,6 +96,20 @@ public class IndexController {
         System.out.println(movieList);
         model.addAttribute("movieList", movieList);
         httpSession.setAttribute("movieList", movieList);
+        return "index";
+    }
+
+    @RequestMapping("/index/selectVipMovie")
+    public String selectVipMovie(HttpSession httpSession, Model model){
+        List<Movie> movieList = movieService.showMovieByVip(true);
+        httpSession.setAttribute("vipMovieList", movieList);
+        return "index";
+    }
+
+    @RequestMapping("/index/selectFreeMovie")
+    public String selectFreeMovie(HttpSession httpSession, Model model){
+        List<Movie> movieList = movieService.showMovieByVip(false);
+        httpSession.setAttribute("vipMovieList", movieList);
         return "index";
     }
 }
