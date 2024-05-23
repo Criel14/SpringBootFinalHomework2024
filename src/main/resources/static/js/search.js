@@ -1,6 +1,7 @@
 function search(content) {
     var query = document.querySelector('.search-input').value;
     if (content != null) query = content; //此函数默认选择搜索栏的字符串为查询参数
+
     if (query) {
         // 发送搜索请求到后端
         const xhr = new XMLHttpRequest();
@@ -49,7 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var searchButton = document.querySelector('.search-button');
 
     // 点击搜索按钮时进行搜索
-    searchButton.addEventListener('click', search);
+    searchButton.addEventListener('click', function () {
+        search();
+    });
 
     // 按下回车键时进行搜索
     searchInput.addEventListener('keypress', function(event) {
