@@ -14,28 +14,32 @@ function search(content) {
                 var logoLink = document.querySelector('.logo-link');
                 searchBar.classList.add('top-bar');
                 searchBar.insertBefore(logoLink, searchBar.firstChild); // 将logoLink插入到searchBar的最前面
-                document.querySelector('.results-container').classList.remove('hidden');
 
                 // 处理 JSON 响应
                 var movieList = JSON.parse(xhr.responseText);
                 console.log(movieList);
-                var resultsList = document.querySelector('.results-container ul');
-                resultsList.innerHTML = '';
+                if (movieList.length === 0) {
+                    document.querySelector('.empty-result').classList.remove('hidden');
+                } else {
+                    document.querySelector('.results-container').classList.remove('hidden');
+                    var resultsList = document.querySelector('.results-container ul');
+                    resultsList.innerHTML = '';
 
-                movieList.forEach(function (movie) {
-                    var li = document.createElement('li');
-                    li.classList.add('movie-item');
-                    var img = document.createElement('img');
-                    img.src = "/cover/"
-                    img.src += movie.movieCoverUrl; // 使用 movieCoverUrl 属性
-                    img.alt = movie.movieTitle; // 使用 movieTitle 属性
-                    var name = document.createElement('div');
-                    name.classList.add('name');
-                    name.textContent = movie.movieTitle; // 使用 movieTitle 属性
-                    li.appendChild(img);
-                    li.appendChild(name);
-                    resultsList.appendChild(li);
-                });
+                    movieList.forEach(function (movie) {
+                        var li = document.createElement('li');
+                        li.classList.add('movie-item');
+                        var img = document.createElement('img');
+                        img.src = "/cover/"
+                        img.src += movie.movieCoverUrl; // 使用 movieCoverUrl 属性
+                        img.alt = movie.movieTitle; // 使用 movieTitle 属性
+                        var name = document.createElement('div');
+                        name.classList.add('name');
+                        name.textContent = movie.movieTitle; // 使用 movieTitle 属性
+                        li.appendChild(img);
+                        li.appendChild(name);
+                        resultsList.appendChild(li);
+                    });
+                }
             } else {
                 console.error('Error:', xhr.statusText); // 错误处理
             }
@@ -45,6 +49,7 @@ function search(content) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.empty-result').classList.add('hidden');
     document.querySelector('.results-container').classList.add('hidden');
     var searchInput = document.querySelector('.search-input');
     var searchButton = document.querySelector('.search-button');
