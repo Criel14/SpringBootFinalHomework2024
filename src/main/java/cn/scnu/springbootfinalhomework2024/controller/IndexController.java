@@ -36,6 +36,10 @@ public class IndexController {
         if(httpSession.getAttribute("movieList")!=null){
             model.addAttribute("movieList", httpSession.getAttribute("movieList"));
         }
+        else{
+            List<Movie> movieList = movieService.findAllMovie();
+            model.addAttribute("movieList", movieList);
+        }
         return "index";
     }
 

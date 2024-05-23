@@ -19,10 +19,10 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     public List<Movie> findMovie(String region, String type) {
         QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
         if(region != null) {
-            queryWrapper.eq("movie_region", region);
+            queryWrapper.like("movie_region", region);
         }
         else{
-            queryWrapper.eq("movie_type", type);
+            queryWrapper.like("movie_type", type);
         }
 
         List<Movie> movieList = movieMapper.selectList(queryWrapper);
@@ -33,6 +33,11 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
         queryWrapper.like("movie_title", query);
         List<Movie> movieList = movieMapper.selectList(queryWrapper);
+        return movieList;
+    }
+
+    public List<Movie> findAllMovie() {
+        List<Movie> movieList = movieMapper.selectList(null);
         return movieList;
     }
 }
