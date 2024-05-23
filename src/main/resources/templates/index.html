@@ -45,28 +45,34 @@
 
         <!--电影分类选项-->
         <div class="classify">
-            <a href="#" onclick="searchMovies('hot'); return false;">
+            <a href="#" onclick="searchMovies('热播'); return false;">
                 <div class="classifyItem">热播</div>
             </a>
-            <a href="#" onclick="searchMovies('domestic'); return false;">
+            <a href="#" onclick="searchMovies('中国'); return false;">
                 <div class="classifyItem" style="margin-left: 40px">内地</div>
             </a>
-            <a href="#" onclick="searchMovies('foreign'); return false;">
+            <a href="#" onclick="searchMovies('国外'); return false;">
                 <div class="classifyItem">国外</div>
             </a>
-            <a href="#" onclick="searchMovies('comedy'); return false;">
+            <a href="#" onclick="searchMovies('喜剧'); return false;">
                 <div class="classifyItem" style="margin-left: 40px">喜剧</div>
             </a>
-            <a href="#" onclick="searchMovies('action'); return false;">
+            <a href="#" onclick="searchMovies('动作'); return false;">
                 <div class="classifyItem">动作</div>
             </a>
-            <a href="#" onclick="searchMovies('animation'); return false;">
+            <a href="#" onclick="searchMovies('动画'); return false;">
                 <div class="classifyItem">动画</div>
             </a>
         </div>
 
+        <!--分页按钮-->
+        <div id="pagination">
+            <button id="prevPage" disabled>&larr; 上一页</button>
+            <span id="pageInfo">1/1</span>
+            <button id="nextPage">下一页 &rarr;</button>
+        </div>
         <!--电影展示-->
-        <div class="movieList">
+        <div class="movieList" id="movieList">
             <div th:each="movie:${movieList}">
                 <div class="movieItem">
                     <a href="#">
@@ -75,15 +81,6 @@
                     <span class="movieTitle" th:text="${movie.movieTitle}">电影名</span>
                 </div>
             </div>
-
-            <!--下面是测试-->
-<!--            <div class="movieItem">-->
-<!--                <a href="#">-->
-<!--                    <img src="/cover/cover000.jpg" alt="电影封面"/>-->
-<!--                </a>-->
-<!--                <span class="movieTitle">周处除三害</span>-->
-<!--            </div>-->
-
         </div>
 
     </div>
@@ -136,6 +133,82 @@
                 $(".content").html($(this).html());
             });
         });
+    });
+
+
+    // 分页按钮
+    $(document).ready(function() {
+        var currentPage = 1;
+        var totalPages = 1;
+        var movieList = $('#movieList');
+        var pageSize = 10; // 每页显示的电影数量
+
+        function fetchMovies(page) {
+            $.ajax({
+                url: '/movies',
+                data: {
+                    page: page,
+                    pageSize: pageSize
+                },
+                success: function(data) {
+                    currentPage = data.currentPage;
+                    totalPages = data.totalPages;
+                    updatePagination();
+                    renderMovies(data.data);
+                }
+            });
+        }
+
+        function renderMovies(movies) {
+            movieList.empty();
+            var start = (currentPage - 1) * pageSize;
+            var end = start + pageSize;
+            for (var i = start; i < end && i < movies.length; i++) {
+                var movie = movies[i];
+                var movieItem = $('<div class="movieItem"></div>');
+                var movieLink = $('<a href="#"></a>');
+                var movieImage = $('<img>').attr('src', '/cover/' + movie.movieCoverUrl).attr('alt', '电影封面');
+                var movieTitle = $('<span class="movieTitle"></span>').text(movie.movieTitle);
+
+                movieLink.append(movieImage);
+                movieItem.append(movieLink, movieTitle);
+                movieList.append(movieItem);
+            }
+        }
+
+        function updatePagination() {
+            var pageInfo = $('#pageInfo');
+            pageInfo.text(currentPage + '/' + totalPages);
+
+            var prevPageButton = $('#prevPage');
+            var nextPageButton = $('#nextPage');
+
+            if (currentPage === 1) {
+                prevPageButton.prop('disabled', true);
+            } else {
+                prevPageButton.prop('disabled', false);
+            }
+
+            if (currentPage === totalPages) {
+                nextPageButton.prop('disabled', true);
+            } else {
+                nextPageButton.prop('disabled', false);
+            }
+        }
+
+        $('#prevPage').click(function() {
+            if (currentPage > 1) {
+                fetchMovies(currentPage - 1);
+            }
+        });
+
+        $('#nextPage').click(function() {
+            if (currentPage < totalPages) {
+                fetchMovies(currentPage + 1);
+            }
+        });
+
+        fetchMovies(1);
     });
 </script>
 

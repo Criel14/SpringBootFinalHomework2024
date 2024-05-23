@@ -1,11 +1,14 @@
 package cn.scnu.springbootfinalhomework2024.service;
 
 import cn.scnu.springbootfinalhomework2024.entity.Movie;
+import cn.scnu.springbootfinalhomework2024.entity.PagedData;
 import cn.scnu.springbootfinalhomework2024.entity.User;
 import cn.scnu.springbootfinalhomework2024.mapper.MovieMapper;
 import cn.scnu.springbootfinalhomework2024.mapper.UserMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,5 +61,19 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
             movieList = movieMapper.selectList(queryWrapper);
         }
         return movieList;
+    }
+
+    public PagedData<Movie> getMovies(int page, int pageSize) {
+        PageHelper.startPage(page, pageSize);
+        // 这里需要改查询
+        List<Movie> movies = movieMapper.selectAll();
+        PageInfo<Movie> pageInfo = new PageInfo<>(movies);
+        PagedData<Movie> pagedData = new PagedData<>(
+                pageInfo.getPageNum(),
+                pageInfo.getPages(),
+                pageInfo.getTotal(),
+                movies
+        );
+        return pagedData;
     }
 }
