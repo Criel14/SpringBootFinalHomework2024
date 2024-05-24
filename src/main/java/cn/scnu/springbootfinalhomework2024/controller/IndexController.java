@@ -30,7 +30,7 @@ public class IndexController {
     User loginedUser = new User();
 
 
-    List<String> regions = List.of("domestic", "foreign");
+    List<String> regions = List.of("中国","国外");
     List<String> types = List.of("comedy", "action", "animation");
 
     @RequestMapping("/index")
@@ -93,16 +93,24 @@ public class IndexController {
             allMovies = movieService.findAllMovie();
         }
         else{
-            allMovies = movieService.queryMovie(query);
+            // 要更改成判断query来查询
+            if(regions.contains(query)){
+                allMovies = movieService.findMovieByRegion(query);
+        } else if (types.contains(query)) {
+                allMovies = movieService.findMovieByType(query);
+            }
+            else{
+                allMovies = movieService.findMovieByTitle(query);
+            }
         }
-
+        System.out.println(allMovies);
         int fromIndex = Math.min(page * size, allMovies.size());
         int toIndex = Math.min((page + 1) * size, allMovies.size());
         List<Movie> paginatedMovies = allMovies.subList(fromIndex, toIndex);
 
         response.put("movies", paginatedMovies);
         response.put("total", Math.ceil((double) allMovies.size() / size));
-
+        System.out.println(response.get("total"));
         return response;
     }
 

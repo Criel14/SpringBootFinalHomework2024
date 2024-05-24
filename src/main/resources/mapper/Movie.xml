@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.scnu.springbootfinalhomework2024.controller.MovieController">
+
+    // 计算每个电影在某个特定天数内的总播放量
     <select id="getMovieByCountPlay" resultType="cn.scnu.springbootfinalhomework2024.entity.Movie">
-        SELECT M.*, SUM(MP.play_one_day) AS total_play
-        FROM movie M
-        JOIN movie_playback MP ON M.movie_id = MP.movie_id
-        GROUP BY M.movie_id
-        ORDER BY total_play DESC
-            LIMIT #{day}
+        SELECT M.*,SUM(temp.play_one_day) AS play_count
+        FROM
+        (SELECT
+        movie_id, play_one_day,
+        ROW_NUMBER() OVER(PARTITION BY movie_id ORDER BY play_date) AS rn
+        FROM
+        movie_playback
+        WHERE
+        play_date IS NOT NULL
+        ORDER BY movie_id, play_date) AS temp,movie M
+        WHERE temp.movie_id = M.movie_id
+        and rn <= #{day}
+        GROUP BY movie_id;
     </select>
 
 

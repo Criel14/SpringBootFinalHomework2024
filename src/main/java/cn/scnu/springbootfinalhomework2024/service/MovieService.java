@@ -38,7 +38,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieList;
     }
 
-    public List<Movie> queryMovie(String query) {
+    public List<Movie> findMovieByTitle(String query) {
         QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
         queryWrapper.like("movie_title", query);
         List<Movie> movieList = movieMapper.selectList(queryWrapper);
@@ -89,4 +89,27 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         map.put("records", page.getRecords());
         return map;
     }
+
+    public List<Movie> findMovieByRegion(String query) {
+        List<Movie> movieList= new ArrayList<>();
+        QueryWrapper queryWrapper = new QueryWrapper();
+        if("中国".equals(query)){
+            queryWrapper.like("movie_region",query);
+        }
+        else{
+            queryWrapper.notIn("movie_region",query);
+        }
+        movieList = movieMapper.selectList(queryWrapper);
+        return movieList;
+    }
+
+    public List<Movie> findMovieByType(String query) {
+        List<Movie> movieList= new ArrayList<>();
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.like("movie_type",query);
+        movieList = movieMapper.selectList(queryWrapper);
+
+        return movieList;
+    }
+
 }
