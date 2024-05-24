@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (movieList.length === 0) {
                     document.querySelector('.no-results').classList.remove('hidden');
                 } else {
+                    document.querySelector('.no-results').classList.add('hidden');
                     document.querySelector('.results-container').classList.remove('hidden');
                     document.querySelector('.pagination').classList.remove('hidden');
                     movieList.forEach(function (movie) {

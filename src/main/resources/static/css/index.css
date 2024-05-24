@@ -89,7 +89,7 @@ a {
 
 /*分类选项*/
 .classify {
-    width: 900px;
+    width: 1200px;
     height: 40px;
     padding: 0 60px 0 60px;
     /*background-color: red;*/
@@ -155,7 +155,7 @@ a {
 
 /*分页*/
 .pagination {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 100px;
     width: 160px;
@@ -166,8 +166,10 @@ a {
     padding: 10px;
     background-color: #333;
     border-radius: 10px;
-    margin: auto;
+    /*margin: auto;*/
     font-weight: bold;
+    margin-left: 100px;
+    float:left;
 }
 
 .pagination button {
