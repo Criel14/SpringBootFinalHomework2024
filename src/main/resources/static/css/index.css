@@ -157,14 +157,14 @@ a {
 .pagination {
     width: 160px;
     height: 40px;
-    background-color: #333333;
     border-radius: 10px;
-    color: #e5e5e5;
-    font-size: 18px;
-    line-height: 40px;
     text-align: center;
     margin-left: 160px;
     float: left;
+    background-color: #333333;
+    color: #e5e5e5;
+    font-size: 18px;
+    line-height: 40px;
 }
 
 .pagination button {
