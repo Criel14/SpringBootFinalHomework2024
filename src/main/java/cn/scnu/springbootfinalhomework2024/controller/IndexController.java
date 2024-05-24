@@ -29,20 +29,21 @@ public class IndexController {
 
     User loginedUser = new User();
 
+
     List<String> regions = List.of("domestic", "foreign");
     List<String> types = List.of("comedy", "action", "animation");
 
     @RequestMapping("/index")
-    public String index() {
+    public String index(HttpSession httpSession , Model model) {
+        if(httpSession.getAttribute("user") != null){
+            loginedUser = (User) httpSession.getAttribute("user");
+            model.addAttribute("user", loginedUser);
+        }
         return "index";
     }
 
     @RequestMapping("/login")
     public String login(User user, Model model, HttpSession httpSession) {
-//        if(httpSession.getAttribute("user")!=null){
-//            model.addAttribute("user", httpSession.getAttribute("user"));
-//            return "index";
-//        }
         System.out.println(user);
         User loginUser = userService.confirmLogin(user);
         httpSession.setAttribute("user", loginUser);
