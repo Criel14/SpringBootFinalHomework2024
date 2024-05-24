@@ -20,6 +20,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     @Autowired
     private MovieMapper movieMapper;
 
+    // 根据电影地区或电影类型查询电影
     public List<Movie> findMovie(String region, String type) {
         QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
         if(region != null) {
@@ -44,11 +45,13 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieList;
     }
 
+    //查询所有电影
     public List<Movie> findAllMovie() {
         List<Movie> movieList = movieMapper.selectList(null);
         return movieList;
     }
 
+    // 根据用户是否为vip来查询电影
     public List<Movie> showMovieByVip(Boolean needVip){
         QueryWrapper queryWrapper = new QueryWrapper();
         List<Movie> movieList= new ArrayList<>();
@@ -63,6 +66,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieList;
     }
 
+    // 根据播放次数排序电影，day如果是7就按照7天的播放总和排序
     public List<Movie> showMovieByCountPlay(int day){
         List movieList = movieMapper.getMovieByCountPlay(day);
         return movieList;

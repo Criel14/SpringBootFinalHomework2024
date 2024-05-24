@@ -1,6 +1,6 @@
 // 分页查询所用变量
 var currentPage = 0;
-var pageSize = 6;
+var pageSize = 4;
 var total = 0;
 // 分页查询的查询依据
 var nowQuery = ""
@@ -111,3 +111,7 @@ document.querySelector('.next-page').addEventListener('click', function() {
         fetchMovies(nowQuery, currentPage);
     }
 });
+
+window.onload = function() {
+    fetchMovies(nowQuery, currentPage);
+}

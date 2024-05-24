@@ -39,6 +39,7 @@ public class IndexController {
             loginedUser = (User) httpSession.getAttribute("user");
             model.addAttribute("user", loginedUser);
         }
+
         return "index";
     }
 
@@ -86,7 +87,14 @@ public class IndexController {
             @RequestParam("page") int page,
             @RequestParam("size") int size) {
         Map<String, Object> response = new HashMap<>();
-        List<Movie> allMovies = movieService.queryMovie(query);
+        List<Movie> allMovies = new ArrayList<>();
+        System.out.println(query);
+        if(("").equals(query)){
+            allMovies = movieService.findAllMovie();
+        }
+        else{
+            allMovies = movieService.queryMovie(query);
+        }
 
         int fromIndex = Math.min(page * size, allMovies.size());
         int toIndex = Math.min((page + 1) * size, allMovies.size());
