@@ -96,7 +96,7 @@ a {
     position: absolute;
     top: 420px;
     left: 48%;
-    transform: translate(-50%, 0);
+    transform: translate(-40%, 0);
     z-index: 1;
 }
 
@@ -155,21 +155,16 @@ a {
 
 /*分页*/
 .pagination {
-    position: relative;
-    top: 0;
-    right: 100px;
     width: 160px;
     height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    background-color: #333;
+    background-color: #333333;
     border-radius: 10px;
-    /*margin: auto;*/
-    font-weight: bold;
-    margin-left: 100px;
-    float:left;
+    color: #e5e5e5;
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+    margin-left: 160px;
+    float: left;
 }
 
 .pagination button {
