@@ -63,6 +63,11 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieList;
     }
 
+    public List<Movie> showMovieByCountPlay(int day){
+        List movieList = movieMapper.getMovieByCountPlay(day);
+        return movieList;
+    }
+
     // 分页查询
     public Map<String, Object> queryPage(Integer movieId, Integer pageNo, Integer pageSize) {
         QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
