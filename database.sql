@@ -59,8 +59,8 @@ insert into user(username,phone_number,password) VALUES('aa','123456','123456');
 INSERT INTO movie (movie_title, movie_cover_url, movie_description, release_date, need_vip, movie_local_url, movie_region, movie_type, movie_score)
 VALUES
 ('肖申克的救赎', 'cover000.jpg', '一部关于希望、坚韧和友谊的励志经典电影。', '1994-10-14', 0, NULL, '美国', '剧情', 9.30),
-('教父', 'cover000.jpg', '讲述了科里昂家族的犯罪帝国及其家族纷争的经典黑帮电影。', '1972-03-24', 0, NULL, '美国', '动作', 9.20),
+('教父', 'cover000.jpg', '讲述了科里昂家族的犯罪帝国及其家族纷争的经典黑帮电影。', '1972-03-24', 0, NULL, '美国', 'action', 9.20),
 ('霸王别姬', 'cover000.jpg', '一部展现京剧传统艺术和同性爱情主题的经典国产电影。', '1993-01-01', 1, 'https://example.com/farewell-my-concubine.mp4', '中国', '剧情', 9.50),
 ('哈利·波特与魔法石', 'cover000.jpg', '改编自J.K.罗琳小说的奇幻冒险系列电影的第一部。', '2001-11-16', 0, NULL, '英国,美国', 'action', 7.60),
-('疯狂动物城', 'cover000.jpg', '一部充满想象力和富有教育意义的动画电影,探讨了种族歧视和平等机会等重要议题。', '2016-03-04', 0, NULL, '美国', '动画', 8.10),
-('我不是药神', 'cover000.jpg', '一部根据真实事件改编的国产电影,讲述了一个普通男人为了活下去而走上买卖仿制药的道路。', '2018-07-05', 0, 'https://example.com/dying-to-survive.mp4', '中国', '喜剧', 8.70);
+('疯狂动物城', 'cover000.jpg', '一部充满想象力和富有教育意义的动画电影,探讨了种族歧视和平等机会等重要议题。', '2016-03-04', 0, NULL, '美国', 'animation', 8.10),
+('我不是药神', 'cover000.jpg', '一部根据真实事件改编的国产电影,讲述了一个普通男人为了活下去而走上买卖仿制药的道路。', '2018-07-05', 0, 'https://example.com/dying-to-survive.mp4', '中国', 'comedy', 8.70);

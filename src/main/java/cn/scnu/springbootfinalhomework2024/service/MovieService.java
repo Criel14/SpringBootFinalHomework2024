@@ -38,6 +38,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieList;
     }
 
+    //根据电影名称进行查询
     public List<Movie> findMovieByTitle(String query) {
         QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
         queryWrapper.like("movie_title", query);
@@ -66,11 +67,11 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieList;
     }
 
-    // 根据播放次数排序电影，day如果是7就按照7天的播放总和排序
-    public List<Movie> showMovieByCountPlay(int day){
-        List movieList = movieMapper.getMovieByCountPlay(day);
-        return movieList;
-    }
+//    // 根据播放次数排序电影，day如果是7就按照7天的播放总和排序
+//    public List<Movie> showMovieByCountPlay(int day){
+//        List movieList = movieMapper.getMovieByCountPlay(day);
+//        return movieList;
+//    }
 
     // 分页查询
     public Map<String, Object> queryPage(Integer movieId, Integer pageNo, Integer pageSize) {
@@ -90,6 +91,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return map;
     }
 
+    // 根据电影地区查询
     public List<Movie> findMovieByRegion(String query) {
         List<Movie> movieList= new ArrayList<>();
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -103,6 +105,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieList;
     }
 
+    // 根据电影类型查询
     public List<Movie> findMovieByType(String query) {
         List<Movie> movieList= new ArrayList<>();
         QueryWrapper queryWrapper = new QueryWrapper();

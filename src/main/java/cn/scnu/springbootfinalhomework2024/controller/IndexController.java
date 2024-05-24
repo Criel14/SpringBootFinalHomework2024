@@ -33,6 +33,7 @@ public class IndexController {
     List<String> regions = List.of("中国","国外");
     List<String> types = List.of("comedy", "action", "animation");
 
+    // 首页，若有用户信息，则表示是已登录状态的首页
     @RequestMapping("/index")
     public String index(HttpSession httpSession , Model model) {
         if(httpSession.getAttribute("user") != null){
@@ -43,6 +44,7 @@ public class IndexController {
         return "index";
     }
 
+    //做登录功能，在确认用户在数据库后用httpsession传给首页
     @RequestMapping("/login")
     public String login(User user, Model model, HttpSession httpSession) {
         System.out.println(user);
@@ -51,12 +53,15 @@ public class IndexController {
         return "redirect:/index";
     }
 
+    // 做退出功能，将httpsession中的登录信息移除
     @RequestMapping("/logout")
     public String logout(HttpSession httpSession, Model model) {
         httpSession.removeAttribute("user");
         return "redirect:/index";
     }
 
+    // 做注册功能，首先判断手机号是否合法，然后在数据库中查询用户手机号
+    // 是否被注册，如果都通过就将信息记录数据库并用httpsession传输用户信息。
     @RequestMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user, Model model, HttpSession httpSession) {
         System.out.println(user);
@@ -73,6 +78,7 @@ public class IndexController {
         }
     }
 
+    //搜索页面
     @RequestMapping("/search")
     public String search() {
         return "search";
@@ -115,6 +121,7 @@ public class IndexController {
     }
 
 
+    //查询vip电影
     @RequestMapping("/index/selectVipMovie")
     public String selectVipMovie(HttpSession httpSession, Model model) {
         List<Movie> movieList = movieService.showMovieByVip(true);
@@ -122,6 +129,7 @@ public class IndexController {
         return "index";
     }
 
+    //查询免费电影
     @RequestMapping("/index/selectFreeMovie")
     public String selectFreeMovie(HttpSession httpSession, Model model) {
         List<Movie> movieList = movieService.showMovieByVip(false);

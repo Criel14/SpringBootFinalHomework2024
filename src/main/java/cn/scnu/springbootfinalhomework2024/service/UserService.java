@@ -15,6 +15,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     @Autowired
     UserMapper userMapper;
 
+    //确定用户登录信息是否在数据库中存在
     public User confirmLogin(User user) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("phone_number", user.getPhoneNumber());
@@ -23,6 +24,8 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         return userList.size() == 0 ? null : userList.get(0);
     }
 
+
+    //注册功能
     public String register(User user) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("phone_number", user.getPhoneNumber());

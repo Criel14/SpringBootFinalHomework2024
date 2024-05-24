@@ -9,5 +9,5 @@ import java.util.List;
 @Mapper
 public interface MovieMapper extends BaseMapper<Movie> {
 
-    List getMovieByCountPlay(int num);
+//    List getMovieByCountPlay(int num);
 }
