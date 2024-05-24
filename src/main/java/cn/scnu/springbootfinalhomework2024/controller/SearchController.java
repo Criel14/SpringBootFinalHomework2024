@@ -27,7 +27,7 @@ public class SearchController {
             @RequestParam("page") int page,
             @RequestParam("size") int size) {
         Map<String, Object> response = new HashMap<>();
-        List<Movie> allMovies = movieService.findMovieByTitle(query);
+        List<Movie> allMovies = movieService.findMovieByAll(query);
 
         int fromIndex = Math.min(page * size, allMovies.size());
         int toIndex = Math.min((page + 1) * size, allMovies.size());

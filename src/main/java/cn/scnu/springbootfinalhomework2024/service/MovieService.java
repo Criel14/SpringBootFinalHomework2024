@@ -67,11 +67,11 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieList;
     }
 
-//    // 根据播放次数排序电影，day如果是7就按照7天的播放总和排序
-//    public List<Movie> showMovieByCountPlay(int day){
-//        List movieList = movieMapper.getMovieByCountPlay(day);
-//        return movieList;
-//    }
+    // 根据播放次数排序电影，day如果是7就按照7天的播放总和排序
+    public List<Movie> showMovieByCountPlay(int day){
+        List movieList = movieMapper.getMovieByCountPlay(day);
+        return movieList;
+    }
 
     // 分页查询
     public Map<String, Object> queryPage(Integer movieId, Integer pageNo, Integer pageSize) {
@@ -115,4 +115,9 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieList;
     }
 
+    // 根据电影名称，电影主创人员，电影地区，电影类型查找电影
+    public List<Movie> findMovieByAll(String query) {
+        List<Movie> movieList = movieMapper.selectMovieByall(query);
+        return movieList;
+    }
 }
