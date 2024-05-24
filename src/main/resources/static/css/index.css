@@ -15,9 +15,8 @@ a {
 }
 
 .content {
-    margin-left: 120px; /* 与 sideNavBar的宽度相同 */
-    margin-top: 60px; /* 与 headNavBar的宽度相同 */
-    width: 100%;
+    margin: 60px auto;
+    width: 80%;
     height: 100vh; /* 设置高度为视窗高度 */
     position: relative;
     display: flex;
@@ -32,12 +31,11 @@ a {
 
 /*图片轮播*/
 .carousel {
-    width: 84%;
+    width: 100%;
     height: 400px;
     margin: 0 auto;
     position: relative;
-    left: 50%;
-    transform: translateX(-64%);
+    left: 60px;
     overflow: hidden;
     /*background-color: orange;*/
 }
@@ -89,14 +87,14 @@ a {
 
 /*分类选项*/
 .classify {
-    width: 1200px;
+    margin: 0 auto;
+    left: 60px;
+    width: 100%;
     height: 40px;
     padding: 0 60px 0 60px;
     /*background-color: red;*/
     position: absolute;
     top: 420px;
-    left: 48%;
-    transform: translate(-40%, 0);
     z-index: 1;
 }
 
@@ -120,22 +118,22 @@ a {
 
 /*展示电影列表*/
 .movie-list {
-    width: 90%;
+    width: 100%;
     height: 1500px;
     position: absolute;
     top: 420px;
     padding-top: 60px;
     /*background-color: rgba(0, 255, 255, 0.45);*/
-    left: 50%;
-    transform: translateX(-54%);
+    left: 45px;
+    margin: 0 auto;
     overflow: hidden;
 }
 
 .movie-list .movie-item {
-    width: 270px;
+    width: 18%;
     height: 480px;
     /*background-color: #333333;*/
-    margin-left: 30px;
+    margin-left: 2%;
     float: left;
 }
 
@@ -145,6 +143,7 @@ a {
 }
 
 .movie-list .movie-item img{
+    width: 100%;
     border-radius: 10px;
 }
 
@@ -157,14 +156,14 @@ a {
 .pagination {
     width: 160px;
     height: 40px;
-    background-color: #333333;
     border-radius: 10px;
+    text-align: center;
+    background-color: #333333;
     color: #e5e5e5;
     font-size: 18px;
     line-height: 40px;
-    text-align: center;
-    margin-left: 160px;
-    float: left;
+    position: relative;
+    float: right;
 }
 
 .pagination button {
