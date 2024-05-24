@@ -17,7 +17,7 @@ function showSlide(n) {
     slides[currentSlide].classList.add('active');
 }
 
-document.addEventListener("DOMContentLoaded", function (){
+document.addEventListener("DOMContentLoaded", function () {
     slides[currentSlide].classList.add('active');
 });
 
@@ -60,29 +60,27 @@ function fetchMovies(query, page) {
             console.log(currentPage);
             var resultsList = document.querySelector('.movie-list ul');
             resultsList.innerHTML = '';
+            // 绘制前端页面
+            movieList.forEach(function (movie) {
+                var li = document.createElement('li');
+                li.classList.add('movie-item');
 
-            if (movieList.length !== 0) {
-                movieList.forEach(function (movie) {
-                    var li = document.createElement('li');
-                    li.classList.add('movie-item');
+                var img = document.createElement('img');
+                img.src = '/cover/' + movie.movieCoverUrl;
+                img.alt = movie.movieTitle;
 
-                    var img = document.createElement('img');
-                    img.src = '/cover/' + movie.movieCoverUrl;
-                    img.alt = movie.movieTitle;
+                var name = document.createElement('div');
+                name.classList.add('movie-title');
+                name.textContent = movie.movieTitle;
 
-                    var name = document.createElement('div');
-                    name.classList.add('movie-title');
-                    name.textContent = movie.movieTitle;
+                li.appendChild(img);
+                li.appendChild(name);
+                resultsList.appendChild(li);
+            });
 
-                    li.appendChild(img);
-                    li.appendChild(name);
-                    resultsList.appendChild(li);
-                });
-
-                // 更新当前页显示
-                document.querySelector('.current-page').textContent = page + 1;
-                document.querySelector('.total-pages').textContent = total;
-            }
+            // 更新当前页显示
+            document.querySelector('.current-page').textContent = page + 1;
+            document.querySelector('.total-pages').textContent = total;
         } else {
             console.error('Error:', xhr.statusText);
         }
@@ -98,20 +96,20 @@ function searchMovies(query) {
     fetchMovies(query, currentPage);
 }
 
-document.querySelector('.prev-page').addEventListener('click', function() {
+document.querySelector('.prev-page').addEventListener('click', function () {
     if (currentPage > 0) {
         currentPage--;
         fetchMovies(nowQuery, currentPage);
     }
 });
 
-document.querySelector('.next-page').addEventListener('click', function() {
+document.querySelector('.next-page').addEventListener('click', function () {
     if (currentPage < total - 1) {
         currentPage++;
         fetchMovies(nowQuery, currentPage);
     }
 });
 
-window.onload = function() {
+window.onload = function () {
     fetchMovies(nowQuery, currentPage);
 }
