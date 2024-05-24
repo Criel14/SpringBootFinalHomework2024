@@ -1,3 +1,10 @@
+// 分页查询所用变量
+var currentPage = 0;
+var pageSize = 6;
+var total = 0;
+// 分页查询的查询依据
+var nowQuery = ""
+
 // 图片轮播
 const slides = document.querySelectorAll('.slide');
 const prevArrow = document.querySelector('.prev-arrow');
@@ -39,11 +46,6 @@ slides.forEach(slide => {
 
 
 // 分类展示电影提交
-var currentPage = 0;
-var pageSize = 6;
-var total = 0;
-var nowQuery = ""
-
 function fetchMovies(query, page) {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/index/movieList', true);
