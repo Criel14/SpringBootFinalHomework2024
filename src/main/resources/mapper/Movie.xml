@@ -21,7 +21,14 @@
 
 <!--    在电影名称，电影主创人员，电影地区，电影类型中查找-->
     <select id="selectMovieByall" resultType="cn.scnu.springbootfinalhomework2024.entity.Movie">
-
+        SELECT M.*
+        FROM movie M,staff F
+        WHERE M.movie_id = F.movie_id
+        and (M.movie_title like concat('%',#{query},'%')
+            or M.movie_region like concat('%',#{query},'%')
+            or M.movie_type like concat('%',#{query},'%')
+            or F.staff_name like concat('%',#{query},'%'))
+        ORDER BY M.movie_title, F.staff_name, M.movie_region, M.movie_type;
     </select>
 
 
