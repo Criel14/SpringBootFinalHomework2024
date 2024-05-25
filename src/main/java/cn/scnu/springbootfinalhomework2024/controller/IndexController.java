@@ -88,10 +88,9 @@ public class IndexController {
     // 前端点击分类，后端查询电影列表
     @RequestMapping("/index/movieList")
     @ResponseBody
-    public Map<String, Object> selectMovie(
-            @RequestParam("query") String query,
-            @RequestParam("page") int page,
-            @RequestParam("size") int size) {
+    public Map<String, Object> selectMovie(@RequestParam("query") String query,
+                                           @RequestParam("page") int page,
+                                           @RequestParam("size") int size) {
         Map<String, Object> response = new HashMap<>();
         List<Movie> allMovies = new ArrayList<>();
         System.out.println(query);

@@ -24,15 +24,13 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     // 根据电影地区或电影类型查询电影
     public List<Movie> findMovie(String region, String type) {
         QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
-        if(region != null) {
-            if(region.equals("中国")){
+        if (region != null) {
+            if (region.equals("中国")) {
                 queryWrapper.like("movie_region", "中国");
-            }
-            else{
+            } else {
                 queryWrapper.notIn("movie_region", "中国");
             }
-        }
-        else{
+        } else {
             queryWrapper.like("movie_type", type);
         }
         List<Movie> movieList = movieMapper.selectList(queryWrapper);
@@ -54,14 +52,13 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     }
 
     // 根据用户是否为vip来查询电影
-    public List<Movie> showMovieByVip(Boolean needVip){
+    public List<Movie> showMovieByVip(Boolean needVip) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        List<Movie> movieList= new ArrayList<>();
-        if(needVip == true) {
+        List<Movie> movieList = new ArrayList<>();
+        if (needVip == true) {
             queryWrapper.eq("need_vip", 1);
             movieList = movieMapper.selectList(queryWrapper);
-        }
-        else{
+        } else {
             queryWrapper.eq("need_vip", 0);
             movieList = movieMapper.selectList(queryWrapper);
         }
@@ -69,7 +66,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     }
 
     // 根据播放次数排序电影，day如果是7就按照7天的播放总和排序
-    public List<Movie> showMovieByCountPlay(int day){
+    public List<Movie> showMovieByCountPlay(int day) {
         List movieList = movieMapper.getMovieByCountPlay(day);
         return movieList;
     }
@@ -94,13 +91,12 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
 
     // 根据电影地区查询
     public List<Movie> findMovieByRegion(String query) {
-        List<Movie> movieList= new ArrayList<>();
+        List<Movie> movieList = new ArrayList<>();
         QueryWrapper queryWrapper = new QueryWrapper();
-        if("中国".equals(query)){
-            queryWrapper.like("movie_region",query);
-        }
-        else{
-            queryWrapper.notIn("movie_region",query);
+        if ("中国".equals(query)) {
+            queryWrapper.like("movie_region", query);
+        } else {
+            queryWrapper.notIn("movie_region", "中国");
         }
         movieList = movieMapper.selectList(queryWrapper);
         return movieList;
@@ -108,9 +104,9 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
 
     // 根据电影类型查询
     public List<Movie> findMovieByType(String query) {
-        List<Movie> movieList= new ArrayList<>();
+        List<Movie> movieList = new ArrayList<>();
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.like("movie_type",query);
+        queryWrapper.like("movie_type", query);
         movieList = movieMapper.selectList(queryWrapper);
 
         return movieList;
