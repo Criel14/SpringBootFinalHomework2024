@@ -65,6 +65,11 @@ function fetchMovies(query, page) {
                 var li = document.createElement('li');
                 li.classList.add('movie-item');
 
+                // 添加点击事件监听器
+                li.addEventListener('click', function() {
+                    window.location.href = '/moviePlay?movieId=' + movie.movieId;
+                });
+
                 var img = document.createElement('img');
                 img.src = '/cover/' + movie.movieCoverUrl;
                 img.alt = movie.movieTitle;
@@ -96,13 +101,13 @@ function searchMovies(query) {
     fetchMovies(query, currentPage);
 }
 
+// 翻页
 document.querySelector('.prev-page').addEventListener('click', function () {
     if (currentPage > 0) {
         currentPage--;
         fetchMovies(nowQuery, currentPage);
     }
 });
-
 document.querySelector('.next-page').addEventListener('click', function () {
     if (currentPage < total - 1) {
         currentPage++;
@@ -110,6 +115,7 @@ document.querySelector('.next-page').addEventListener('click', function () {
     }
 });
 
+// 页面加载时查找所有
 window.onload = function () {
     fetchMovies(nowQuery, currentPage);
 }

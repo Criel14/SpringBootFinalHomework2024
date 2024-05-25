@@ -30,13 +30,13 @@ public class IndexController {
     User loginedUser = new User();
 
 
-    List<String> regions = List.of("中国","国外");
+    List<String> regions = List.of("中国", "国外");
     List<String> types = List.of("comedy", "action", "animation");
 
     // 首页，若有用户信息，则表示是已登录状态的首页
     @RequestMapping("/index")
-    public String index(HttpSession httpSession , Model model) {
-        if(httpSession.getAttribute("user") != null){
+    public String index(HttpSession httpSession, Model model) {
+        if (httpSession.getAttribute("user") != null) {
             loginedUser = (User) httpSession.getAttribute("user");
             model.addAttribute("user", loginedUser);
         }
@@ -95,17 +95,15 @@ public class IndexController {
         Map<String, Object> response = new HashMap<>();
         List<Movie> allMovies = new ArrayList<>();
         System.out.println(query);
-        if(("").equals(query)){
+        if (("").equals(query)) {
             allMovies = movieService.findAllMovie();
-        }
-        else{
+        } else {
             // 要更改成判断query来查询
-            if(regions.contains(query)){
+            if (regions.contains(query)) {
                 allMovies = movieService.findMovieByRegion(query);
-        } else if (types.contains(query)) {
+            } else if (types.contains(query)) {
                 allMovies = movieService.findMovieByType(query);
-            }
-            else{
+            } else {
                 allMovies = movieService.findMovieByTitle(query);
             }
         }
