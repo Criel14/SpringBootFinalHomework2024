@@ -1,6 +1,7 @@
 <!-- 登录/注册框 -->
 <div id="login-modal" class="modal">
     <div class="modal-content">
+        <span class="">登录你的账户</span>
         <span class="close-btn">&times;</span>
         <div class="form-container">
             <div class="form-tabs">
@@ -10,7 +11,7 @@
             <form id="login-form" class="active" method="post" action="/login">
                 <input type="text" name="phoneNumber" placeholder="请填入电话号码" required>
                 <input type="password" name="password" placeholder="请填入密码" required>
-                <button type="submit" class="loginAndRegister" >登录</button>
+                <button type="submit" class="login-and-register" >登录</button>
             </form>
             <form id="register-form" method="post" action="/register">
                 <input type="text" name="username" placeholder="请填入用户名" required>
@@ -19,7 +20,7 @@
                 <input type="password" name="confirmPassword" placeholder="请确认密码" required>
                 <div id="registerError" style="color: red;"></div>
                 <div id="registerSuccess" style="color: green;"></div>
-                <button type="button" onclick="registerUser()" class="loginAndRegister">注册</button>
+                <button type="button" onclick="registerUser()" class="login-and-register">注册</button>
             </form>
         </div>
     </div>

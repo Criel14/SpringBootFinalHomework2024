@@ -1,11 +1,11 @@
-<div class="sideNavBar">
+<div class="side-navbar">
 
     <!--下拉菜单-->
     <div class="navMenu">
-        <div class="navTitle" th:if="${user!=null}">
+        <div class="nav-title" th:if="${user!=null}">
             <span th:text="${user.getUsername()}">user1</span>
         </div>
-        <div class="navTitle" th:if="${user==null}">
+        <div class="nav-title" th:if="${user==null}">
             <span th:text="用户"></span>
         </div>
 

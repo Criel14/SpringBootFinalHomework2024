@@ -14,8 +14,8 @@
 }
 
 /* 返回时首页按钮G543 */
-.navbar .toIndex {
-    width: 100px;
+.navbar .to-index {
+    width: 140px;
     height: 60px;
     line-height: 60px;
     background-color: #000000;
@@ -25,11 +25,11 @@
     transition: background-color 0.3s ease;
 }
 
-.navbar .toIndex:hover {
+.navbar .to-index:hover {
     background-color: #333333;
 }
 
-.navbar .toIndex span {
+.navbar .to-index span {
     color: white;
     font-size: 20px;
 }
@@ -48,7 +48,7 @@
 }
 
 /*侧边导航栏*/
-.sideNavBar {
+.side-navbar {
     height: 100%;
     width: 120px;
     position: fixed;
@@ -63,31 +63,31 @@
     border-radius: 10px;
 }
 
-.sideNavBar a {
+.side-navbar a {
     line-height: 40px;
     font-size: 16px;
     color: #9a9a9a;
     display: block;
 }
 
-.sideNavBar a:hover {
+.side-navbar a:hover {
     transition: 0.1s;
     color: #f1f1f1;
 }
 
-.sideNavBar .item {
+.side-navbar .item {
     width: 120px;  /* 和sideNavBar相同 */
     height: 40px;  /* 和a的line-height相同 */
     background-color: #2f2f2f;
     padding-left: 20px;
 }
 
-.sideNavBar .item:hover {
+.side-navbar .item:hover {
     transition: 0.1s;
     background-color: #3d3d3d;
 }
 
-.navTitle {
+.nav-title {
     width: 120px;  /* 和sideNavBar相同 */
     height: 40px;
     line-height: 40px;
@@ -98,13 +98,13 @@
     margin-top: 10px;
 }
 
-.navTitle:hover {
+.nav-title:hover {
     transition: 0.1s;
     background-color: #3d3d3d;
 }
 
 /*用户按钮下拉菜单样式*/
-.sideNavBar .item2 {
+.side-navbar .item2 {
     width: 120px;  /* 和sideNavBar相同 */
     height: 40px;  /* 和a的line-height相同 */
     color: #858383;
@@ -113,7 +113,7 @@
     padding-left: 20px;
 }
 
-.sideNavBar .item2:hover {
+.side-navbar .item2:hover {
     transition: 0.1s;
     background-color: #3d3d3d;
 }
