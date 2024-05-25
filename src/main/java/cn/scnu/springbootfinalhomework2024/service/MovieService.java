@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieService extends ServiceImpl<MovieMapper, Movie> {
@@ -118,6 +119,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     // 根据电影名称，电影主创人员，电影地区，电影类型查找电影
     public List<Movie> findMovieByAll(String query) {
         List<Movie> movieList = movieMapper.selectMovieByall(query);
+        movieList = movieList.stream().distinct().collect(Collectors.toList());
         return movieList;
     }
 }
