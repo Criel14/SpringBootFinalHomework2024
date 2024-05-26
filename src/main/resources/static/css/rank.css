@@ -1,0 +1,54 @@
+
+.navbar1 {
+    display: flex;
+    position: relative;
+    top: 10%;
+    left:10%;
+    justify-content: space-around;
+    background-color: #333;
+    padding: 10px 0;
+    height: 80px;
+}
+.navbar1 a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+}
+.navbar1 a:hover {
+    background-color: #575757;
+}
+.content1 {
+    position: relative;
+    top: 100%;
+    left: 10%;
+    padding: 20px;
+}
+.movie {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 20px;
+}
+.movie img {
+    width: 150px;
+    height: 200px;
+    margin-right: 20px;
+}
+.movie-details {
+    flex: 1;
+}
+.movie-details h3 {
+    margin: 0;
+}
+.movie-details p {
+    color: #aaa;
+}
+.popularity {
+    display: flex;
+    align-items: center;
+}
+.popularity img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
