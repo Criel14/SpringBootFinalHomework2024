@@ -47,7 +47,9 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
 
     //查询所有电影
     public List<Movie> findAllMovie() {
-        List<Movie> movieList = movieMapper.selectList(null);
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.orderByDesc("movie_score");
+        List<Movie> movieList = movieMapper.selectList(queryWrapper);
         return movieList;
     }
 

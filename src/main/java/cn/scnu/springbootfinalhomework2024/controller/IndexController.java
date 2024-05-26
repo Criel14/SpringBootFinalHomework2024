@@ -33,6 +33,7 @@ public class IndexController {
     List<String> regions = List.of("中国", "国外");
     List<String> types = List.of("comedy", "action", "animation");
 
+
     // 首页，若有用户信息，则表示是已登录状态的首页
     @RequestMapping("/index")
     public String index(HttpSession httpSession, Model model) {

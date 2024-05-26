@@ -20,12 +20,28 @@ public class SearchController {
     @Autowired
     private MovieService movieService;
 
+    private Map<String,String> movieTypeMap = new HashMap<>();
+
+    // 在构造函数或者初始化方法中初始化movieTypeMap
+    public SearchController() {
+        initMovieTypeMap();
+    }
+
+    private void initMovieTypeMap() {
+        movieTypeMap.put("喜剧", "comedy");
+        movieTypeMap.put("动作", "action");
+        movieTypeMap.put("动画", "animation");
+        // 添加更多电影类型映射
+    }
     @RequestMapping("/search/movieList")
     @ResponseBody
     public Map<String, Object> selectMovie(
             @RequestParam("query") String query,
             @RequestParam("page") int page,
             @RequestParam("size") int size) {
+        if(movieTypeMap.get(query) != null){
+            query = movieTypeMap.get(query);
+        }
         Map<String, Object> response = new HashMap<>();
         List<Movie> allMovies = movieService.findMovieByAll(query);
 
