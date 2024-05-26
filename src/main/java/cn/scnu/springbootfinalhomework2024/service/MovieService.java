@@ -118,4 +118,5 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         movieList = movieList.stream().distinct().collect(Collectors.toList());
         return movieList;
     }
+
 }
