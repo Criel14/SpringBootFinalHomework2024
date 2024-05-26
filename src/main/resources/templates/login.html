@@ -1,18 +1,20 @@
 <!-- 登录/注册框 -->
 <div id="login-modal" class="modal">
     <div class="modal-content">
-        <span class="">登录你的账户</span>
-        <span class="close-btn">&times;</span>
+        <span class="login-title">登录你的账户</span>
         <div class="form-container">
+            <!--选择登录或注册-->
             <div class="form-tabs">
                 <button class="tab-btn active" data-target="#login-form">登录</button>
                 <button class="tab-btn" data-target="#register-form">注册</button>
             </div>
+            <!--登录-->
             <form id="login-form" class="active" method="post" action="/login">
                 <input type="text" name="phoneNumber" placeholder="请填入电话号码" required>
                 <input type="password" name="password" placeholder="请填入密码" required>
-                <button type="submit" class="login-and-register" >登录</button>
+                <button type="submit" class="login-and-register">登录</button>
             </form>
+            <!--注册-->
             <form id="register-form" method="post" action="/register">
                 <input type="text" name="username" placeholder="请填入用户名" required>
                 <input type="text" name="phoneNumber" placeholder="请填入电话号码" required>
