@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+
+// 用于清除缓存，这样就不需要在浏览器清除历史记录了
 @Configuration
 public class WebConfig {
 
