@@ -44,7 +44,6 @@ CREATE TABLE movie_playback
     movie_id     INT NOT NULL,
     play_one_day INT NOT NULL DEFAULT 0,
     play_date    DATE,
-    PRIMARY KEY (movie_id,play_date),
     FOREIGN KEY (movie_id) REFERENCES movie (movie_id)
 );
 
@@ -207,603 +206,603 @@ VALUES (44, 10, '克里斯蒂安·贝尔 ', 0);
 
 -- 插入电影播放量数据
 -- 以下暂时不能用，有重复
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 10000, '1998-01-01 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 12000, '1998-01-02 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 14000, '1998-01-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 13000, '1998-01-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 12000, '1998-01-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 11000, '1998-01-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 10000, '1998-01-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 9000, '1998-01-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 8000, '1998-01-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 7000, '1998-01-10 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 6500, '1998-01-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 6000, '1998-01-10 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 5500, '1998-01-02 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 5000, '1998-01-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 4500, '1998-01-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 4000, '1998-01-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 3800, '1998-01-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 3600, '1998-01-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 3400, '1998-01-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 3200, '1998-01-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 3000, '1998-01-10 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 2800, '1998-01-11 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 2600, '1998-01-12 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 2400, '1998-01-13 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 2200, '1998-01-14 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 2000, '1998-01-15 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 1800, '1998-01-16 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 1600, '1998-01-17 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 1400, '1998-01-18 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (1, 1200, '1998-01-19 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 15000, '2010-01-01 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 18000, '2010-01-02 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 20000, '2010-01-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 19000, '2010-01-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 17000, '2010-01-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 16000, '2010-01-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 15000, '2010-01-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 14000, '2010-01-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 13000, '2010-01-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 12000, '2010-01-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 11000, '2010-01-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 10000, '2010-01-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 9500, '2010-01-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 9000, '2010-01-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 8500, '2010-01-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 8000, '2010-01-10 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 7500, '2010-01-11 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 7000, '2010-01-12 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 6500, '2010-01-13 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 6000, '2010-01-14 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 5500, '2010-01-15 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 5000, '2010-01-16 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 4500, '2010-01-17 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 4000, '2010-01-18 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 3800, '2010-01-19 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 3600, '2010-01-20 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 3400, '2010-01-21 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 3200, '2010-01-22 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 3000, '2010-01-23 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (2, 2800, '2010-01-24 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 25000, '2008-06-28 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 30000, '2008-06-29 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 35000, '2008-06-30 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 32000, '2008-07-01 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 30000, '2008-07-02 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 28000, '2008-07-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 26000, '2008-07-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 24000, '2008-07-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 22000, '2008-07-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 20000, '2008-07-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 18000, '2008-07-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 16000, '2008-07-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 15000, '2008-07-10 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 14000, '2008-07-11 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 13000, '2008-07-12 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 12000, '2008-07-13 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 11000, '2008-07-14 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 10000, '2008-07-15 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 9000, '2008-07-16 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 8000, '2008-07-17 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 7500, '2008-07-18 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 7000, '2008-07-19 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 6500, '2008-07-20 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 6000, '2008-07-21 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 5800, '2008-07-22 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 5600, '2008-07-23 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 5400, '2008-07-24 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 5200, '2008-07-25 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 5000, '2008-07-26 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (3, 4800, '2008-07-27 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 20000, '2010-01-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 25000, '2010-01-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 30000, '2010-01-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 28000, '2010-01-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 26000, '2010-01-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 24000, '2010-01-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 22000, '2010-01-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 20000, '2010-01-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 18000, '2010-01-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 16000, '2010-01-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 15000, '2010-01-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 14000, '2010-01-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 13000, '2010-01-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 12000, '2010-01-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 11000, '2010-01-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 10000, '2010-01-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 9000, '2010-01-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 8000, '2010-01-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 7500, '2010-01-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 7000, '2010-01-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 6500, '2010-01-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 6000, '2010-01-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 5800, '2010-01-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 5600, '2010-01-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 5400, '2003-01-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 5200, '2003-01-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 5000, '2003-01-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 4800, '2003-01-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 4600, '2003-01-10 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (4, 4400, '2003-01-11 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 10000, '1995-02-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 15000, '1995-02-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 20000, '1995-02-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 18000, '1995-02-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 16000, '1995-02-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 14000, '1995-02-10 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 12000, '1995-02-11 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 11000, '1995-02-12 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 10000, '1995-02-13 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 9000, '1995-02-14 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 8500, '1995-02-15 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 8000, '1995-02-16 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 7500, '1995-02-17 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 7000, '1995-02-18 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 6500, '1995-02-19 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 6000, '1995-02-20 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 5800, '1995-02-21 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 5600, '1995-02-22 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 5400, '1995-02-23 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 5200, '1995-02-24 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 5000, '1995-02-25 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 4800, '1995-02-26 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 4600, '1995-02-27 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 4400, '1995-02-28 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 4200, '1995-03-01 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 4000, '1995-03-02 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 3800, '1995-03-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 3600, '1995-03-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 3400, '1995-03-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (5, 3200, '1995-03-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 35000, '2001-07-21 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 40000, '2001-07-22 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 45000, '2001-07-23 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 42000, '2001-07-24 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 40000, '2001-07-25 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 38000, '2001-07-26 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 36000, '2001-07-27 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 34000, '2001-07-28 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 32000, '2001-07-29 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 30000, '2001-07-30 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 28000, '2001-07-31 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 26000, '2001-08-01 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 24000, '2001-08-02 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 22000, '2001-08-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 20000, '2001-08-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 18000, '2001-08-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 16000, '2001-08-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 15000, '2001-08-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 14000, '2001-08-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 13000, '2001-08-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 12000, '2001-08-10 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 11000, '2001-08-11 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 10000, '2001-08-12 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 9500, '2001-08-13 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 9000, '2001-08-14 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 8500, '2001-08-15 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 8000, '2001-08-16 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 7500, '2001-08-17 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 7000, '2001-08-18 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (6, 6500, '2001-08-19 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 25000, '1994-09-15 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 30000, '1994-09-16 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 35000, '1994-09-17 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 32000, '1994-09-18 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 30000, '1994-09-19 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 28000, '1994-09-20 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 26000, '1994-09-21 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 24000, '1994-09-22 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 22000, '1994-09-23 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 20000, '1994-09-24 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 18000, '1994-09-25 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 16000, '1994-09-26 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 14000, '1994-09-27 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 12000, '1994-09-28 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 11000, '1994-09-29 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 10000, '1994-09-30 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 9500, '1994-10-01 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 9000, '1994-10-02 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 8500, '1994-10-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 8000, '1994-10-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 7500, '1994-10-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 7000, '1994-10-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 6800, '1994-10-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 6600, '1994-10-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 6400, '1994-10-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 6200, '2016-03-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 6000, '2016-03-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 5800, '2016-03-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 5600, '2016-03-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (7, 5400, '2016-03-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 40000, '2016-03-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 45000, '2016-03-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 50000, '2016-03-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 48000, '2016-03-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 46000, '2016-03-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 44000, '2016-03-10 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 42000, '2016-03-11 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 40000, '2016-03-12 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 38000, '2016-03-13 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 36000, '2016-03-14 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 34000, '2016-03-15 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 32000, '2016-03-16 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 30000, '2016-03-17 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 28000, '2016-03-18 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 26000, '2016-03-19 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 24000, '2016-03-20 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 22000, '2016-03-21 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 20000, '2016-03-22 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 18000, '2016-03-23 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 16000, '2016-03-24 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 14000, '2016-03-25 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 12000, '2016-03-26 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 11000, '2016-03-27 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 10000, '2016-03-28 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 9500, '2016-03-29 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 9000, '2016-03-30 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 8500, '2016-03-31 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 8000, '2016-04-01 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 7500, '2016-04-02 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (8, 7000, '2016-04-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 15000, '2010-07-27 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 18000, '2010-07-28 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 22000, '2010-07-29 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 20000, '2010-07-30 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 18000, '2010-07-31 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 16000, '2010-08-01 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 14000, '2010-08-02 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 12000, '2010-08-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 11000, '2010-08-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 10000, '2010-08-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 9500, '2010-08-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 9000, '2010-08-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 8500, '2010-08-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 8000, '2010-08-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 7500, '2010-08-10 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 7000, '2010-08-11 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 6800, '2010-08-12 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 6600, '2010-08-13 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 6400, '2010-08-14 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 6200, '2010-08-15 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 6000, '2010-08-16 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 5800, '2010-08-17 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 5600, '2010-08-18 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 5400, '2010-08-19 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 5200, '2010-08-20 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 5000, '2010-08-21 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 4800, '2010-08-22 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 4600, '2010-08-23 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 4400, '2010-08-24 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (9, 4200, '2010-08-25 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 40000, '2008-07-15 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 45000, '2008-07-16 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 50000, '2008-07-17 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 48000, '2008-07-18 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 46000, '2008-07-19 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 44000, '2008-07-20 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 42000, '2008-07-21 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 40000, '2008-07-22 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 38000, '2008-07-23 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 36000, '2008-07-24 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 34000, '2008-07-25 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 32000, '2008-07-26 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 30000, '2008-07-27 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 28000, '2008-07-28 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 26000, '2008-07-29 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 24000, '2008-07-30 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 22000, '2008-07-31 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 20000, '2008-08-01 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 18000, '2008-08-02 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 16000, '2008-08-03 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 14000, '2008-08-04 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 12000, '2008-08-05 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 11000, '2008-08-06 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 10000, '2008-08-07 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 9500, '2008-08-08 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 9000, '2008-08-09 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 8500, '2008-08-10 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 8000, '2008-08-11 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 7500, '2008-08-12 00:00:00');
-# INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-# VALUES (10, 7000, '2008-08-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 10000, '1998-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 12000, '1998-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 14000, '1998-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 13000, '1998-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 12000, '1998-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 11000, '1998-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 10000, '1998-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 9000, '1998-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 8000, '1998-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 7000, '1998-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 6500, '1998-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 6000, '1998-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 5500, '1998-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 5000, '1998-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 4500, '1998-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 4000, '1998-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 3800, '1998-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 3600, '1998-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 3400, '1998-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 3200, '1998-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 3000, '1998-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 2800, '1998-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 2600, '1998-01-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 2400, '1998-01-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 2200, '1998-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 2000, '1998-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 1800, '1998-01-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 1600, '1998-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 1400, '1998-01-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (1, 1200, '1998-01-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 15000, '2010-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 18000, '2010-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 20000, '2010-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 19000, '2010-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 17000, '2010-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 16000, '2010-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 15000, '2010-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 14000, '2010-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 13000, '2010-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 12000, '2010-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 11000, '2010-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 10000, '2010-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 9500, '2010-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 9000, '2010-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 8500, '2010-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 8000, '2010-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 7500, '2010-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 7000, '2010-01-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 6500, '2010-01-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 6000, '2010-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 5500, '2010-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 5000, '2010-01-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 4500, '2010-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 4000, '2010-01-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 3800, '2010-01-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 3600, '2010-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 3400, '2010-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 3200, '2010-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 3000, '2010-01-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (2, 2800, '2010-01-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 25000, '2008-06-28 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 30000, '2008-06-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 35000, '2008-06-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 32000, '2008-07-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 30000, '2008-07-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 28000, '2008-07-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 26000, '2008-07-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 24000, '2008-07-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 22000, '2008-07-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 20000, '2008-07-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 18000, '2008-07-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 16000, '2008-07-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 15000, '2008-07-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 14000, '2008-07-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 13000, '2008-07-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 12000, '2008-07-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 11000, '2008-07-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 10000, '2008-07-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 9000, '2008-07-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 8000, '2008-07-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 7500, '2008-07-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 7000, '2008-07-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 6500, '2008-07-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 6000, '2008-07-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 5800, '2008-07-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 5600, '2008-07-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 5400, '2008-07-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 5200, '2008-07-25 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 5000, '2008-07-26 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (3, 4800, '2008-07-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 20000, '2010-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 25000, '2010-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 30000, '2010-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 28000, '2010-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 26000, '2010-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 24000, '2010-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 22000, '2010-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 20000, '2010-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 18000, '2010-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 16000, '2010-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 15000, '2010-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 14000, '2010-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 13000, '2010-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 12000, '2010-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 11000, '2010-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 10000, '2010-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 9000, '2010-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 8000, '2010-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 7500, '2010-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 7000, '2010-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 6500, '2010-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 6000, '2010-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 5800, '2010-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 5600, '2010-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 5400, '2003-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 5200, '2003-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 5000, '2003-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 4800, '2003-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 4600, '2003-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (4, 4400, '2003-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 10000, '1995-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 15000, '1995-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 20000, '1995-02-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 18000, '1995-02-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 16000, '1995-02-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 14000, '1995-02-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 12000, '1995-02-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 11000, '1995-02-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 10000, '1995-02-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 9000, '1995-02-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 8500, '1995-02-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 8000, '1995-02-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 7500, '1995-02-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 7000, '1995-02-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 6500, '1995-02-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 6000, '1995-02-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 5800, '1995-02-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 5600, '1995-02-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 5400, '1995-02-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 5200, '1995-02-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 5000, '1995-02-25 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 4800, '1995-02-26 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 4600, '1995-02-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 4400, '1995-02-28 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 4200, '1995-03-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 4000, '1995-03-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 3800, '1995-03-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 3600, '1995-03-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 3400, '1995-03-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (5, 3200, '1995-03-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 35000, '2001-07-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 40000, '2001-07-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 45000, '2001-07-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 42000, '2001-07-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 40000, '2001-07-25 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 38000, '2001-07-26 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 36000, '2001-07-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 34000, '2001-07-28 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 32000, '2001-07-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 30000, '2001-07-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 28000, '2001-07-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 26000, '2001-08-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 24000, '2001-08-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 22000, '2001-08-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 20000, '2001-08-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 18000, '2001-08-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 16000, '2001-08-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 15000, '2001-08-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 14000, '2001-08-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 13000, '2001-08-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 12000, '2001-08-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 11000, '2001-08-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 10000, '2001-08-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 9500, '2001-08-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 9000, '2001-08-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 8500, '2001-08-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 8000, '2001-08-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 7500, '2001-08-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 7000, '2001-08-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (6, 6500, '2001-08-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 25000, '1994-09-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 30000, '1994-09-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 35000, '1994-09-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 32000, '1994-09-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 30000, '1994-09-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 28000, '1994-09-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 26000, '1994-09-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 24000, '1994-09-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 22000, '1994-09-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 20000, '1994-09-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 18000, '1994-09-25 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 16000, '1994-09-26 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 14000, '1994-09-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 12000, '1994-09-28 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 11000, '1994-09-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 10000, '1994-09-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 9500, '1994-10-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 9000, '1994-10-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 8500, '1994-10-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 8000, '1994-10-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 7500, '1994-10-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 7000, '1994-10-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 6800, '1994-10-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 6600, '1994-10-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 6400, '1994-10-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 6200, '2016-03-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 6000, '2016-03-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 5800, '2016-03-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 5600, '2016-03-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (7, 5400, '2016-03-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 40000, '2016-03-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 45000, '2016-03-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 50000, '2016-03-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 48000, '2016-03-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 46000, '2016-03-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 44000, '2016-03-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 42000, '2016-03-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 40000, '2016-03-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 38000, '2016-03-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 36000, '2016-03-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 34000, '2016-03-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 32000, '2016-03-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 30000, '2016-03-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 28000, '2016-03-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 26000, '2016-03-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 24000, '2016-03-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 22000, '2016-03-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 20000, '2016-03-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 18000, '2016-03-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 16000, '2016-03-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 14000, '2016-03-25 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 12000, '2016-03-26 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 11000, '2016-03-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 10000, '2016-03-28 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 9500, '2016-03-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 9000, '2016-03-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 8500, '2016-03-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 8000, '2016-04-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 7500, '2016-04-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (8, 7000, '2016-04-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 15000, '2010-07-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 18000, '2010-07-28 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 22000, '2010-07-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 20000, '2010-07-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 18000, '2010-07-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 16000, '2010-08-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 14000, '2010-08-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 12000, '2010-08-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 11000, '2010-08-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 10000, '2010-08-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 9500, '2010-08-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 9000, '2010-08-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 8500, '2010-08-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 8000, '2010-08-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 7500, '2010-08-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 7000, '2010-08-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 6800, '2010-08-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 6600, '2010-08-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 6400, '2010-08-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 6200, '2010-08-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 6000, '2010-08-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 5800, '2010-08-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 5600, '2010-08-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 5400, '2010-08-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 5200, '2010-08-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 5000, '2010-08-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 4800, '2010-08-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 4600, '2010-08-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 4400, '2010-08-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (9, 4200, '2010-08-25 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 40000, '2008-07-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 45000, '2008-07-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 50000, '2008-07-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 48000, '2008-07-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 46000, '2008-07-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 44000, '2008-07-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 42000, '2008-07-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 40000, '2008-07-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 38000, '2008-07-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 36000, '2008-07-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 34000, '2008-07-25 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 32000, '2008-07-26 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 30000, '2008-07-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 28000, '2008-07-28 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 26000, '2008-07-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 24000, '2008-07-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 22000, '2008-07-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 20000, '2008-08-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 18000, '2008-08-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 16000, '2008-08-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 14000, '2008-08-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 12000, '2008-08-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 11000, '2008-08-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 10000, '2008-08-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 9500, '2008-08-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 9000, '2008-08-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 8500, '2008-08-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 8000, '2008-08-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 7500, '2008-08-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date)
+VALUES (10, 7000, '2008-08-13 00:00:00');
