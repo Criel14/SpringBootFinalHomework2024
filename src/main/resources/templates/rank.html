@@ -4,7 +4,6 @@
     <title>G543——电影排行</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" type="text/css" href="/css/navBar.css">
     <link rel="stylesheet" type="text/css" href="/css/rank.css">
 </head>
@@ -21,18 +20,21 @@
 
     <!--主体-->
     <div class="main">
-        <div class="navbar1">
-            <a href="#">热播榜</a>
-            <a href="#">飙升榜</a>
-            <a href="#">必看榜</a>
-            <a href="#">每周榜</a>
-            <a href="#">每月榜</a>
-            <a href="#">好评榜</a>
+        <!--选择榜单-->
+        <div class="rank-bar">
+            <a href="#" id="play" class="rank-item" onclick="searchRank('play'); return false;">热播榜</a>
+            <a href="#" id="all" class="rank-item" onclick="searchRank('all'); return false;">必看榜</a>
+            <a href="#" id="week" class="rank-item" onclick="searchRank('week'); return false;">每周榜</a>
+            <a href="#" id="month" class="rank-item" onclick="searchRank('month'); return false;">每月榜</a>
+            <a href="#" id="score" class="rank-item" onclick="searchRank('score'); return false;">好评榜</a>
         </div>
 
-        <div class="content1" id="movie-list1">
-            <!-- 电影列表将通过JavaScript插入 -->
+        <!--电影展示-->
+        <div class="movie-list" id="movieList">
+            <!--展示内容-->
+            <ul class="movie-list-detail"></ul>
         </div>
+
     </div>
 
 
@@ -44,6 +46,7 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/rank.js"></script>
 <script>
     // 用户-登录按钮的隐藏与显示
     $(function () {
