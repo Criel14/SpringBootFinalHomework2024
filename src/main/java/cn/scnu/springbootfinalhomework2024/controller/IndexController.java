@@ -65,7 +65,7 @@ public class IndexController {
     @RequestMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user, Model model, HttpSession httpSession) {
         System.out.println(user);
-        if (user.getPhoneNumber().length() != 1) {
+        if (user.getPhoneNumber().length() != 11) {
             return ResponseEntity.badRequest().body(new RegisterResponse(false, "手机号长度不正确！"));
         }
         String str = userService.register(user);

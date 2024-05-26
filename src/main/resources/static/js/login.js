@@ -1,30 +1,39 @@
 // 获取登录/注册链接和模态框元素
-    const loginLink = document.getElementById('login-link');
-    const loginModal = document.getElementById('login-modal');
+const loginLink = document.getElementById('login-link');
+const loginModal = document.getElementById('login-modal');
 
 // 获取登录/注册切换按钮和表单元素
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const forms = document.querySelectorAll('form');
+const tabBtns = document.querySelectorAll('.tab-btn');
+const forms = document.querySelectorAll('form');
+
+// 左上角返回首页按钮
+const backButton = document.getElementById('back-to-index');
+
+// 通过刷新页面就可以返回首页了（偷懒）
+backButton.addEventListener('click', function() {
+    window.location.href = '/index';
+});
+
 
 // 点击登录/注册链接时显示模态框
-    loginLink.addEventListener('click', (event) => {
-        event.preventDefault(); // 防止链接默认行为
-        loginModal.style.display = 'block';
-    });
+loginLink.addEventListener('click', (event) => {
+    event.preventDefault(); // 防止链接默认行为
+    loginModal.style.display = 'block';
+});
 
 
 // 登录/注册切换按钮功能
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const target = document.querySelector(btn.dataset.target);
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const target = document.querySelector(btn.dataset.target);
 
-            tabBtns.forEach(btn => btn.classList.remove('active'));
-            forms.forEach(form => form.classList.remove('active'));
+        tabBtns.forEach(btn => btn.classList.remove('active'));
+        forms.forEach(form => form.classList.remove('active'));
 
-            btn.classList.add('active');
-            target.classList.add('active');
-        });
+        btn.classList.add('active');
+        target.classList.add('active');
     });
+});
 
 function registerUser() {
     const registerForm = document.getElementById('register-form');
