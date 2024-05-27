@@ -4,7 +4,7 @@
 
 <!--    计算每个电影在某个特定天数内的总播放量-->
     <select id="getMovieByCountPlay" resultType="cn.scnu.springbootfinalhomework2024.entity.Movie">
-        SELECT M.*,SUM(temp.play_one_day) AS play_count
+        SELECT M.*,SUM(temp.play_one_day) AS totalPlays
         FROM
         (SELECT
         movie_id, play_one_day,
@@ -16,7 +16,8 @@
         ORDER BY movie_id, play_date) AS temp,movie M
         WHERE temp.movie_id = M.movie_id
         and temp.rn &lt;= #{day}
-        GROUP BY movie_id;
+        GROUP BY movie_id
+        ORDER BY totalPlays DESC;
     </select>
 
 <!--    在电影名称，电影主创人员，电影地区，电影类型中查找-->

@@ -18,6 +18,7 @@ public class Movie {
     private String movieType;
     private double movieScore;
 
+    // 播放量总和，可能是周，月或总的播放量
     @TableField(exist = false)
     private Integer totalPlays;
 }

@@ -33,7 +33,10 @@ public class RankController {
             response = movieService.findAllMovie();
         } else {
             // 周榜和月榜还没做
-            response = movieService.getMoviesSortedByPlayCount();
+            int day = 0;
+            if(Objects.equals(query, "week")) day = 7;
+            else if (Objects.equals(query, "month")) day =30;
+            response = movieService.showMovieByCountPlay(day);
         }
 
         return response;

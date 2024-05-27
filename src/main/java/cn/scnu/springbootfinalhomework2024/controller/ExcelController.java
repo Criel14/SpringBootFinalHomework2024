@@ -23,7 +23,7 @@ public class ExcelController {
     @RequestMapping("/testExcel")
     public void downloadExcelFile(HttpServletResponse response) throws IOException {
         // 1. 从数据库获取movie数据
-        List<Movie> movies = movieService.findAllMovie();
+        List<Movie> movies = movieService.getMoviesSortedByScore();
 
         // 2. 创建Excel工作簿和工作表
         Workbook workbook = new XSSFWorkbook();

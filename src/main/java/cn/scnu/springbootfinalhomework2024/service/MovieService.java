@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.sound.midi.Soundbank;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -63,7 +65,8 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
 
     // 根据播放次数排序电影，day如果是7就按照7天的播放总和排序
     public List<Movie> showMovieByCountPlay(int day) {
-        List movieList = movieMapper.getMovieByCountPlay(day);
+        List<Movie> movieList = movieMapper.getMovieByCountPlay(day);
+        System.out.println(movieList);
         return movieList;
     }
 
@@ -126,5 +129,6 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     public List<Movie> getMoviesSortedByPlayCount() {
         return movieMapper.selectMoviesOrderByPlayCount();
     }
+
 
 }
