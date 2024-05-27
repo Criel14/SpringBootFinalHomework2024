@@ -95,7 +95,7 @@ public class IndexController {
         Map<String, Object> response = new HashMap<>();
         List<Movie> allMovies = new ArrayList<>();
         System.out.println(query);
-        if (("").equals(query)) {
+        if (("all").equals(query)) {
             allMovies = movieService.findAllMovie();
         } else {
             // 要更改成判断query来查询

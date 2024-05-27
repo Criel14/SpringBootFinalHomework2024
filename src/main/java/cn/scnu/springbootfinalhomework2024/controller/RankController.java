@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class RankController {
@@ -29,9 +26,16 @@ public class RankController {
     @ResponseBody
     public List<Movie> selectMovie(@RequestParam("query") String query) {
         System.out.println(query);
+        List<Movie> response = new ArrayList<>();
+        if (Objects.equals(query, "score")) {
+            response = movieService.getMoviesSortedByScore();
+        } else if (Objects.equals(query, "all")) {
+            response = movieService.findAllMovie();
+        } else {
+            // 周榜和月榜还没做
+            response = movieService.getMoviesSortedByPlayCount();
+        }
 
-        // 先找全部测试一下
-        List<Movie> response = movieService.findAllMovie();
         return response;
     }
 

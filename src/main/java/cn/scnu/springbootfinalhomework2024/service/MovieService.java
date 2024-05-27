@@ -1,15 +1,10 @@
 package cn.scnu.springbootfinalhomework2024.service;
 
 import cn.scnu.springbootfinalhomework2024.entity.Movie;
-import cn.scnu.springbootfinalhomework2024.entity.PagedData;
-import cn.scnu.springbootfinalhomework2024.entity.User;
 import cn.scnu.springbootfinalhomework2024.mapper.MovieMapper;
-import cn.scnu.springbootfinalhomework2024.mapper.UserMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +43,6 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     //查询所有电影
     public List<Movie> findAllMovie() {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.orderByDesc("movie_score");
         List<Movie> movieList = movieMapper.selectList(queryWrapper);
         return movieList;
     }
@@ -116,9 +110,21 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
 
     // 根据电影名称，电影主创人员，电影地区，电影类型查找电影
     public List<Movie> findMovieByAll(String query) {
-        List<Movie> movieList = movieMapper.selectMovieByall(query);
+        List<Movie> movieList = movieMapper.selectMovieByAll(query);
         movieList = movieList.stream().distinct().collect(Collectors.toList());
         return movieList;
+    }
+
+    // 根据评分排序
+    public List<Movie> getMoviesSortedByScore() {
+        QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByDesc("movie_score");
+        return movieMapper.selectList(queryWrapper);
+    }
+
+    // 根据播放量排序
+    public List<Movie> getMoviesSortedByPlayCount() {
+        return movieMapper.selectMoviesOrderByPlayCount();
     }
 
 }

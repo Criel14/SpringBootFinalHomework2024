@@ -1,11 +1,11 @@
-// ·ÖÒ³²éÑ¯ËùÓÃ±äÁ¿
+// åˆ†é¡µæŸ¥è¯¢æ‰€ç”¨å˜é‡
 var currentPage = 0;
 var pageSize = 5;
 var total = 0;
-// ·ÖÒ³²éÑ¯µÄ²éÑ¯ÒÀ¾İ
+// åˆ†é¡µæŸ¥è¯¢çš„æŸ¥è¯¢ä¾æ®
 var nowQuery = ""
 
-// Í¼Æ¬ÂÖ²¥
+// å›¾ç‰‡è½®æ’­
 const slides = document.querySelectorAll('.slide');
 const prevArrow = document.querySelector('.prev-arrow');
 const nextArrow = document.querySelector('.next-arrow');
@@ -45,7 +45,7 @@ slides.forEach(slide => {
 });
 
 
-// ·ÖÀàÕ¹Ê¾µçÓ°Ìá½»
+// åˆ†ç±»å±•ç¤ºç”µå½±æäº¤ï¼Œqueryæ˜¯åˆ†ç±»ä¾æ®
 function fetchMovies(query, page) {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/index/movieList', true);
@@ -60,12 +60,12 @@ function fetchMovies(query, page) {
             console.log(currentPage);
             var resultsList = document.querySelector('.movie-list ul');
             resultsList.innerHTML = '';
-            // »æÖÆÇ°¶ËÒ³Ãæ
+            // ç»˜åˆ¶å‰ç«¯é¡µé¢
             movieList.forEach(function (movie) {
                 var li = document.createElement('li');
                 li.classList.add('movie-item');
 
-                // Ìí¼Óµã»÷ÊÂ¼ş¼àÌıÆ÷
+                // æ·»åŠ ç‚¹å‡»äº‹ä»¶ç›‘å¬å™¨
                 li.addEventListener('click', function() {
                     window.location.href = '/moviePlay?movieId=' + movie.movieId;
                 });
@@ -83,7 +83,7 @@ function fetchMovies(query, page) {
                 resultsList.appendChild(li);
             });
 
-            // ¸üĞÂµ±Ç°Ò³ÏÔÊ¾
+            // æ›´æ–°å½“å‰é¡µæ˜¾ç¤º
             document.querySelector('.current-page').textContent = page + 1;
             document.querySelector('.total-pages').textContent = total;
         } else {
@@ -93,15 +93,24 @@ function fetchMovies(query, page) {
     xhr.send('query=' + encodeURIComponent(query) + '&page=' + page + '&size=' + pageSize);
 }
 
-// µã»÷·ÖÀà°´Å¥½øÈë´Ë·½·¨
+// ç‚¹å‡»åˆ†ç±»æŒ‰é’®è¿›å…¥æ­¤æ–¹æ³•
 function searchMovies(query) {
+    // å»é™¤æ‰€æœ‰rank-itemçš„selectedæ ·å¼
+    document.querySelectorAll('.classify-item').forEach(item => {
+        item.classList.remove('selected');
+    });
+    // ä¸ºç‚¹å‡»çš„è®¾ç½®é€‰ä¸­æ ·å¼
+    if (query) {
+        document.getElementById(query).classList.add('selected');
+    }
+
     nowQuery = query;
-    // ½øÈëĞÂµÄ·ÖÀà£¬ÔòÖØÖÃµ±Ç°Ò³Âë
+    // è¿›å…¥æ–°çš„åˆ†ç±»ï¼Œåˆ™é‡ç½®å½“å‰é¡µç 
     currentPage = 0;
     fetchMovies(query, currentPage);
 }
 
-// ·­Ò³
+// ç¿»é¡µ
 document.querySelector('.prev-page').addEventListener('click', function () {
     if (currentPage > 0) {
         currentPage--;
@@ -115,7 +124,7 @@ document.querySelector('.next-page').addEventListener('click', function () {
     }
 });
 
-// Ò³Ãæ¼ÓÔØÊ±²éÕÒËùÓĞ
+// é¡µé¢åŠ è½½æ—¶æŸ¥æ‰¾æ‰€æœ‰
 window.onload = function () {
-    fetchMovies(nowQuery, currentPage);
+    fetchMovies("all", currentPage);
 }

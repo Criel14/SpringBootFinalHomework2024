@@ -205,7 +205,6 @@ INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
 VALUES (44, 10, '克里斯蒂安·贝尔 ', 0);
 
 -- 插入电影播放量数据
--- 以下暂时不能用，有重复
 INSERT INTO movie_playback (movie_id, play_one_day, play_date)
 VALUES (1, 10000, '1998-01-01 00:00:00');
 INSERT INTO movie_playback (movie_id, play_one_day, play_date)

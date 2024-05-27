@@ -45,23 +45,23 @@
 
         <!--电影分类选项-->
         <div class="classify">
-            <a href="#" onclick="searchMovies(''); return false;">
-                <div class="classify-item">热播</div>
+            <a href="#" onclick="searchMovies('all'); return false;">
+                <div class="classify-item" id="all">热播</div>
             </a>
             <a href="#" onclick="searchMovies('中国'); return false;">
-                <div class="classify-item" style="margin-left: 40px">内地</div>
+                <div class="classify-item" style="margin-left: 40px" id="中国">内地</div>
             </a>
             <a href="#" onclick="searchMovies('国外'); return false;">
-                <div class="classify-item">国外</div>
+                <div class="classify-item" id="国外">国外</div>
             </a>
             <a href="#" onclick="searchMovies('comedy'); return false;">
-                <div class="classify-item" style="margin-left: 40px">喜剧</div>
+                <div class="classify-item" style="margin-left: 40px" id="comedy">喜剧</div>
             </a>
             <a href="#" onclick="searchMovies('action'); return false;">
-                <div class="classify-item">动作</div>
+                <div class="classify-item" id="action">动作</div>
             </a>
             <a href="#" onclick="searchMovies('animation'); return false;">
-                <div class="classify-item">动画</div>
+                <div class="classify-item" id="animation">动画</div>
             </a>
             <!--分页按钮-->
             <div class="pagination">

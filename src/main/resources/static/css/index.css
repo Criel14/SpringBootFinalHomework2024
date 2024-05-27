@@ -116,6 +116,11 @@ a {
     background-color: #414141;
 }
 
+.classify-item.selected {
+    color: #f86496;
+    background-color: #414141;
+}
+
 /*展示电影列表*/
 .movie-list {
     width: 100%;

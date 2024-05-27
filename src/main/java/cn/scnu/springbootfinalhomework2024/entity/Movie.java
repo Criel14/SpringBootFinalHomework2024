@@ -1,5 +1,6 @@
 package cn.scnu.springbootfinalhomework2024.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.util.Date;
@@ -16,4 +17,7 @@ public class Movie {
     private String movieRegion;
     private String movieType;
     private double movieScore;
+
+    @TableField(exist = false)
+    private Integer totalPlays;
 }

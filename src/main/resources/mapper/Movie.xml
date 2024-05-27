@@ -20,7 +20,7 @@
     </select>
 
 <!--    在电影名称，电影主创人员，电影地区，电影类型中查找-->
-    <select id="selectMovieByall" resultType="cn.scnu.springbootfinalhomework2024.entity.Movie">
+    <select id="selectMovieByAll" resultType="cn.scnu.springbootfinalhomework2024.entity.Movie">
         SELECT M.*
         FROM movie M,staff F
         WHERE M.movie_id = F.movie_id
@@ -31,5 +31,13 @@
         ORDER BY M.movie_title, F.staff_name, M.movie_region, M.movie_type;
     </select>
 
+<!--    查找电影，根据播放量排序-->
+    <select id="selectMoviesOrderByPlayCount" resultType="cn.scnu.springbootfinalhomework2024.entity.Movie">
+        SELECT m.*, IFNULL(SUM(mp.play_one_day), 0) AS totalPlays
+        FROM movie m
+                 LEFT JOIN movie_playback mp ON m.movie_id = mp.movie_id
+        GROUP BY m.movie_id
+        ORDER BY totalPlays DESC
+    </select>
 
 </mapper>

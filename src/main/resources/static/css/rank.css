@@ -24,10 +24,42 @@ a {
 
 .main {
     width: 80%;
-    height: auto;
+    height: 2200px; /*这里改auto匹配不上，只能用电影总数 × movie-item的高度*/
     margin-left: 12%;
     background-color: #151515;
     border-radius: 20px;
+}
+
+/*选择榜单*/
+.rank-bar {
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 16px;
+    justify-content: space-around;
+    /*background-color: #333;*/
+    padding: 10px 0;
+    height: 60px;
+    width: 400px;
+}
+
+.rank-item {
+    position: relative;
+    top: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.rank-item:hover {
+    font-weight: bold;
+    color: #f86496;
+}
+
+.rank-item.selected {
+    font-weight: bold;
+    color: #f86496;
+    border-bottom: 2px solid #f86496;
 }
 
 /*展示电影列表*/
@@ -95,34 +127,24 @@ a {
     color: #a8a8a8;
 }
 
-/*选择榜单*/
-.rank-bar {
-    display: flex;
-    position: relative;
-    top: 0;
-    left: 16px;
-    justify-content: space-around;
-    /*background-color: #333;*/
-    padding: 10px 0;
-    height: 60px;
-    width: 400px;
+.movie-list .movie-item .movie-data {
+    margin-top: 36px;
+    margin-left: 20px;
+    float: left;
+    width: 200px;
+    height: 100px;
+    /*background-color: cornflowerblue; */
 }
 
-.rank-item {
-    position: relative;
-    top: 10px;
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 18px;
+.movie-list .movie-item .movie-data p {
+    font-size: 22px;
+    color: #ff9972;
+    line-height: 24px;
 }
 
-.rank-item:hover {
-    font-weight: bold;
-    color: #f86496;
-}
-
-.rank-item.selected {
-    font-weight: bold;
-    color: #f86496;
-    border-bottom: 2px solid #f86496;
+.movie-list .movie-item .movie-data span {
+    margin-left: 2px;
+    font-size: 14px;
+    color: #737373;;
+    line-height: 28px;
 }
