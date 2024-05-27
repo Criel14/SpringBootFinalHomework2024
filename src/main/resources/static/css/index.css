@@ -101,7 +101,7 @@ a {
 .classify-item {
     width: 100px;
     height: 40px;
-    background-color: #333333;
+    background-color: #2a2a2a;
     border-radius: 10px;
     color: #e5e5e5;
     font-size: 18px;
@@ -113,12 +113,15 @@ a {
 
 .classify-item:hover {
     transition: 0.1s;
-    background-color: #414141;
+    color: #f86496;
+    font-weight: bold;
+    background-color: #333333;
 }
 
 .classify-item.selected {
+    font-weight: bold;
     color: #f86496;
-    background-color: #414141;
+    background-color: #333333;
 }
 
 /*展示电影列表*/
@@ -129,7 +132,7 @@ a {
     top: 420px;
     padding-top: 60px;
     /*background-color: rgba(0, 255, 255, 0.45);*/
-    left: 45px;
+    left: 48px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -169,7 +172,7 @@ a {
     height: 40px;
     border-radius: 10px;
     text-align: center;
-    background-color: #333333;
+    background-color: #2a2a2a;
     color: #e5e5e5;
     font-size: 18px;
     line-height: 40px;
@@ -178,7 +181,7 @@ a {
 }
 
 .pagination button {
-    background-color: #333;
+    background-color: #2a2a2a;
     border: none;
     color: #fff;
     font-size: 20px;
@@ -189,7 +192,7 @@ a {
 }
 
 .pagination button:hover {
-    background-color: #414141;
+    background-color: #333333;
     transition: 0.1s;
 }
 

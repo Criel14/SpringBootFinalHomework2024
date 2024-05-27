@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>G543——电影排行</title>
+    <title>G543——免费专区</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/navBar.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" type="text/css" href="/css/login.css">
-    <link rel="stylesheet" type="text/css" href="/css/rank.css">
+    <link rel="stylesheet" type="text/css" href="/css/navBar.css">
 </head>
 
 <body>
@@ -21,16 +21,46 @@
 
     <!--主体-->
     <div class="main">
-        <!--选择榜单-->
-        <div class="rank-bar">
-            <a href="#" id="playCount" class="rank-item" onclick="searchRank('playCount'); return false;">热播榜</a>
-            <a href="#" id="all" class="rank-item" onclick="searchRank('all'); return false;">必看榜</a>
-            <a href="#" id="week" class="rank-item" onclick="searchRank('week'); return false;">每周榜</a>
-            <a href="#" id="month" class="rank-item" onclick="searchRank('month'); return false;">每月榜</a>
-            <a href="#" id="score" class="rank-item" onclick="searchRank('score'); return false;">好评榜</a>
 
-            <!--下载报表-->
-            <a th:href="getExcel" class="rank-item">报表</a>
+        <!--没有轮播的图片轮播-->
+        <div class="carousel">
+            <div style="position: absolute; width: 100%; height: 100%;">
+                <img src="/images/freeImg.png" alt="Image_1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            </div>
+        </div>
+
+        <!--电影分类选项-->
+        <div class="classify">
+            <a href="#" onclick="searchFreeMovies('all'); return false;">
+                <div class="classify-item" id="all">热播</div>
+            </a>
+            <a href="#" onclick="searchFreeMovies('中国'); return false;">
+                <div class="classify-item" style="margin-left: 40px" id="中国">内地</div>
+            </a>
+            <a href="#" onclick="searchFreeMovies('国外'); return false;">
+                <div class="classify-item" id="国外">国外</div>
+            </a>
+            <a href="#" onclick="searchFreeMovies('comedy'); return false;">
+                <div class="classify-item" style="margin-left: 40px" id="comedy">喜剧</div>
+            </a>
+            <a href="#" onclick="searchFreeMovies('action'); return false;">
+                <div class="classify-item" id="action">动作</div>
+            </a>
+            <a href="#" onclick="searchFreeMovies('animation'); return false;">
+                <div class="classify-item" id="animation">动画</div>
+            </a>
+            <!--分页按钮-->
+            <div class="pagination">
+                <button class="prev-page">
+                    <span>&lt;</span>
+                </button>
+                <span class="current-page">1</span>
+                <span>/</span>
+                <span class="total-pages">1</span>
+                <button class="next-page">
+                    <span>&gt;</span>
+                </button>
+            </div>
         </div>
 
         <!--电影展示-->
@@ -40,7 +70,6 @@
         </div>
 
     </div>
-
 
 </div>
 
@@ -52,10 +81,9 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="/js/rank.js"></script>
 <script src="/js/login.js"></script>
 <script src="/js/navBar.js"></script>
-
+<script src="/js/freeMovie.js"></script>
 <script>
     // 用户-登录按钮的隐藏与显示
     $(function () {

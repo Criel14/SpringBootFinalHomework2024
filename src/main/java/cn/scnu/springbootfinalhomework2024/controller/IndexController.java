@@ -14,10 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class IndexController {
@@ -138,6 +136,85 @@ public class IndexController {
         List<Movie> movieList = movieService.showMovieByVip(false);
         httpSession.setAttribute("vipMovieList", movieList);
         return "index";
+    }
+
+
+    @RequestMapping("/freeMovie")
+    public String freeMovie() {
+        return "freeMovie";
+    }
+
+    @RequestMapping("/vipMovie")
+    public String vipMovie() {
+        return "vipMovie";
+    }
+
+    // 查询Free电影
+    @RequestMapping("/freeMovie/movieList")
+    @ResponseBody
+    public Map<String, Object> selectFreeMovie(@RequestParam("query") String query,
+                                           @RequestParam("page") int page,
+                                           @RequestParam("size") int size) {
+        Map<String, Object> response = new HashMap<>();
+        List<Movie> allMovies = new ArrayList<>();
+        System.out.println(query);
+        if (("all").equals(query)) {
+            allMovies = movieService.findAllMovie();
+        } else {
+            // 要更改成判断query来查询
+            if (regions.contains(query)) {
+                allMovies = movieService.findMovieByRegion(query);
+            } else if (types.contains(query)) {
+                allMovies = movieService.findMovieByType(query);
+            } else {
+                allMovies = movieService.findMovieByTitle(query);
+            }
+        }
+        // 去除是VIP的电影
+        allMovies.removeIf(movie -> movie.getNeedVip() == 1);
+
+        int fromIndex = Math.min(page * size, allMovies.size());
+        int toIndex = Math.min((page + 1) * size, allMovies.size());
+        List<Movie> paginatedMovies = allMovies.subList(fromIndex, toIndex);
+
+        response.put("movies", paginatedMovies);
+        response.put("total", Math.ceil((double) allMovies.size() / size));
+        System.out.println(response.get("total"));
+        return response;
+    }
+
+    // 查询Vip电影
+    @RequestMapping("/vipMovie/movieList")
+    @ResponseBody
+    public Map<String, Object> selectVipMovie(@RequestParam("query") String query,
+                                               @RequestParam("page") int page,
+                                               @RequestParam("size") int size) {
+        Map<String, Object> response = new HashMap<>();
+        List<Movie> allMovies = new ArrayList<>();
+        System.out.println(query);
+        if (("all").equals(query)) {
+            allMovies = movieService.findAllMovie();
+        } else {
+            // 要更改成判断query来查询
+            if (regions.contains(query)) {
+                allMovies = movieService.findMovieByRegion(query);
+            } else if (types.contains(query)) {
+                allMovies = movieService.findMovieByType(query);
+            } else {
+                allMovies = movieService.findMovieByTitle(query);
+            }
+        }
+        // 去除是VIP的电影
+        allMovies.removeIf(movie -> movie.getNeedVip() == 0);
+
+        int fromIndex = Math.min(page * size, allMovies.size());
+        int toIndex = Math.min((page + 1) * size, allMovies.size());
+        List<Movie> paginatedMovies = allMovies.subList(fromIndex, toIndex);
+
+        response.put("movies", paginatedMovies);
+        response.put("total", Math.ceil((double) allMovies.size() / size));
+        System.out.println(response.get("total"));
+        return response;
     }
 
 

@@ -5,54 +5,12 @@ var total = 0;
 // 分页查询的查询依据
 var nowQuery = ""
 
-// 图片轮播
-document.addEventListener("DOMContentLoaded", function () {
-    const slides = document.querySelectorAll('.slide');
-    const prevArrow = document.querySelector('.prev-arrow');
-    const nextArrow = document.querySelector('.next-arrow');
-    let currentSlide = 0;
-    let slideInterval;
-
-    function showSlide(n) {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (n + slides.length) % slides.length;
-        slides[currentSlide].classList.add('active');
-    }
-
-    function nextSlide() {
-        showSlide(currentSlide + 1);
-    }
-
-    function prevSlide() {
-        showSlide(currentSlide - 1);
-    }
-
-    function startSlideInterval() {
-        slideInterval = setInterval(nextSlide, 3000);
-    }
-
-    function stopSlideInterval() {
-        clearInterval(slideInterval);
-    }
-
-    prevArrow.addEventListener('click', prevSlide);
-    nextArrow.addEventListener('click', nextSlide);
-
-    slides.forEach(slide => {
-        slide.addEventListener('mouseover', stopSlideInterval);
-        slide.addEventListener('mouseout', startSlideInterval);
-    });
-
-    slides[currentSlide].classList.add('active');
-    startSlideInterval();
-});
-
-
 
 // 分类展示电影提交，query是分类依据
+// 主要是路径不一样，其他的都和index一样
 function fetchMovies(query, page) {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/index/movieList', true);
+    xhr.open('POST', '/freeMovie/movieList', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
         if (xhr.status === 200) {
@@ -98,7 +56,7 @@ function fetchMovies(query, page) {
 }
 
 // 点击分类按钮进入此方法
-function searchMovies(query) {
+function searchFreeMovies(query) {
     // 去除所有rank-item的selected样式
     document.querySelectorAll('.classify-item').forEach(item => {
         item.classList.remove('selected');

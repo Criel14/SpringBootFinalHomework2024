@@ -109,11 +109,3 @@ document.getElementById('playCount').classList.add('selected');
 window.onload = function () {
     searchRank('playCount');
 }
-
-// 发送生成报表请求
-function getExcel() {
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/getExcel', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send();
-}
