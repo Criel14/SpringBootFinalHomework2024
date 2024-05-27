@@ -1,13 +1,51 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会员支付弹窗</title>
+    <title>会员中心</title>
     <link rel="stylesheet" type="text/css" href="/css/vip.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
 
 <body>
+    <a class="logo-link" th:href="index">
+        <div class="back-to-index" id="back-to-index">
+            <img src="/images/movieIcon.png" alt="logo" style="width: 28px; height: 28px; position: relative; top: 5px">
+            <span>G543</span>
+        </div>
+    </a>
+    <div class="vip-center">
+        <div class="vip-title">VIP专享4K超高清，极速观影特权</div>
+        <button class="vip-button" onclick="popWindow()">开通VIP</button>
+        <div class="card-container">
+            <div class="card">
+                <img src="/images/4k.svg" alt="4K观看">
+                <div class="card-title">4K超高清</div>
+                <div class="card-description">享受4K超高清电影</div>
+            </div>
+            <div class="card">
+                <img src="/images/4k.svg" alt="无广告">
+                <div class="card-title">无广告</div>
+                <div class="card-description">观看电影无广告打扰</div>
+            </div>
+            <div class="card">
+                <img src="/images/4k.svg" alt="离线下载">
+                <div class="card-title">离线下载</div>
+                <div class="card-description">随时随地离线下载</div>
+            </div>
+            <div class="card">
+                <img src="/images/4k.svg" alt="独家内容">
+                <div class="card-title">独家内容</div>
+                <div class="card-description">享受独家VIP电影</div>
+            </div>
+            <div class="card">
+                <img src="/images/4k.svg" alt="优先观看">
+                <div class="card-title">优先观看</div>
+                <div class="card-description">新片抢先看</div>
+            </div>
+        </div>
+    </div>
     <div class="overlay" id="paymentPopup">
         <div class="popup">
             <div class="popup-left">
@@ -128,6 +166,10 @@
 
     function closeWindow() {
         document.getElementById('paymentPopup').style.display = 'none';
+    }
+
+    function popWindow() {
+        document.getElementById('paymentPopup').style.display = 'flex';
     }
 </script>
 </body>
