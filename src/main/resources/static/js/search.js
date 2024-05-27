@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 resultsList.innerHTML = '';
 
                 if (movieList.length === 0) {
+                    document.querySelector('.results-container').classList.add('hidden');
+                    document.querySelector('.pagination').classList.add('hidden');
                     document.querySelector('.no-results').classList.remove('hidden');
                 } else {
                     document.querySelector('.no-results').classList.add('hidden');

@@ -2,23 +2,36 @@
 <html>
 <head>
   <title>支付宝沙箱支付</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-<button id="payButton">支付</button>
+<button onclick="payWithAlipay()">支付</button>
+<!--<div>-->
+<!--<form name="punchout_form" method="post" action="https://openapi-sandbox.dl.alipaydev.com/gateway.do?charset=utf-8&amp;method=alipay.trade.page.pay&amp;sign=FNOR7HsRN8EpgkAhAKQCYKJpaiUmCmiyqTIlSIr6cvJ3bKW9yeT35s7ZYYvWmJdeG9rR4oyRmwNd1TGWPJtFhWqAHWq4T%2FzLrs6Io8%2F4xwQhZzYxbqhWPlCeqZXudsN%2BqB2i5lM4jBetql%2B9tUiPrzpFjcukfGaCdlAOalJsQCtN%2FUaWI%2BhcflOiRFARedpPVXD8LjymkK6iKAU9oAgnDfo0euI7PAeILEyrNhVullQclfzOP%2FIIDbKTUzmxOdCYz3KwETG35Oc6IjNc01R41Qn6AfSNsVNxQj5vLH2zRhP7dHA9tTiTESNJaCB4lmn0RGKrcTm4Bniklg5Dq6%2BI2Q%3D%3D&amp;return_url=http%3A%2F%2F127.0.0.1%3A8090%2Freturn&amp;notify_url=http%3A%2F%2F127.0.0.1%3A8090%2Fnotify&amp;version=1.0&amp;app_id=9021000137649349&amp;sign_type=RSA2&amp;timestamp=2024-05-27+23%3A32%3A20&amp;alipay_sdk=alipay-sdk-java-dynamicVersionNo&amp;format=json">-->
+<!--  <input type="hidden" name="biz_content" value="{    &quot;out_trade_no&quot;:&quot;20150320010101001&quot;,    &quot;product_code&quot;:&quot;FAST_INSTANT_TRADE_PAY&quot;,    &quot;total_amount&quot;:0.01,    &quot;subject&quot;:&quot;Iphone6 16G&quot;,    &quot;body&quot;:&quot;Iphone6 16G&quot;    }">-->
+<!--  <input type="submit" value="立即支付" style="display:none;">-->
+<!--</form>-->
+<!--<script>document.forms[0].submit();</script>-->
+<!--</div>-->
+<div id="code-container"></div>
 
 <script>
-  $(document).ready(function(){
-    $("#payButton").click(function(){
-      $.get("http://localhost:8090/alipay?subject=test&outTradeNo=123456&totalAmount=100", function(data, status){
-        if(status === "success") {
-          window.open(data);
-        } else {
-          alert("支付请求失败，请稍后再试");
-        }
-      });
-    });
-  });
+  function payWithAlipay() {
+    axios.get('/pay')
+            .then(function(response) {
+              console.log(response.data);
+              const payHtml = response.data;
+              console.log(payHtml);
+
+
+              // 将后端返回的HTML代码作为文本显示在页面上
+              document.getElementById('code-container').innerHTML = payHtml;
+              location.reload();
+            })
+            .catch(function(error) {
+              console.error(error);
+            });
+  }
 </script>
 </body>
 </html>
