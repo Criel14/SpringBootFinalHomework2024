@@ -10,17 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Slf4j
-@RequestMapping("/alipay")
+//@RequestMapping("/alipay")
 @Controller
-@ResponseBody
 public class AliPayController {
-    @GetMapping("/pay")
-    public String pay(String subject, String outTradeNo, String totalAmount) {
-        AlipayTradePagePayResponse response = null;
+
+    @RequestMapping("/testAli")
+    public String testAli() {
+        return "testAli";
+    }
+    @GetMapping("/alipay")
+    public String pay(String subject, String outTradeNo, String totalAmount) throws Exception {
+        AlipayTradePagePayResponse response;
         try {
             response = Factory.Payment.Page().pay(subject, outTradeNo, totalAmount, "");
         } catch (Exception e) {
             log.error("支付宝付款调用失败，原因：" + e.getMessage());
+            throw new Exception("网络异常,请刷新后重试");
         }
         return response.getBody();
     }

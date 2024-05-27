@@ -10,7 +10,7 @@
 <script>
   $(document).ready(function(){
     $("#payButton").click(function(){
-      $.get("http://localhost:8080/alipay/pay?subject=test&outTradeNo=123456&totalAmount=100", function(data, status){
+      $.get("http://localhost:8090/alipay?subject=test&outTradeNo=123456&totalAmount=100", function(data, status){
         if(status === "success") {
           window.open(data);
         } else {

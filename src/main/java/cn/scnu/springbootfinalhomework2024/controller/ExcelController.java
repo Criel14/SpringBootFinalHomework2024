@@ -8,6 +8,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,10 +21,14 @@ public class ExcelController {
 
     @Autowired
     private MovieService movieService;
-    @RequestMapping("/testExcel")
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @RequestMapping("/getExcel")
     public void downloadExcelFile(HttpServletResponse response) throws IOException {
         // 1. 从数据库获取movie数据
-        List<Movie> movies = movieService.getMoviesSortedByScore();
+        List<Movie> movies = (List<Movie>) redisTemplate.opsForValue().get("movie");
 
         // 2. 创建Excel工作簿和工作表
         Workbook workbook = new XSSFWorkbook();
@@ -32,28 +37,22 @@ public class ExcelController {
         // 3. 设置表格标题和列标题
         Row headerRow = sheet.createRow(0);
         headerRow.createCell(0).setCellValue("Movie Title");
-        headerRow.createCell(1).setCellValue("Cover URL");
-        headerRow.createCell(2).setCellValue("Description");
-        headerRow.createCell(3).setCellValue("Release Date");
-        headerRow.createCell(4).setCellValue("Need VIP");
-        headerRow.createCell(5).setCellValue("Local URL");
-        headerRow.createCell(6).setCellValue("Region");
-        headerRow.createCell(7).setCellValue("Type");
-        headerRow.createCell(8).setCellValue("Score");
+        headerRow.createCell(1).setCellValue("Description");
+        headerRow.createCell(2).setCellValue("Release Date");
+        headerRow.createCell(3).setCellValue("Region");
+        headerRow.createCell(4).setCellValue("Type");
+        headerRow.createCell(5).setCellValue("Score");
 
         // 4. 写入数据
         int rowNum = 1;
         for (Movie movie : movies) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(movie.getMovieTitle());
-            row.createCell(1).setCellValue(movie.getMovieCoverUrl());
-            row.createCell(2).setCellValue(movie.getMovieDescription());
-            row.createCell(3).setCellValue(movie.getReleaseDate().toString());
-            row.createCell(4).setCellValue(movie.getNeedVip());
-            row.createCell(5).setCellValue(movie.getMovieLocalUrl());
-            row.createCell(6).setCellValue(movie.getMovieRegion());
-            row.createCell(7).setCellValue(movie.getMovieType());
-            row.createCell(8).setCellValue(movie.getMovieScore());
+            row.createCell(1).setCellValue(movie.getMovieDescription());
+            row.createCell(2).setCellValue(movie.getReleaseDate().toString());
+            row.createCell(3).setCellValue(movie.getMovieRegion());
+            row.createCell(4).setCellValue(movie.getMovieType());
+            row.createCell(5).setCellValue(movie.getMovieScore());
         }
 
         // 5. 设置响应头
