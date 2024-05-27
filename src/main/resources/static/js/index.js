@@ -6,43 +6,47 @@ var total = 0;
 var nowQuery = ""
 
 // 图片轮播
-const slides = document.querySelectorAll('.slide');
-const prevArrow = document.querySelector('.prev-arrow');
-const nextArrow = document.querySelector('.next-arrow');
-let currentSlide = 0;
-
-function showSlide(n) {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (n + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-    slides[currentSlide].classList.add('active');
-});
+    const slides = document.querySelectorAll('.slide');
+    const prevArrow = document.querySelector('.prev-arrow');
+    const nextArrow = document.querySelector('.next-arrow');
+    let currentSlide = 0;
+    let slideInterval;
 
-function nextSlide() {
-    showSlide(currentSlide + 1);
-}
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
 
-function prevSlide() {
-    showSlide(currentSlide - 1);
-}
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
 
-prevArrow.addEventListener('click', prevSlide);
-nextArrow.addEventListener('click', nextSlide);
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
 
-let slideInterval = setInterval(nextSlide, 1500);
-
-slides.forEach(slide => {
-    slide.addEventListener('mouseover', () => {
-        clearInterval(slideInterval);
-    });
-
-    slide.addEventListener('mouseout', () => {
+    function startSlideInterval() {
         slideInterval = setInterval(nextSlide, 3000);
+    }
+
+    function stopSlideInterval() {
+        clearInterval(slideInterval);
+    }
+
+    prevArrow.addEventListener('click', prevSlide);
+    nextArrow.addEventListener('click', nextSlide);
+
+    slides.forEach(slide => {
+        slide.addEventListener('mouseover', stopSlideInterval);
+        slide.addEventListener('mouseout', startSlideInterval);
     });
+
+    slides[currentSlide].classList.add('active');
+    startSlideInterval();
 });
+
 
 
 // 分类展示电影提交，query是分类依据
