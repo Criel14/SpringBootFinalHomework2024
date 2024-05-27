@@ -36,6 +36,7 @@ public class RankController {
             int day = 0;
             if(Objects.equals(query, "week")) day = 7;
             else if (Objects.equals(query, "month")) day =30;
+            else day = Integer.MAX_VALUE;
             response = movieService.showMovieByCountPlay(day);
         }
 
