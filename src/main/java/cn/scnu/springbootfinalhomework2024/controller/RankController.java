@@ -32,15 +32,23 @@ public class RankController {
         } else if (Objects.equals(query, "all")) {
             response = movieService.findAllMovie();
         } else {
-            // 周榜和月榜还没做
-            int day = 0;
-            if(Objects.equals(query, "week")) day = 7;
-            else if (Objects.equals(query, "month")) day =30;
-            else day = Integer.MAX_VALUE;
-            response = movieService.showMovieByCountPlay(day);
+            response = movieService.showMovieByCountPlay(getDayBasedOnQuery(query));
         }
 
         return response;
+    }
+
+    // 根据query返回天数
+    private int getDayBasedOnQuery(String query) {
+        int day;
+        if (Objects.equals(query, "week")) {
+            day = 7;
+        } else if (Objects.equals(query, "month")) {
+            day = 30;
+        } else {
+            day = Integer.MAX_VALUE;
+        }
+        return day;
     }
 
 }
