@@ -26,7 +26,7 @@
         </div>
         <div class="navContent" th:if="${user!=null}">
             <!--未完成：用Thymeleaf做个判断，有登录和没登录显示不一样的内容-->
-            <a href="#">
+            <a th:href="vip">
                 <div class="item2">会员中心</div>
             </a>
         </div>
@@ -46,7 +46,7 @@
     <a href="#">
         <div class="item">免费专区</div>
     </a>
-    <a href="vip">
+    <a href="#">
         <div class="item">会员专享</div>
     </a>
     <a th:href="rank">
