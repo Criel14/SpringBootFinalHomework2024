@@ -35,6 +35,7 @@ public class IndexController {
     @Autowired
     private RedisTemplate redisTemplate;
 
+
     // 首页，若有用户信息，则表示是已登录状态的首页
     @RequestMapping("/index")
     public String index(HttpSession httpSession, Model model) {
@@ -82,6 +83,16 @@ public class IndexController {
         }
     }
 
+    // 免费专区
+    @RequestMapping("/freeMovie")
+    public String freeMovie() {
+        return "freeMovie";
+    }
+    // 会员专享
+    @RequestMapping("/vipMovie")
+    public String vipMovie() {
+        return "vipMovie";
+    }
     //搜索页面
     @RequestMapping("/search")
     public String search() {
@@ -96,57 +107,13 @@ public class IndexController {
                                            @RequestParam("page") int page,
                                            @RequestParam("size") int size) {
         Map<String, Object> response = new HashMap<>();
-        List<Movie> allMovies = new ArrayList<>();
-        System.out.println(query);
-        if (("all").equals(query)) {
-            allMovies = movieService.findAllMovie();
-        } else {
-            // 要更改成判断query来查询
-            if (regions.contains(query)) {
-                allMovies = movieService.findMovieByRegion(query);
-            } else if (types.contains(query)) {
-                allMovies = movieService.findMovieByType(query);
-            } else {
-                allMovies = movieService.findMovieByTitle(query);
-            }
-        }
-        System.out.println(allMovies);
-        int fromIndex = Math.min(page * size, allMovies.size());
-        int toIndex = Math.min((page + 1) * size, allMovies.size());
-        List<Movie> paginatedMovies = allMovies.subList(fromIndex, toIndex);
+        List<Movie> allMovies = findMovieByQuery(query);
+        // 根据页面大小切片
+        List<Movie> paginatedMovies = getPaginatedMovies(page, size,allMovies);
 
         response.put("movies", paginatedMovies);
         response.put("total", Math.ceil((double) allMovies.size() / size));
-        System.out.println(response.get("total"));
         return response;
-    }
-
-
-    //查询vip电影
-    @RequestMapping("/index/selectVipMovie")
-    public String selectVipMovie(HttpSession httpSession, Model model) {
-        List<Movie> movieList = movieService.showMovieByVip(true);
-        httpSession.setAttribute("vipMovieList", movieList);
-        return "index";
-    }
-
-    //查询免费电影
-    @RequestMapping("/index/selectFreeMovie")
-    public String selectFreeMovie(HttpSession httpSession, Model model) {
-        List<Movie> movieList = movieService.showMovieByVip(false);
-        httpSession.setAttribute("vipMovieList", movieList);
-        return "index";
-    }
-
-
-    @RequestMapping("/freeMovie")
-    public String freeMovie() {
-        return "freeMovie";
-    }
-
-    @RequestMapping("/vipMovie")
-    public String vipMovie() {
-        return "vipMovie";
     }
 
     // 查询Free电影
@@ -156,30 +123,14 @@ public class IndexController {
                                            @RequestParam("page") int page,
                                            @RequestParam("size") int size) {
         Map<String, Object> response = new HashMap<>();
-        List<Movie> allMovies = new ArrayList<>();
-        System.out.println(query);
-        if (("all").equals(query)) {
-            allMovies = movieService.findAllMovie();
-        } else {
-            // 要更改成判断query来查询
-            if (regions.contains(query)) {
-                allMovies = movieService.findMovieByRegion(query);
-            } else if (types.contains(query)) {
-                allMovies = movieService.findMovieByType(query);
-            } else {
-                allMovies = movieService.findMovieByTitle(query);
-            }
-        }
+        List<Movie> allMovies = findMovieByQuery(query);
         // 去除是VIP的电影
         allMovies.removeIf(movie -> movie.getNeedVip() == 1);
-
-        int fromIndex = Math.min(page * size, allMovies.size());
-        int toIndex = Math.min((page + 1) * size, allMovies.size());
-        List<Movie> paginatedMovies = allMovies.subList(fromIndex, toIndex);
+        // 根据页面大小切片
+        List<Movie> paginatedMovies = getPaginatedMovies(page, size,allMovies);
 
         response.put("movies", paginatedMovies);
         response.put("total", Math.ceil((double) allMovies.size() / size));
-        System.out.println(response.get("total"));
         return response;
     }
 
@@ -190,8 +141,20 @@ public class IndexController {
                                                @RequestParam("page") int page,
                                                @RequestParam("size") int size) {
         Map<String, Object> response = new HashMap<>();
+        List<Movie> allMovies = findMovieByQuery(query);
+        // 去除是VIP的电影
+        allMovies.removeIf(movie -> movie.getNeedVip() == 0);
+        // 根据页面大小切片
+        List<Movie> paginatedMovies = getPaginatedMovies(page, size,allMovies);
+
+        response.put("movies", paginatedMovies);
+        response.put("total", Math.ceil((double) allMovies.size() / size));
+        return response;
+    }
+
+
+    private List<Movie> findMovieByQuery(String query) {
         List<Movie> allMovies = new ArrayList<>();
-        System.out.println(query);
         if (("all").equals(query)) {
             allMovies = movieService.findAllMovie();
         } else {
@@ -204,18 +167,12 @@ public class IndexController {
                 allMovies = movieService.findMovieByTitle(query);
             }
         }
-        // 去除是VIP的电影
-        allMovies.removeIf(movie -> movie.getNeedVip() == 0);
-
-        int fromIndex = Math.min(page * size, allMovies.size());
-        int toIndex = Math.min((page + 1) * size, allMovies.size());
-        List<Movie> paginatedMovies = allMovies.subList(fromIndex, toIndex);
-
-        response.put("movies", paginatedMovies);
-        response.put("total", Math.ceil((double) allMovies.size() / size));
-        System.out.println(response.get("total"));
-        return response;
+        return allMovies;
     }
 
-
+    private List<Movie> getPaginatedMovies(int page, int size, List<Movie> allMovies) {
+        int fromIndex = Math.min(page * size, allMovies.size());
+        int toIndex = Math.min((page + 1) * size, allMovies.size());
+        return allMovies.subList(fromIndex, toIndex);
+    }
 }
