@@ -36,12 +36,12 @@ public class ExcelController {
 
         // 3. 设置表格标题和列标题
         Row headerRow = sheet.createRow(0);
-        headerRow.createCell(0).setCellValue("Movie Title");
-        headerRow.createCell(1).setCellValue("Description");
-        headerRow.createCell(2).setCellValue("Release Date");
-        headerRow.createCell(3).setCellValue("Region");
-        headerRow.createCell(4).setCellValue("Type");
-        headerRow.createCell(5).setCellValue("Score");
+        headerRow.createCell(0).setCellValue("电影名称");
+        headerRow.createCell(1).setCellValue("电影描述");
+        headerRow.createCell(2).setCellValue("上映日期");
+        headerRow.createCell(3).setCellValue("电影地区");
+        headerRow.createCell(4).setCellValue("电影类型");
+        headerRow.createCell(5).setCellValue("电影评分");
 
         // 4. 写入数据
         int rowNum = 1;
