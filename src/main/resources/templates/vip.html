@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员支付弹窗</title>
+    <link rel="stylesheet" type="text/css" href="/css/vip.css">
+</head>
+
+<body>
+    <div class="overlay" id="paymentPopup">
+        <div class="popup">
+            <div class="popup-left">
+                <div class="selector">
+                    <div class="plan-selector" id = "plan-selector">
+                        <div class="plan selected" id="goldVip" onclick="selectPlan('goldVip')">
+                            黄金VIP
+                            <div class="plan-detail">手机/电脑/平板可用</div>
+                        </div>
+                        <div class="plan" id="platinumVip" onclick="selectPlan('platinumVip')">
+                            白金VIP
+                            <div class="plan-detail">黄金权益+电视可用</div>
+                        </div>
+                        <div class="plan" id="diamondVip" onclick="selectPlan('diamondVip')">
+                            星钻VIP
+                            <div class="plan-detail">升级特惠 七端可用</div>
+                        </div>
+                    </div>
+                    <div class="duration-selector">
+                        <div class="duration selected" id="yearly" onclick="selectDuration('yearly')">
+                            <div class="duration-detail">
+                                连续包年
+                            </div>
+                            <div>
+                                <span class="price">￥148</span> <span class="original-price">￥238</span><br>
+                            </div>
+                            <div class="duration-renew">
+                                次年续费238元
+                            </div>
+                        </div>
+                        <div class="duration" id="quarterly" onclick="selectDuration('quarterly')">
+                            <div class="duration-detail">
+                                连续包季
+                            </div>
+                            <div>
+                                <span class="price">￥50</span> <span class="original-price">￥68</span><br>
+                            </div>
+                            <div class="duration-renew">
+                                次季续费68元
+                            </div>
+                        </div>
+                        <div class="duration" id="monthly" onclick="selectDuration('monthly')">
+                            <div class="duration-detail">
+                                连续包月
+                            </div>
+                            <div>
+                                <span class="price">￥15</span> <span class="original-price">￥25</span><br>
+                            </div>
+                            <div class="duration-renew">
+                                次月续费25元
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-right">
+                <div class="amount-display">￥148</div>
+                <div class="discount">共减 ￥90</div>
+                <div class="qr-code">
+                    <img id="qrCode" src="/images/qrcode.png" alt="QR Code">
+                    <p>请扫码完成支付</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    // 页面加载完成后显示弹窗
+    window.onload = function() {
+        document.getElementById('paymentPopup').style.display = 'flex';
+    };
+
+    // 切换充值档位
+    function selectPlan(planId) {
+        const plans = document.querySelectorAll('.plan');
+        plans.forEach(plan => plan.classList.remove('selected'));
+        plans.forEach(plan => plan.classList.remove('selectedMid'));
+        document.getElementById(planId).classList.add('selected');
+        document.getElementById('plan-selector').style.backgroundColor = '#fff7e6';
+        if (planId === 'platinumVip') {
+            document.getElementById('goldVip').classList.add('selectedMid');
+            document.getElementById('diamondVip').classList.add('selectedMid');
+            document.getElementById('plan-selector').style.backgroundColor = '#fff';
+        }
+        updateAmountDisplay();
+    }
+
+    // 切换充值期限
+    function selectDuration(durationId) {
+        const durations = document.querySelectorAll('.duration');
+        durations.forEach(duration => duration.classList.remove('selected'));
+        document.getElementById(durationId).classList.add('selected');
+        updateAmountDisplay();
+    }
+
+    // 更新金额显示
+    function updateAmountDisplay() {
+        const selectedPlan = document.querySelector('.plan.selected');
+        const selectedDuration = document.querySelector('.duration.selected');
+        const amountDisplay = document.querySelector('.amount-display');
+        const discount = document.querySelector('.discount');
+        const price = selectedDuration.querySelector('.price').innerText;
+        amountDisplay.innerText = price;
+        discount.innerText = `共减 ￥${getDiscount(price)}`;
+    }
+
+    // 计算折扣
+    function getDiscount(price) {
+        const originalPrices = {
+            "￥148": 238,
+            "￥50": 68,
+            "￥15": 25
+        };
+        const currentPrice = parseFloat(price.replace('￥', ''));
+        const discount = originalPrices[price] - currentPrice;
+        return discount.toFixed(2);
+    }
+</script>
+</body>
+</html>

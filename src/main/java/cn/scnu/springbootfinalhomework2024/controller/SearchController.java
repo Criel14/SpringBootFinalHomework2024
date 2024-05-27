@@ -55,4 +55,8 @@ public class SearchController {
         return response;
     }
 
+    @RequestMapping("/vip")
+    public String vip() {
+        return "vip";
+    }
 }
