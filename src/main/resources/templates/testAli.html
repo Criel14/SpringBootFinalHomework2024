@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>支付宝沙箱支付</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<button id="payButton">支付</button>
+
+<script>
+  $(document).ready(function(){
+    $("#payButton").click(function(){
+      $.get("http://localhost:8080/alipay/pay?subject=test&outTradeNo=123456&totalAmount=100", function(data, status){
+        if(status === "success") {
+          window.open(data);
+        } else {
+          alert("支付请求失败，请稍后再试");
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
