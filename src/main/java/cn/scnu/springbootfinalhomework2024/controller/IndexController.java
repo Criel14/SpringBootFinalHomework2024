@@ -62,6 +62,7 @@ public class IndexController {
     @RequestMapping("/logout")
     public String logout(HttpSession httpSession, Model model) {
         httpSession.removeAttribute("user");
+        redisTemplate.opsForValue().set("user",null);
         return "redirect:/index";
     }
 

@@ -27,6 +27,9 @@
             <a href="#" id="week" class="rank-item" onclick="searchRank('week'); return false;">每周榜</a>
             <a href="#" id="month" class="rank-item" onclick="searchRank('month'); return false;">每月榜</a>
             <a href="#" id="score" class="rank-item" onclick="searchRank('score'); return false;">好评榜</a>
+
+            <!--下载报表-->
+            <a th:href="getExcel" class="rank-item">报表</a>
         </div>
 
         <!--电影展示-->
@@ -47,6 +50,8 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/js/rank.js"></script>
+<script src="/js/navBar.js"></script>
+
 <script>
     // 用户-登录按钮的隐藏与显示
     $(function () {

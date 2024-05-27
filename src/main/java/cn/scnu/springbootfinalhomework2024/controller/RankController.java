@@ -46,6 +46,8 @@ public class RankController {
             response = movieService.showMovieByCountPlay(getDayBasedOnQuery(query));
         }
 
+        redisTemplate.opsForValue().set("movie", response);
+
         return response;
     }
 
