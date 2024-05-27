@@ -8,6 +8,7 @@ import cn.scnu.springbootfinalhomework2024.service.MovieService;
 import cn.scnu.springbootfinalhomework2024.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,12 +34,15 @@ public class IndexController {
     List<String> regions = List.of("中国", "国外");
     List<String> types = List.of("comedy", "action", "animation");
 
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     // 首页，若有用户信息，则表示是已登录状态的首页
     @RequestMapping("/index")
     public String index(HttpSession httpSession, Model model) {
         if (httpSession.getAttribute("user") != null) {
             loginedUser = (User) httpSession.getAttribute("user");
+            redisTemplate.opsForValue().set("user",loginedUser);
             model.addAttribute("user", loginedUser);
         }
 

@@ -2,8 +2,11 @@ package cn.scnu.springbootfinalhomework2024.controller;
 
 import cn.scnu.springbootfinalhomework2024.entity.Movie;
 import cn.scnu.springbootfinalhomework2024.service.MovieService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,8 +19,16 @@ public class RankController {
     @Autowired
     private MovieService movieService;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+
     @RequestMapping("/rank")
-    public String rank() {
+    public String rank(HttpSession httpSession, Model model) {
+        if(redisTemplate.opsForValue().get("user") != null)
+        {
+            model.addAttribute("user", redisTemplate.opsForValue().get("user"));
+        }
         return "rank";
     }
 

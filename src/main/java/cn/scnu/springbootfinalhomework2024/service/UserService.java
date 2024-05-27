@@ -5,6 +5,7 @@ import cn.scnu.springbootfinalhomework2024.mapper.UserMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,10 @@ import java.util.List;
 public class UserService extends ServiceImpl<UserMapper, User> {
 
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     //确定用户登录信息是否在数据库中存在
     public User confirmLogin(User user) {
