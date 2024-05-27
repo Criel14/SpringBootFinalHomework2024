@@ -2,23 +2,23 @@
 <html>
 <head>
   <title>支付宝沙箱支付</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-<button id="payButton">支付</button>
+<button onclick="payWithAlipay()">支付</button>
 
 <script>
-  $(document).ready(function(){
-    $("#payButton").click(function(){
-      $.get("http://localhost:8090/alipay?subject=test&outTradeNo=123456&totalAmount=100", function(data, status){
-        if(status === "success") {
-          window.open(data);
-        } else {
-          alert("支付请求失败，请稍后再试");
-        }
-      });
-    });
-  });
+  function payWithAlipay() {
+    axios.get('/pay')
+            .then(function(response) {
+              const payUrl = response.data.payUrl;
+              console.log(payUrl)
+              window.open(payUrl);
+            })
+            .catch(function(error) {
+              console.error(error);
+            });
+  }
 </script>
 </body>
 </html>
