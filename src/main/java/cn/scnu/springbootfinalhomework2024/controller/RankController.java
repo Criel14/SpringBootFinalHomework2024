@@ -45,7 +45,6 @@ public class RankController {
         } else {
             response = movieService.showMovieByCountPlay(getDayBasedOnQuery(query));
         }
-
         return response;
     }
 

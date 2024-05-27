@@ -73,7 +73,7 @@ function searchRank(query) {
                 if (query === "score") {
                     explain.textContent = "电影评分";
                     mainData.textContent = "★ " + movie.movieScore;
-                } else if (query === "all"){
+                } else if (query === "all") {
                     explain.textContent = "电影评分";
                     mainData.textContent = "👍" + movie.movieScore;
                 } else if (query === "playCount") {
@@ -108,4 +108,12 @@ document.getElementById('playCount').classList.add('selected');
 // 打开页面时进入热播排行
 window.onload = function () {
     searchRank('playCount');
+}
+
+// 发送生成报表请求
+function getExcel() {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/getExcel', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send();
 }
