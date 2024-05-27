@@ -71,6 +71,7 @@
                     <p>请扫码完成支付</p>
                 </div>
             </div>
+            <div class="close" onclick="closeWindow()">X</div>
         </div>
     </div>
 <script>
@@ -123,6 +124,10 @@
         const currentPrice = parseFloat(price.replace('￥', ''));
         const discount = originalPrices[price] - currentPrice;
         return discount.toFixed(2);
+    }
+
+    function closeWindow() {
+        document.getElementById('paymentPopup').style.display = 'none';
     }
 </script>
 </body>
