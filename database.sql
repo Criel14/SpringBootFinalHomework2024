@@ -58,750 +58,1660 @@ CREATE TABLE user_playback_history
     FOREIGN KEY (movie_id) REFERENCES movie (movie_id)
 );
 
--- 插入测试用户数据
-insert into user(username, phone_number, password)
-VALUES ('aa', '123456', '123456');
 
--- 插入电影数据
-INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url,
-                   movie_region, movie_type, movie_score)
-VALUES (1, '美丽人生',
-        '犹太青年圭多（罗伯托·贝尼尼）邂逅美丽的女教师多拉（尼可莱塔·布拉斯基），他彬彬有礼的向多拉鞠躬：“早安！公主！”。历经诸多令人啼笑皆非的周折后，天遂人愿，两人幸福美满的生活在一起。',
-        '1997-12-20 00:00:00', 1, 'cover001.jpg', 'video001.mp4', '意大利', 'comedy', 9.5);
-INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url,
-                   movie_region, movie_type, movie_score)
-VALUES (2, '三傻大闹宝莱坞',
-        '本片根据印度畅销书作家奇坦·巴哈特（Chetan Bhagat）的处女作小说《五点人》（Five Point Someone）改编而成。法兰（马德哈万 R Madhavan 饰）、拉杜（沙曼·乔希 Sharman Joshi 饰）与兰乔（阿米尔·汗 Aamir Khan 饰）是皇家工程学院的学生，三人共居一室，结为好友。在以严格著称的学院里，兰乔是个非常与众不同的学生，他不死记硬背，甚至还公然顶撞校长“病毒”（波曼·伊拉尼 Boman Irani 饰），质疑他的教学方法。他不仅鼓动法兰与拉杜去勇敢追寻理想，还劝说校长的二女儿碧雅（卡琳娜·卡普 Kareena Kapoor 饰）离开满眼铜臭的未婚夫。兰乔的特立独行引起了模范学生“消音器”（奥米·维嘉 Omi Vaidya 饰）的不满，他约定十年后再与兰乔一决高下，看哪种生活方式更能取得成功。',
-        '2009-12-25 00:00:00', 0, 'cover002.jpg', 'video002.mp4', '印度', 'comedy', 9.2);
-INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url,
-                   movie_region, movie_type, movie_score)
-VALUES (3, '机器人总动员',
-        '公元2805年，人类文明高度发展，却因污染和生活垃圾大量增加使得地球不再适于人类居住。地球人被迫乘坐飞船离开故乡，进行一次漫长无边的宇宙之旅。临行前他们委托Buynlarge的公司对地球垃圾进行清理，该公司开发了名为WALL·E（Waste Allocation Load Lifters – Earth 地球废品分装员）的机器人担当此重任。',
-        '2008-06-27 00:00:00', 1, 'cover003.jpg', 'video003.mp4', '美国', 'animation', 9.3);
-INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url,
-                   movie_region, movie_type, movie_score)
-VALUES (4, '无间道',
-        '1991年，香港黑帮三合会会员刘健明（刘德华）听从老大韩琛（曾志伟）的吩咐，加入警察部队成为黑帮卧底，韩琛许诺刘健明会帮其在七年后晋升为见习督察。1992年，警察训练学校优秀学员陈永仁（梁朝伟）被上级要求深入到三合会做卧底，终极目标是成为韩琛身边的红人。2002年，两人都不负重望，也都身背重压，刘健明渐想成为一个真正的好人，陈永仁则盼着尽快回归警察身份。',
-        '2002-12-12 00:00:00', 1, 'cover004.jpg', 'video004.mp4', '中国', 'action', 9.3);
-INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url,
-                   movie_region, movie_type, movie_score)
-VALUES (5, '大话西游之大圣娶亲',
-        '至尊宝（周星驰 饰）被月光宝盒带回到五百年前，遇见紫霞仙子（朱茵 饰），被对方打上烙印成为对方的人，并发觉自己已变成孙悟空。',
-        '1995-02-04 00:00:00', 0, 'cover005.jpg', 'video005.mp4', '中国', 'comedy', 9.2);
-INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url,
-                   movie_region, movie_type, movie_score)
-VALUES (6, '千与千寻',
-        '千寻和爸爸妈妈一同驱车前往新家，在郊外的小路上不慎进入了神秘的隧道——他们去到了另外一个诡异世界—一个中世纪的小镇。远处飘来食物的香味，爸爸妈妈大快朵颐，孰料之后变成了猪！这时小镇上渐渐来了许多样子古怪、半透明的人。',
-        '2001-07-20 00:00:00', 1, 'cover006.jpg', 'video006.mp4', '日本', 'animation', 9.4);
-INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url,
-                   movie_region, movie_type, movie_score)
-VALUES (7, '这个杀手不太冷',
-        '里昂（让·雷诺饰）是名孤独的职业杀手，受人雇佣。一天，邻居家小姑娘马蒂尔达（纳塔丽·波特曼饰)敲开他的房门，要求在他那里暂避杀身之祸。原来邻居家的主人是警方缉毒组的眼线，只因贪污了一小包毒品而遭恶警（加里·奥德曼饰）杀害全家的惩罚。马蒂尔达得到里昂的留救，幸免于难，并留在里昂那里。里昂教小女孩使枪，她教里昂法文，两人关系日趋亲密，相处融洽。',
-        '1994-09-14 00:00:00', 1, 'cover007.jpg', 'video007.mp4', '法国', 'action', 9.4);
-INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url,
-                   movie_region, movie_type, movie_score)
-VALUES (8, '疯狂动物城',
-        '故事发生在一个所有哺乳类动物和谐共存的美好世界中，兔子朱迪（金妮弗·古德温 Ginnifer Goodwin 配音）从小就梦想着能够成为一名惩恶扬善的刑警，凭借着智慧和努力，朱迪成功的从警校中毕业进入了疯狂动物城警察局，殊不知这里是大型肉食类动物的领地，作为第一只，也是唯一的小型食草类动物，朱迪会遇到怎样的故事呢？',
-        '2016-03-04 00:00:00', 1, 'cover008.jpg', 'video008.mp4', '美国', 'animation', 9.2);
-INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url,
-                   movie_region, movie_type, movie_score)
-VALUES (9, '怦然心动',
-        '布莱斯（卡兰•麦克奥利菲 Callan McAuliffe 饰）全家搬到小镇，邻家女孩朱丽（玛德琳•卡罗尔 Madeline Carroll 饰）前来帮忙。她对他一见钟情，心愿是获得他的吻。两人是同班同学，她一直想方设法接近他，但是他避之不及。她喜欢爬在高高的梧桐树上看风景。但因为施工，树被要被砍掉，她誓死捍卫，希望他并肩作战，但是他退缩了。她的事迹上了报纸，外公对她颇有好感，令他十分困惑。她凭借鸡下蛋的项目获得了科技展第一名，成了全场焦点，令他黯然失色。她把自家鸡蛋送给他，他听家人怀疑她家鸡蛋不卫生，便偷偷把鸡蛋丢掉。她得知真相，很伤心，两人关系跌入冰点。她跟家人诉说，引发争吵。原来父亲一直攒钱照顾傻弟弟，所以生活拮据。她理解了父母，自己动手，还得到了他外公的鼎力相助。他向她道歉，但是并未解决问题。他开始关注她。鸡蛋风波未平，家庭晚宴与午餐男孩评选... ',
-        '2010-07-26 00:00:00', 1, 'cover009.jpg', 'video009.mp4', '美国', 'comedy', 9.1);
-INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url,
-                   movie_region, movie_type, movie_score)
-VALUES (10, '蝙蝠侠：黑暗骑士',
-        '从亲眼目睹父母被人杀死的阴影中走出来的“蝙蝠侠”，经历了成长之后，已经不再是那个桀骜不的孤单英雄了。在警官吉姆·戈登和检查官哈维·登特的通力帮助下，“蝙蝠侠”无后顾之忧地继续满世界的奔波，与日益增长起来的犯罪威胁做着永无休止的争斗，而他所在的高谭市，也是进展最为明显的地方，犯罪率以一种惊人的速度持续下降着，毕竟对方是能够上天入地的“蝙蝠侠”，不借两个胆子谁还敢造次呢？不过像高谭这种科技与污秽并存的城市，平静是不可能维持太久的，果不其然，新一轮的混乱很快就席卷了整个城市，人们再一被被恐慌所笼罩着，而声称愿意为这一切负责的，自然就是所有混乱的源头以及支配者--“小丑”了。　　先不管“小丑”掀起一个又一个犯罪的狂潮的最终目的为何，他的企图都是邪恶的，所作所为更是早就危害到了高谭市民的正常生活……其中自然包括了“蝙蝠侠”身边几个非常重要的人，而他需要做的，就是将这股新的危机全部亲自用手捏得粉碎。然而在面对着这个有史以来最具针对性、最恶毒的对手时，“蝙蝠侠”却不得不从他的地下军械库里搬出每一件能够用得上的高科技武器，还得时刻纠结着为他曾经信仰的一切寻找答案。',
-        '2008-07-14 00:00:00', 1, 'cover010.jpg', 'video010.mp4', '美国', 'action', 9.2);
+INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url, movie_region, movie_type, movie_score) VALUES (1, '美丽人生', '犹太青年圭多（罗伯托·贝尼尼）邂逅美丽的女教师多拉（尼可莱塔·布拉斯基），他彬彬有礼的向多拉鞠躬：“早安！公主！”。历经诸多令人啼笑皆非的周折后，天遂人愿，两人幸福美满的生活在一起。', '1997-12-20 00:00:00', 1, 'cover001.jpg', 'video001.mp4', '意大利', 'comedy', 9.5);
+INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url, movie_region, movie_type, movie_score) VALUES (2, '三傻大闹宝莱坞', '本片根据印度畅销书作家奇坦·巴哈特（Chetan Bhagat）的处女作小说《五点人》（Five Point Someone）改编而成。法兰（马德哈万 R Madhavan 饰）、拉杜（沙曼·乔希 Sharman Joshi 饰）与兰乔（阿米尔·汗 Aamir Khan 饰）是皇家工程学院的学生，三人共居一室，结为好友。在以严格著称的学院里，兰乔是个非常与众不同的学生，他不死记硬背，甚至还公然顶撞校长“病毒”（波曼·伊拉尼 Boman Irani 饰），质疑他的教学方法。他不仅鼓动法兰与拉杜去勇敢追寻理想，还劝说校长的二女儿碧雅（卡琳娜·卡普 Kareena Kapoor 饰）离开满眼铜臭的未婚夫。兰乔的特立独行引起了模范学生“消音器”（奥米·维嘉 Omi Vaidya 饰）的不满，他约定十年后再与兰乔一决高下，看哪种生活方式更能取得成功。', '2009-12-25 00:00:00', 0, 'cover002.jpg', 'video002.mp4', '印度', 'comedy', 9.2);
+INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url, movie_region, movie_type, movie_score) VALUES (3, '机器人总动员', '公元2805年，人类文明高度发展，却因污染和生活垃圾大量增加使得地球不再适于人类居住。地球人被迫乘坐飞船离开故乡，进行一次漫长无边的宇宙之旅。临行前他们委托Buynlarge的公司对地球垃圾进行清理，该公司开发了名为WALL·E（Waste Allocation Load Lifters – Earth 地球废品分装员）的机器人担当此重任。', '2008-06-27 00:00:00', 1, 'cover003.jpg', 'video003.mp4', '美国', 'animation', 9.3);
+INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url, movie_region, movie_type, movie_score) VALUES (4, '无间道', '1991年，香港黑帮三合会会员刘健明（刘德华）听从老大韩琛（曾志伟）的吩咐，加入警察部队成为黑帮卧底，韩琛许诺刘健明会帮其在七年后晋升为见习督察。1992年，警察训练学校优秀学员陈永仁（梁朝伟）被上级要求深入到三合会做卧底，终极目标是成为韩琛身边的红人。2002年，两人都不负重望，也都身背重压，刘健明渐想成为一个真正的好人，陈永仁则盼着尽快回归警察身份。', '2002-12-12 00:00:00', 1, 'cover004.jpg', 'video004.mp4', '中国', 'action', 9.3);
+INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url, movie_region, movie_type, movie_score) VALUES (5, '大话西游之大圣娶亲', '至尊宝（周星驰 饰）被月光宝盒带回到五百年前，遇见紫霞仙子（朱茵 饰），被对方打上烙印成为对方的人，并发觉自己已变成孙悟空。', '1995-02-04 00:00:00', 0, 'cover005.jpg', 'video005.mp4', '中国', 'comedy', 9.2);
+INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url, movie_region, movie_type, movie_score) VALUES (6, '千与千寻', '千寻和爸爸妈妈一同驱车前往新家，在郊外的小路上不慎进入了神秘的隧道——他们去到了另外一个诡异世界—一个中世纪的小镇。远处飘来食物的香味，爸爸妈妈大快朵颐，孰料之后变成了猪！这时小镇上渐渐来了许多样子古怪、半透明的人。', '2001-07-20 00:00:00', 1, 'cover006.jpg', 'video006.mp4', '日本', 'animation', 9.4);
+INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url, movie_region, movie_type, movie_score) VALUES (7, '这个杀手不太冷', '里昂（让·雷诺饰）是名孤独的职业杀手，受人雇佣。一天，邻居家小姑娘马蒂尔达（纳塔丽·波特曼饰)敲开他的房门，要求在他那里暂避杀身之祸。原来邻居家的主人是警方缉毒组的眼线，只因贪污了一小包毒品而遭恶警（加里·奥德曼饰）杀害全家的惩罚。马蒂尔达得到里昂的留救，幸免于难，并留在里昂那里。里昂教小女孩使枪，她教里昂法文，两人关系日趋亲密，相处融洽。', '1994-09-14 00:00:00', 1, 'cover007.jpg', 'video007.mp4', '法国', 'action', 9.4);
+INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url, movie_region, movie_type, movie_score) VALUES (8, '疯狂动物城', '故事发生在一个所有哺乳类动物和谐共存的美好世界中，兔子朱迪（金妮弗·古德温 Ginnifer Goodwin 配音）从小就梦想着能够成为一名惩恶扬善的刑警，凭借着智慧和努力，朱迪成功的从警校中毕业进入了疯狂动物城警察局，殊不知这里是大型肉食类动物的领地，作为第一只，也是唯一的小型食草类动物，朱迪会遇到怎样的故事呢？', '2016-03-04 00:00:00', 1, 'cover008.jpg', 'video008.mp4', '美国', 'animation', 9.2);
+INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url, movie_region, movie_type, movie_score) VALUES (9, '怦然心动', '布莱斯（卡兰•麦克奥利菲 Callan McAuliffe 饰）全家搬到小镇，邻家女孩朱丽（玛德琳•卡罗尔 Madeline Carroll 饰）前来帮忙。她对他一见钟情，心愿是获得他的吻。两人是同班同学，她一直想方设法接近他，但是他避之不及。她喜欢爬在高高的梧桐树上看风景。但因为施工，树被要被砍掉，她誓死捍卫，希望他并肩作战，但是他退缩了。她的事迹上了报纸，外公对她颇有好感，令他十分困惑。她凭借鸡下蛋的项目获得了科技展第一名，成了全场焦点，令他黯然失色。她把自家鸡蛋送给他，他听家人怀疑她家鸡蛋不卫生，便偷偷把鸡蛋丢掉。她得知真相，很伤心，两人关系跌入冰点。她跟家人诉说，引发争吵。原来父亲一直攒钱照顾傻弟弟，所以生活拮据。她理解了父母，自己动手，还得到了他外公的鼎力相助。他向她道歉，但是并未解决问题。他开始关注她。鸡蛋风波未平，家庭晚宴与午餐男孩评选...', '2010-07-26 00:00:00', 1, 'cover009.jpg', 'video009.mp4', '美国', 'comedy', 9.1);
+INSERT INTO movie (movie_id, movie_title, movie_description, release_date, need_vip, movie_cover_url, movie_local_url, movie_region, movie_type, movie_score) VALUES (10, '蝙蝠侠：黑暗骑士', '从亲眼目睹父母被人杀死的阴影中走出来的“蝙蝠侠”，经历了成长之后，已经不再是那个桀骜不的孤单英雄了。在警官吉姆·戈登和检查官哈维·登特的通力帮助下，“蝙蝠侠”无后顾之忧地继续满世界的奔波，与日益增长起来的犯罪威胁做着永无休止的争斗，而他所在的高谭市，也是进展最为明显的地方，犯罪率以一种惊人的速度持续下降着，毕竟对方是能够上天入地的“蝙蝠侠”，不借两个胆子谁还敢造次呢？不过像高谭这种科技与污秽并存的城市，平静是不可能维持太久的，果不其然，新一轮的混乱很快就席卷了整个城市，人们再一被被恐慌所笼罩着，而声称愿意为这一切负责的，自然就是所有混乱的源头以及支配者--“小丑”了。　　先不管“小丑”掀起一个又一个犯罪的狂潮的最终目的为何，他的企图都是邪恶的，所作所为更是早就危害到了高谭市民的正常生活……其中自然包括了“蝙蝠侠”身边几个非常重要的人，而他需要做的，就是将这股新的危机全部亲自用手捏得粉碎。然而在面对着这个有史以来最具针对性、最恶毒的对手时，“蝙蝠侠”却不得不从他的地下军械库里搬出每一件能够用得上的高科技武器，还得时刻纠结着为他曾经信仰的一切寻找答案。', '2008-07-14 00:00:00', 1, 'cover010.jpg', 'video010.mp4', '美国', 'action', 9.2);
 
--- 插入staff表数据
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (1, 1, '罗伯托·贝尼尼', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (2, 1, '尼可莱塔·布拉斯基 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (3, 1, '乔治·坎塔里尼', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (4, 2, ' 拉吉库马尔·希拉尼', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (5, 2, '阿米尔·汗 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (6, 2, '卡琳娜·卡普尔 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (7, 2, '马达范', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (8, 2, '沙尔曼·乔希 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (9, 3, '安德鲁·斯坦顿', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (10, 3, ' 本·贝尔特', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (11, 3, '艾丽莎·奈特 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (12, 3, '杰夫·格尔林', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (13, 4, '刘伟强', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (14, 4, '麦兆辉', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (15, 4, '刘德华 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (16, 4, '梁朝伟', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (17, 4, ' 黄秋生', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (18, 5, '刘镇伟', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (19, 5, '周星驰', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (20, 5, '朱茵', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (21, 5, '蔡少芬', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (22, 6, '宫崎骏', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (23, 6, '柊瑠美', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (24, 6, '入野自由', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (25, 6, '夏木真理 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (26, 7, '吕克·贝松', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (27, 7, '让·雷诺 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (28, 7, '娜塔莉·波特曼', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (29, 7, '加里·奥德曼', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (30, 8, '拜伦·霍华德 ', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (31, 8, '瑞奇·摩尔', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (32, 8, '杰拉德·布什', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (33, 8, '金妮弗·古德温 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (34, 8, '杰森·贝特曼', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (35, 8, '伊德瑞斯·艾尔巴', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (36, 9, '罗伯·莱纳', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (37, 9, '玛德琳·卡罗尔 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (38, 9, '卡兰·麦克奥利菲 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (39, 9, '瑞贝卡·德·莫妮', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (40, 9, '安东尼·爱德华兹 ', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (41, 10, '克里斯托弗·诺兰', 1);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (42, 10, '艾伦·艾克哈特', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (43, 10, '希斯·莱杰', 0);
-INSERT INTO staff (staff_id, movie_id, staff_name, staff_role)
-VALUES (44, 10, '克里斯蒂安·贝尔 ', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (1, 1, '罗伯托·贝尼尼', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (2, 1, '尼可莱塔·布拉斯基', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (3, 1, '乔治·坎塔里尼', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (4, 2, '拉吉库马尔·希拉尼', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (5, 2, '阿米尔·汗', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (6, 2, '卡琳娜·卡普尔', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (7, 2, '马达范', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (8, 2, '沙尔曼·乔希', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (9, 3, '安德鲁·斯坦顿', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (10, 3, '本·贝尔特', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (11, 3, '艾丽莎·奈特', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (12, 3, '杰夫·格尔林', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (13, 4, '刘伟强', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (14, 4, '麦兆辉', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (15, 4, '刘德华', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (16, 4, '梁朝伟', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (17, 4, '黄秋生', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (18, 5, '刘镇伟', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (19, 5, '周星驰', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (20, 5, '朱茵', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (21, 5, '蔡少芬', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (22, 6, '宫崎骏', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (23, 6, '柊瑠美', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (24, 6, '入野自由', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (25, 6, '夏木真理', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (26, 7, '吕克·贝松', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (27, 7, '让·雷诺', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (28, 7, '娜塔莉·波特曼', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (29, 7, '加里·奥德曼', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (30, 8, '拜伦·霍华德', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (31, 8, '瑞奇·摩尔', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (32, 8, '杰拉德·布什', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (33, 8, '金妮弗·古德温', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (34, 8, '杰森·贝特曼', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (35, 8, '伊德瑞斯·艾尔巴', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (36, 9, '罗伯·莱纳', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (37, 9, '玛德琳·卡罗尔', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (38, 9, '卡兰·麦克奥利菲', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (39, 9, '瑞贝卡·德·莫妮', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (40, 9, '安东尼·爱德华兹', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (41, 10, '克里斯托弗·诺兰', 1);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (42, 10, '艾伦·艾克哈特', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (43, 10, '希斯·莱杰', 0);
+INSERT INTO staff (staff_id, movie_id, staff_name, staff_role) VALUES (44, 10, '克里斯蒂安·贝尔', 0);
 
--- 插入电影播放量数据
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 10000, '1998-01-01 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 12000, '1998-01-02 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 14000, '1998-01-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 13000, '1998-01-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 12000, '1998-01-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 11000, '1998-01-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 10000, '1998-01-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 9000, '1998-01-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 8000, '1998-01-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 7000, '1998-01-10 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 6500, '1998-01-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 6000, '1998-01-10 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 5500, '1998-01-02 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 5000, '1998-01-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 4500, '1998-01-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 4000, '1998-01-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 3800, '1998-01-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 3600, '1998-01-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 3400, '1998-01-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 3200, '1998-01-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 3000, '1998-01-10 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 2800, '1998-01-11 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 2600, '1998-01-12 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 2400, '1998-01-13 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 2200, '1998-01-14 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 2000, '1998-01-15 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 1800, '1998-01-16 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 1600, '1998-01-17 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 1400, '1998-01-18 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (1, 1200, '1998-01-19 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 15000, '2010-01-01 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 18000, '2010-01-02 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 20000, '2010-01-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 19000, '2010-01-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 17000, '2010-01-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 16000, '2010-01-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 15000, '2010-01-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 14000, '2010-01-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 13000, '2010-01-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 12000, '2010-01-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 11000, '2010-01-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 10000, '2010-01-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 9500, '2010-01-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 9000, '2010-01-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 8500, '2010-01-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 8000, '2010-01-10 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 7500, '2010-01-11 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 7000, '2010-01-12 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 6500, '2010-01-13 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 6000, '2010-01-14 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 5500, '2010-01-15 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 5000, '2010-01-16 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 4500, '2010-01-17 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 4000, '2010-01-18 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 3800, '2010-01-19 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 3600, '2010-01-20 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 3400, '2010-01-21 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 3200, '2010-01-22 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 3000, '2010-01-23 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (2, 2800, '2010-01-24 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 25000, '2008-06-28 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 30000, '2008-06-29 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 35000, '2008-06-30 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 32000, '2008-07-01 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 30000, '2008-07-02 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 28000, '2008-07-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 26000, '2008-07-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 24000, '2008-07-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 22000, '2008-07-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 20000, '2008-07-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 18000, '2008-07-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 16000, '2008-07-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 15000, '2008-07-10 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 14000, '2008-07-11 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 13000, '2008-07-12 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 12000, '2008-07-13 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 11000, '2008-07-14 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 10000, '2008-07-15 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 9000, '2008-07-16 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 8000, '2008-07-17 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 7500, '2008-07-18 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 7000, '2008-07-19 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 6500, '2008-07-20 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 6000, '2008-07-21 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 5800, '2008-07-22 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 5600, '2008-07-23 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 5400, '2008-07-24 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 5200, '2008-07-25 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 5000, '2008-07-26 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (3, 4800, '2008-07-27 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 20000, '2010-01-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 25000, '2010-01-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 30000, '2010-01-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 28000, '2010-01-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 26000, '2010-01-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 24000, '2010-01-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 22000, '2010-01-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 20000, '2010-01-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 18000, '2010-01-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 16000, '2010-01-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 15000, '2010-01-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 14000, '2010-01-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 13000, '2010-01-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 12000, '2010-01-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 11000, '2010-01-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 10000, '2010-01-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 9000, '2010-01-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 8000, '2010-01-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 7500, '2010-01-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 7000, '2010-01-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 6500, '2010-01-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 6000, '2010-01-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 5800, '2010-01-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 5600, '2010-01-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 5400, '2003-01-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 5200, '2003-01-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 5000, '2003-01-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 4800, '2003-01-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 4600, '2003-01-10 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (4, 4400, '2003-01-11 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 10000, '1995-02-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 15000, '1995-02-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 20000, '1995-02-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 18000, '1995-02-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 16000, '1995-02-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 14000, '1995-02-10 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 12000, '1995-02-11 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 11000, '1995-02-12 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 10000, '1995-02-13 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 9000, '1995-02-14 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 8500, '1995-02-15 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 8000, '1995-02-16 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 7500, '1995-02-17 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 7000, '1995-02-18 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 6500, '1995-02-19 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 6000, '1995-02-20 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 5800, '1995-02-21 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 5600, '1995-02-22 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 5400, '1995-02-23 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 5200, '1995-02-24 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 5000, '1995-02-25 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 4800, '1995-02-26 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 4600, '1995-02-27 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 4400, '1995-02-28 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 4200, '1995-03-01 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 4000, '1995-03-02 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 3800, '1995-03-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 3600, '1995-03-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 3400, '1995-03-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (5, 3200, '1995-03-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 35000, '2001-07-21 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 40000, '2001-07-22 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 45000, '2001-07-23 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 42000, '2001-07-24 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 40000, '2001-07-25 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 38000, '2001-07-26 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 36000, '2001-07-27 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 34000, '2001-07-28 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 32000, '2001-07-29 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 30000, '2001-07-30 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 28000, '2001-07-31 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 26000, '2001-08-01 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 24000, '2001-08-02 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 22000, '2001-08-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 20000, '2001-08-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 18000, '2001-08-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 16000, '2001-08-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 15000, '2001-08-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 14000, '2001-08-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 13000, '2001-08-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 12000, '2001-08-10 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 11000, '2001-08-11 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 10000, '2001-08-12 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 9500, '2001-08-13 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 9000, '2001-08-14 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 8500, '2001-08-15 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 8000, '2001-08-16 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 7500, '2001-08-17 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 7000, '2001-08-18 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (6, 6500, '2001-08-19 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 25000, '1994-09-15 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 30000, '1994-09-16 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 35000, '1994-09-17 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 32000, '1994-09-18 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 30000, '1994-09-19 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 28000, '1994-09-20 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 26000, '1994-09-21 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 24000, '1994-09-22 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 22000, '1994-09-23 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 20000, '1994-09-24 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 18000, '1994-09-25 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 16000, '1994-09-26 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 14000, '1994-09-27 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 12000, '1994-09-28 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 11000, '1994-09-29 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 10000, '1994-09-30 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 9500, '1994-10-01 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 9000, '1994-10-02 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 8500, '1994-10-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 8000, '1994-10-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 7500, '1994-10-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 7000, '1994-10-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 6800, '1994-10-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 6600, '1994-10-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 6400, '1994-10-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 6200, '2016-03-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 6000, '2016-03-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 5800, '2016-03-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 5600, '2016-03-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (7, 5400, '2016-03-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 40000, '2016-03-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 45000, '2016-03-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 50000, '2016-03-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 48000, '2016-03-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 46000, '2016-03-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 44000, '2016-03-10 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 42000, '2016-03-11 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 40000, '2016-03-12 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 38000, '2016-03-13 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 36000, '2016-03-14 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 34000, '2016-03-15 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 32000, '2016-03-16 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 30000, '2016-03-17 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 28000, '2016-03-18 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 26000, '2016-03-19 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 24000, '2016-03-20 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 22000, '2016-03-21 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 20000, '2016-03-22 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 18000, '2016-03-23 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 16000, '2016-03-24 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 14000, '2016-03-25 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 12000, '2016-03-26 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 11000, '2016-03-27 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 10000, '2016-03-28 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 9500, '2016-03-29 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 9000, '2016-03-30 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 8500, '2016-03-31 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 8000, '2016-04-01 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 7500, '2016-04-02 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (8, 7000, '2016-04-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 15000, '2010-07-27 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 18000, '2010-07-28 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 22000, '2010-07-29 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 20000, '2010-07-30 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 18000, '2010-07-31 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 16000, '2010-08-01 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 14000, '2010-08-02 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 12000, '2010-08-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 11000, '2010-08-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 10000, '2010-08-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 9500, '2010-08-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 9000, '2010-08-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 8500, '2010-08-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 8000, '2010-08-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 7500, '2010-08-10 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 7000, '2010-08-11 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 6800, '2010-08-12 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 6600, '2010-08-13 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 6400, '2010-08-14 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 6200, '2010-08-15 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 6000, '2010-08-16 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 5800, '2010-08-17 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 5600, '2010-08-18 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 5400, '2010-08-19 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 5200, '2010-08-20 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 5000, '2010-08-21 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 4800, '2010-08-22 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 4600, '2010-08-23 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 4400, '2010-08-24 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (9, 4200, '2010-08-25 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 40000, '2008-07-15 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 45000, '2008-07-16 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 50000, '2008-07-17 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 48000, '2008-07-18 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 46000, '2008-07-19 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 44000, '2008-07-20 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 42000, '2008-07-21 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 40000, '2008-07-22 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 38000, '2008-07-23 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 36000, '2008-07-24 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 34000, '2008-07-25 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 32000, '2008-07-26 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 30000, '2008-07-27 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 28000, '2008-07-28 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 26000, '2008-07-29 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 24000, '2008-07-30 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 22000, '2008-07-31 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 20000, '2008-08-01 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 18000, '2008-08-02 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 16000, '2008-08-03 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 14000, '2008-08-04 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 12000, '2008-08-05 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 11000, '2008-08-06 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 10000, '2008-08-07 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 9500, '2008-08-08 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 9000, '2008-08-09 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 8500, '2008-08-10 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 8000, '2008-08-11 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 7500, '2008-08-12 00:00:00');
-INSERT INTO movie_playback (movie_id, play_one_day, play_date)
-VALUES (10, 7000, '2008-08-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 13438, '2024-01-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 19853, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 25193, '2024-02-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 16638, '2024-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 4705, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 17232, '2024-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 20031, '2024-01-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 21102, '2024-01-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 15565, '2024-01-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 20247, '2024-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 21928, '2024-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 10130, '2024-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 11436, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 23067, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 12452, '2024-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 20396, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 16431, '2024-02-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 19486, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 5588, '2024-01-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 3942, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 6416, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 19041, '2024-01-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 26878, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 28813, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 10511, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 10532, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 22935, '2024-01-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 12453, '2024-02-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 7175, '2024-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 10637, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 25680, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 27502, '2024-02-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 18579, '2024-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 20976, '2024-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 11702, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 6857, '2024-02-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 23005, '2024-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 4371, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 10243, '2024-02-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (1, 9108, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 10133, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 25452, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 8866, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 9559, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 7511, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 15777, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 27348, '2024-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 13731, '2024-02-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 3238, '2024-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 5853, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 4573, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 13408, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 25754, '2024-02-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 23461, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 22407, '2024-01-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 4274, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 23946, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 6496, '2024-01-28 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 23110, '2024-01-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 28502, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 13629, '2024-01-28 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 5803, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 18963, '2024-01-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 20192, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 6024, '2024-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 10866, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 18739, '2024-01-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 24074, '2024-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 6728, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 23359, '2024-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 12053, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 17506, '2024-01-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 10484, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 5132, '2024-02-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 3262, '2024-02-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 28777, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 26340, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 16968, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 15990, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (2, 4316, '2024-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 4346, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 3975, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 21421, '2024-01-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 16753, '2024-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 21676, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 18413, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 12822, '2024-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 17389, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 19545, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 20032, '2024-02-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 22555, '2024-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 26673, '2024-01-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 10844, '2024-01-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 25231, '2024-01-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 10249, '2024-01-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 18907, '2024-01-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 24566, '2024-01-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 23202, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 12739, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 24942, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 27531, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 11781, '2024-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 11853, '2024-01-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 10349, '2024-01-25 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 9028, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 27389, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 17701, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 27408, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 8069, '2024-02-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 23353, '2024-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 10246, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 28327, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 12623, '2024-02-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 6164, '2024-01-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 4138, '2024-02-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 15657, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 11421, '2024-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 8689, '2024-01-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 11775, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (3, 25489, '2024-01-26 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 14492, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 28696, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 24148, '2024-01-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 23153, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 4419, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 12923, '2024-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 7901, '2024-02-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 15491, '2024-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 9665, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 19321, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 22840, '2024-01-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 8911, '2024-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 24287, '2024-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 19824, '2024-01-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 29825, '2024-01-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 19211, '2024-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 3899, '2024-02-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 6838, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 22425, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 26138, '2024-02-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 13162, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 26177, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 19069, '2024-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 22953, '2024-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 13388, '2024-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 11653, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 7345, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 15458, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 6407, '2024-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 5076, '2024-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 19447, '2024-01-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 3093, '2024-02-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 10433, '2024-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 3158, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 11474, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 17220, '2024-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 27636, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 22176, '2024-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 25813, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (4, 17992, '2024-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 3080, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 18274, '2024-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 4028, '2024-01-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 6278, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 20627, '2024-02-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 9192, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 15214, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 10001, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 16502, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 20899, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 3933, '2024-02-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 8319, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 19585, '2024-01-26 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 10015, '2024-02-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 12611, '2024-01-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 5981, '2024-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 26929, '2024-02-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 21455, '2024-01-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 5094, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 4858, '2024-02-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 22361, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 15523, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 5433, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 17593, '2024-02-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 18793, '2024-01-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 7333, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 29268, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 27328, '2024-02-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 23407, '2024-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 15613, '2024-02-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 22266, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 16985, '2024-01-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 14847, '2024-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 15421, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 29010, '2024-01-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 8225, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 24050, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 6866, '2024-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 9045, '2024-01-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (5, 9782, '2024-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 22843, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 19126, '2024-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 4832, '2024-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 10993, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 24207, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 23570, '2024-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 20164, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 23515, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 20731, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 22465, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 12749, '2024-01-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 27468, '2024-01-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 21613, '2024-01-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 20002, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 14763, '2024-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 11087, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 22953, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 25279, '2024-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 25768, '2024-01-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 25954, '2024-01-25 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 7985, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 21659, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 5070, '2024-01-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 6229, '2024-02-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 24080, '2024-01-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 21261, '2024-01-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 29405, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 3611, '2024-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 25530, '2024-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 24006, '2024-02-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 19663, '2024-01-28 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 3775, '2024-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 16341, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 3193, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 21405, '2024-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 16523, '2024-02-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 28845, '2024-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 14854, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 4950, '2024-01-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (6, 26600, '2024-01-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 16126, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 18810, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 6822, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 15265, '2024-01-25 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 3586, '2024-01-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 7171, '2024-01-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 6610, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 29525, '2024-01-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 7452, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 21643, '2024-01-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 19366, '2024-01-30 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 20917, '2024-02-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 17988, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 15908, '2024-01-28 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 29747, '2024-01-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 27970, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 9303, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 20578, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 10763, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 20022, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 29229, '2024-01-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 26269, '2024-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 24798, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 9199, '2024-01-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 25542, '2024-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 20515, '2024-02-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 6521, '2024-01-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 5368, '2024-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 6356, '2024-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 3377, '2024-02-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 12852, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 10784, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 14256, '2024-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 23738, '2024-01-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 16892, '2024-02-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 22656, '2024-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 27058, '2024-01-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 21874, '2024-02-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 20099, '2024-01-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (7, 17235, '2024-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 20871, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 27215, '2024-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 26833, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 25793, '2024-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 19118, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 24880, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 5252, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 17688, '2024-02-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 8129, '2024-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 12960, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 11878, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 21050, '2024-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 10657, '2024-02-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 12965, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 8155, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 24432, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 27364, '2024-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 12455, '2024-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 16247, '2024-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 29767, '2024-02-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 9681, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 27137, '2024-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 10994, '2024-02-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 25545, '2024-01-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 20072, '2024-01-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 17182, '2024-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 12996, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 3845, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 7739, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 3663, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 8071, '2024-01-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 24662, '2024-01-26 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 18046, '2024-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 5556, '2024-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 16756, '2024-02-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 15065, '2024-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 23553, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 4398, '2024-01-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 9983, '2024-02-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (8, 21571, '2024-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 10903, '2024-02-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 22670, '2024-01-24 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 26168, '2024-01-25 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 3444, '2024-01-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 26206, '2024-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 10765, '2024-01-26 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 9858, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 24720, '2024-02-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 5663, '2024-01-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 8355, '2024-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 22399, '2024-01-23 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 11543, '2024-01-26 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 3960, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 3887, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 13790, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 7582, '2024-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 22465, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 19822, '2024-02-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 13091, '2024-01-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 16175, '2024-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 4408, '2024-01-10 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 28208, '2024-02-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 12236, '2024-02-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 26525, '2024-01-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 27978, '2024-01-13 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 23082, '2024-01-14 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 17909, '2024-01-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 18567, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 22516, '2024-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 24811, '2024-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 18843, '2024-01-18 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 13386, '2024-01-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 5470, '2024-02-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 19597, '2024-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 17978, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 17034, '2024-01-20 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 8001, '2024-01-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 3428, '2024-01-19 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 21796, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (9, 7099, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 10218, '2024-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 26604, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 27495, '2024-01-22 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 8777, '2024-01-27 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 11849, '2024-01-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 22170, '2024-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 29371, '2024-01-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 17853, '2024-02-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 22504, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 10430, '2024-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 7225, '2024-01-12 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 5671, '2024-02-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 18915, '2024-02-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 20277, '2024-02-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 28189, '2024-01-21 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 20499, '2024-02-03 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 12118, '2024-01-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 6171, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 26625, '2024-02-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 17570, '2024-02-01 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 5361, '2024-01-16 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 6904, '2024-02-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 8283, '2024-01-05 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 14374, '2024-02-09 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 8133, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 7637, '2024-01-31 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 19645, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 15166, '2024-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 29931, '2024-01-11 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 20454, '2024-01-07 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 12134, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 7986, '2024-02-04 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 25905, '2024-01-06 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 23003, '2024-01-29 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 22732, '2024-01-02 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 28844, '2024-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 25776, '2024-01-17 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 7609, '2024-01-08 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 18042, '2024-01-15 00:00:00');
+INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (10, 21283, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 13792, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 20108, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 9788, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 12384, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 15546, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 12157, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 7180, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 20794, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 21532, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 8736, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 4565, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 17098, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 23743, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 23159, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 18472, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 6397, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 3705, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 23687, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 14937, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 28145, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 7638, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 18916, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 22027, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 6541, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 12218, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 6194, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 17135, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 17940, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 19113, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 10007, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 19182, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 6513, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 29543, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 17066, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 24829, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 15503, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 5791, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 19960, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 15266, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (11, 19569, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 26190, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 12269, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 18808, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 25327, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 29700, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 13771, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 16391, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 15085, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 12854, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 20610, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 18401, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 26657, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 4474, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 25298, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 20538, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 15172, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 28572, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 17948, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 13272, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 20964, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 5599, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 26287, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 22279, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 25088, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 6404, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 16995, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 16343, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 22665, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 3898, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 18107, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 17662, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 18831, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 29309, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 7471, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 26195, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 9113, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 13618, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 26370, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 27638, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (12, 5942, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 10235, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 12523, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 10771, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 10986, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 23467, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 25143, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 11028, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 11209, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 19012, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 28739, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 8932, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 6751, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 29069, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 22069, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 19573, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 20944, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 10493, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 11909, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 3379, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 18430, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 24074, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 17634, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 12291, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 18656, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 5349, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 15465, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 11477, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 9632, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 24815, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 12000, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 23545, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 20107, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 11664, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 12761, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 6917, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 24358, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 24632, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 10237, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 13007, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (13, 16308, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 9027, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 10086, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 16554, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 3802, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 7591, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 19292, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 17453, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 3302, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 26551, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 11053, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 4779, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 29872, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 17622, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 26554, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 12389, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 28582, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 28691, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 6304, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 7642, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 23650, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 4391, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 29813, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 7315, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 19242, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 17994, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 8043, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 18434, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 19819, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 26724, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 24699, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 14233, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 20161, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 28426, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 28493, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 14489, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 4194, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 24320, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 29113, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 6180, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (14, 3937, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 23674, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 6691, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 5821, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 23793, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 15155, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 28913, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 15388, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 23621, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 21969, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 12027, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 6373, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 7078, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 14754, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 8834, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 6734, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 9265, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 9391, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 13377, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 28868, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 20623, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 7008, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 6980, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 8381, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 13500, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 8839, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 12326, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 28940, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 27951, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 11598, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 10750, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 13469, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 24398, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 22323, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 13082, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 9116, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 3841, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 13801, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 21523, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 10299, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (15, 18873, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 18042, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 28955, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 24674, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 21648, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 19714, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 26665, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 20485, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 27188, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 26256, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 29063, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 16574, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 21477, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 28001, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 23878, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 29559, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 10059, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 28233, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 16583, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 15671, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 6025, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 15208, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 29888, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 25393, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 22763, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 19793, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 5580, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 20489, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 14378, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 8152, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 8008, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 6638, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 16717, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 21523, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 6551, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 13305, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 6316, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 5587, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 25199, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 3309, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (16, 6077, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 12417, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 28881, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 3060, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 15331, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 6072, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 18284, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 6473, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 19601, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 24449, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 27471, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 10710, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 23947, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 18964, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 26927, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 18215, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 29666, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 19820, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 6092, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 25114, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 27817, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 17661, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 12077, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 8611, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 21669, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 8710, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 6377, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 18074, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 10777, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 29357, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 22658, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 21685, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 13187, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 15881, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 22625, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 3903, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 26722, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 21284, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 6745, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 15909, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (17, 3872, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 11330, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 28060, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 7025, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 4491, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 25508, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 5454, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 9728, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 10093, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 7290, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 23083, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 23691, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 4808, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 22150, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 3954, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 12784, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 27100, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 28443, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 8041, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 27562, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 28197, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 15621, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 25865, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 9524, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 4026, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 8470, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 12024, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 12302, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 4990, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 6441, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 11596, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 8007, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 3381, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 21643, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 19512, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 13609, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 28597, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 5489, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 12322, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 17525, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (18, 24212, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 5449, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 21568, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 7015, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 11559, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 26285, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 7374, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 20158, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 17306, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 16434, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 11309, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 26766, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 22032, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 24982, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 27699, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 16998, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 9609, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 17184, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 18580, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 3663, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 24651, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 8020, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 25425, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 13814, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 15346, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 28137, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 11415, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 9857, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 18975, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 23476, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 8354, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 22245, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 18878, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 14609, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 16223, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 3658, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 9430, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 3166, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 4335, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 29697, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (19, 4059, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 8408, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 19609, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 23189, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 11014, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 11316, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 25236, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 5105, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 29812, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 4515, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 15390, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 13533, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 29880, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 17230, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 24000, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 11058, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 16420, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 28341, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 27907, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 29559, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 20824, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 16849, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 29446, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 4059, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 6729, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 28058, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 13235, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 26659, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 18304, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 12459, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 26763, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 10174, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 5463, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 16775, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 19903, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 21509, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 12996, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 9059, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 20506, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 17086, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (20, 29302, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 21894, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 22949, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 19376, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 21908, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 24801, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 4434, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 5020, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 29024, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 25612, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 5423, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 11205, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 18417, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 29126, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 3886, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 15429, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 5125, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 3205, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 5574, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 8551, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 14988, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 10341, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 23510, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 10531, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 3630, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 11522, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 17819, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 28481, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 19445, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 27943, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 21509, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 13228, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 28038, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 23933, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 22245, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 24078, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 7292, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 22322, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 18960, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 4143, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (21, 14903, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 29658, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 24369, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 28661, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 27886, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 8156, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 17487, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 22523, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 20102, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 26646, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 23553, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 8958, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 20699, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 15206, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 5018, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 14721, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 13294, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 8728, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 18261, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 19589, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 19822, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 5183, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 18842, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 23969, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 19124, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 29334, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 9109, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 15788, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 12900, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 27548, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 19037, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 13810, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 10473, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 13454, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 27669, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 7322, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 3127, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 3522, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 23077, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 6661, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (22, 10246, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 18522, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 25863, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 16760, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 13212, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 4387, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 29705, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 25671, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 10046, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 26281, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 13500, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 21784, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 26152, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 16929, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 16154, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 4380, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 5675, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 5316, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 20240, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 29941, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 8234, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 17686, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 19606, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 10534, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 3151, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 27287, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 6028, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 21037, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 4574, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 6509, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 15687, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 16420, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 19076, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 22259, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 13501, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 20970, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 6744, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 10549, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 12646, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 29010, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (23, 22511, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 24959, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 21914, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 18452, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 18384, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 4354, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 14285, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 7447, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 28252, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 9108, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 11920, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 3801, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 15949, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 21392, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 20024, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 4536, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 25175, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 23231, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 19748, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 18574, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 15957, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 4862, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 14971, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 17398, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 18308, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 8402, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 15868, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 25932, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 23795, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 19040, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 4087, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 17124, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 16053, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 9563, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 25956, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 14241, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 25419, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 12031, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 24286, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 19569, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (24, 29270, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 5839, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 9614, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 5957, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 5152, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 24989, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 22053, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 7311, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 15587, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 25349, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 5631, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 28283, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 19750, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 8014, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 6028, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 13858, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 27467, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 12678, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 26855, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 25251, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 22965, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 18489, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 26835, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 3348, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 24789, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 17257, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 29420, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 3542, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 26054, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 5478, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 3418, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 21620, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 22888, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 15900, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 29226, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 7667, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 9231, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 29347, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 9275, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 16394, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (25, 9580, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 15636, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 13709, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 15339, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 27926, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 8330, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 16910, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 23697, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 15094, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 16494, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 25449, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 18970, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 11283, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 20911, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 24941, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 14904, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 17381, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 9246, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 11743, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 3678, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 9367, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 29776, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 24403, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 12615, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 19647, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 13908, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 10747, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 15567, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 13235, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 21402, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 22727, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 7505, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 28600, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 28256, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 25837, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 27396, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 22466, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 9160, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 9859, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 28157, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (26, 28836, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 9800, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 9656, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 13807, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 22430, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 24295, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 23344, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 3460, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 18152, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 18116, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 18039, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 9763, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 20541, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 21735, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 28240, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 18423, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 8075, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 12216, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 18491, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 8140, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 12553, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 13038, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 12609, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 23628, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 14521, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 18343, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 16074, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 13798, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 14589, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 19344, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 7158, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 13367, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 16681, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 11426, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 20390, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 26497, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 19896, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 25222, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 23412, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 29103, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (27, 23223, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 19638, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 13747, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 21413, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 6783, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 13614, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 4024, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 18280, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 4494, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 16648, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 26944, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 15984, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 5529, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 21546, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 3710, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 19183, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 23542, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 3935, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 10580, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 26489, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 14018, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 12324, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 19597, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 3505, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 29810, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 11803, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 28516, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 25704, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 6323, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 16994, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 14893, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 11802, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 11148, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 3138, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 19472, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 12797, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 24021, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 26080, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 8909, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 28199, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (28, 3503, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 3786, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 16952, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 6515, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 11649, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 8087, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 27731, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 17777, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 3168, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 27186, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 18283, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 24006, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 5920, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 10093, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 11967, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 29905, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 7188, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 11139, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 11805, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 13840, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 20420, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 4617, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 4680, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 6892, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 20696, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 18232, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 28445, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 15246, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 10497, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 14922, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 19690, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 16564, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 17920, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 15686, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 20000, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 23671, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 27695, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 23787, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 17200, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 3694, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (29, 12565, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 16835, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 29532, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 10331, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 26313, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 10704, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 6277, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 20529, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 14581, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 20323, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 12274, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 20421, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 23825, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 5935, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 23816, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 7055, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 15199, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 20237, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 20386, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 9954, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 25445, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 21595, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 29240, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 14774, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 15415, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 22407, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 15527, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 17580, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 23801, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 28614, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 15969, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 10868, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 20913, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 27415, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 19611, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 20983, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 9377, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 7457, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 4948, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 21169, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (30, 24393, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 24397, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 25446, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 11810, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 14556, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 17799, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 13646, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 8886, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 24355, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 10994, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 18458, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 29179, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 13980, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 25269, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 21498, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 7362, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 9262, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 13373, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 18971, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 26818, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 3494, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 10563, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 13303, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 28526, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 4467, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 25314, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 15588, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 4284, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 7136, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 27553, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 4085, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 22800, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 26746, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 8335, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 5781, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 4784, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 21512, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 23241, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 15432, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 20301, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (31, 29146, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 10843, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 10901, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 16376, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 16437, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 14711, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 10267, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 14859, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 17658, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 17448, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 23662, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 22986, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 20392, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 26659, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 8729, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 18238, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 20211, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 23298, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 27201, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 18185, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 29894, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 18752, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 21397, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 26617, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 7522, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 13608, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 24130, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 21466, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 10312, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 15220, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 13204, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 15753, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 23549, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 22524, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 6173, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 14894, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 3052, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 17100, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 20448, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 9414, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (32, 19050, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 11838, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 13974, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 10043, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 13530, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 16631, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 20125, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 6192, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 13530, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 29794, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 29023, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 5241, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 10155, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 4646, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 22273, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 12176, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 17821, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 26077, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 27251, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 29679, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 28926, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 12694, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 7809, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 28266, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 3325, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 25147, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 22320, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 4752, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 28614, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 6617, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 29906, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 10998, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 19055, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 19267, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 21401, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 3391, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 16789, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 24996, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 5247, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 15273, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (33, 29486, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 17305, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 11330, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 27162, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 29345, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 27713, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 26278, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 6344, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 4197, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 9340, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 3239, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 16729, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 3738, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 28131, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 19325, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 15390, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 24988, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 14629, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 5457, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 24411, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 25466, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 21359, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 21540, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 7042, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 12960, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 13569, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 19758, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 24490, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 27354, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 20391, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 4143, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 8816, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 15122, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 5642, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 23592, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 18318, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 5951, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 12230, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 26161, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 28559, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (34, 17278, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 15004, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 3383, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 12718, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 17252, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 11285, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 5431, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 6265, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 6064, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 14819, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 14437, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 24026, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 25333, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 10249, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 26929, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 3427, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 26051, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 21745, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 23803, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 24799, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 6308, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 28513, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 24645, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 20208, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 14557, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 19574, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 7043, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 7316, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 27023, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 17984, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 15675, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 17934, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 15402, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 13006, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 5988, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 8015, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 17097, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 28026, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 25915, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 9569, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (35, 23965, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 7669, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 3332, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 11742, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 19242, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 16767, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 14069, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 5591, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 10646, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 7883, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 21407, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 15666, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 25414, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 14146, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 5194, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 11841, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 29533, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 16205, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 7012, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 15519, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 13493, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 25170, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 13007, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 17183, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 8185, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 16140, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 17758, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 6265, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 26140, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 10573, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 7311, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 22952, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 28460, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 22658, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 9990, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 9919, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 3180, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 7866, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 11692, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 24306, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (36, 12636, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 22932, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 14243, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 3650, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 26523, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 6673, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 14141, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 21201, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 13339, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 10885, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 9878, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 20857, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 4020, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 23091, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 21435, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 13317, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 12429, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 5447, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 27005, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 15950, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 27841, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 24079, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 12599, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 9229, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 10553, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 7037, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 26723, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 8112, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 20573, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 23629, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 20543, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 14962, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 15711, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 4370, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 7475, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 15640, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 27540, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 9446, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 19348, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 5328, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (37, 5353, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 4931, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 16262, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 24682, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 11929, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 18283, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 12083, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 28750, '2024-01-20 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 18282, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 18840, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 24946, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 11450, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 11195, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 9546, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 17182, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 6229, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 23959, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 24978, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 24808, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 21927, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 14995, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 16484, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 17292, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 20554, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 13128, '2024-01-16 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 24710, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 9236, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 6445, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 4706, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 7337, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 18240, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 22751, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 29018, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 12369, '2024-01-25 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 12203, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 29341, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 17138, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 11318, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 24892, '2024-01-24 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 5948, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (38, 28299, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 24811, '2024-01-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 16048, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 18209, '2024-01-23 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 23094, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 16091, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 13784, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 18621, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 22082, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 21917, '2024-02-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 5934, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 4781, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 7309, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 26460, '2024-02-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 8353, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 25657, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 15234, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 16487, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 23476, '2024-01-13 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 21453, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 10132, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 21025, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 22586, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 29305, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 4464, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 6002, '2024-01-14 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 10329, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 3544, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 5990, '2024-01-19 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 15863, '2024-01-27 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 13720, '2024-01-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 23134, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 12873, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 25654, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 6520, '2024-01-18 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 3658, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 5139, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 9888, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 8340, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 7476, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (39, 28442, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 24298, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 7906, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 16926, '2024-01-30 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 10903, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 15669, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 15025, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 12813, '2024-01-29 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 12076, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 4966, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 12177, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 6399, '2024-02-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 11926, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 5111, '2024-01-09 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 11682, '2024-01-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 11112, '2024-01-22 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 24870, '2024-01-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 13253, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 10849, '2024-01-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 4944, '2024-01-31 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 26375, '2024-01-08 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 11483, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 16582, '2024-01-10 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 22877, '2024-01-05 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 20723, '2024-01-28 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 27385, '2024-01-15 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 21702, '2024-01-21 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 23762, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 21602, '2024-01-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 26665, '2024-02-01 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 4970, '2024-01-17 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 29166, '2024-02-04 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 23011, '2024-01-12 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 22852, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 12023, '2024-02-07 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 8869, '2024-02-02 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 3194, '2024-02-06 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 11486, '2024-01-11 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 5435, '2024-02-03 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 11878, '2024-01-26 00:00:00');
+# INSERT INTO movie_playback (movie_id, play_one_day, play_date) VALUES (40, 7127, '2024-02-05 00:00:00');

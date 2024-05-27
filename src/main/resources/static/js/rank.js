@@ -78,7 +78,7 @@ function searchRank(query) {
                     mainData.textContent = "👍" + movie.movieScore;
                 } else if (query === "playCount") {
                     explain.textContent = "今日热度";
-                    mainData.textContent = "🔥" + movie.totalPlays;
+                    mainData.textContent = "🔥" + Math.floor(movie.totalPlays * movie.movieScore / 100);
                 } else {
                     explain.textContent = "播放总量";
                     mainData.textContent = "▶" + movie.totalPlays;
