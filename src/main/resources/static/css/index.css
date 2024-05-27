@@ -135,8 +135,8 @@ a {
 }
 
 .movie-list .movie-item {
-    width: 230px;
-    height: 380px;
+    width: 18%;
+    height: 30%;
     margin-left: 2%;
     float: left;
     background-color: black;
