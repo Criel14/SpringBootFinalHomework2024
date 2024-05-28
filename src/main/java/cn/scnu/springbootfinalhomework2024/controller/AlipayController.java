@@ -1,10 +1,7 @@
 package cn.scnu.springbootfinalhomework2024.controller;
 
 import com.alipay.api.AlipayApiException;
-import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
-import com.alipay.api.request.AlipayTradePagePayRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -16,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.request.AlipayTradePrecreateRequest;
+import com.alipay.api.response.AlipayTradePrecreateResponse;
 
 @Controller
 public class AlipayController {
@@ -42,25 +44,29 @@ public class AlipayController {
     public String pay() throws Exception {
         AlipayClient alipayClient = new DefaultAlipayClient(gatewayUrl, appId, merchantPrivateKey, "json", "utf-8", alipayPublicKey, "RSA2");
 
-        AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
+        AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest();
         request.setNotifyUrl("http://127.0.0.1:8090/notify");
         request.setReturnUrl("http://127.0.0.1:8090/return");
 
         // 设置请求参数
         request.setBizContent("{" +
-                "    \"out_trade_no\":\"20150320010101001\"," +
-                "    \"product_code\":\"FAST_INSTANT_TRADE_PAY\"," +
-                "    \"total_amount\":0.01," +
-                "    \"subject\":\"Iphone6 16G\"," +
-                "    \"body\":\"Iphone6 16G\"" +
-                "    }");
+                "\"out_trade_no\":\"20150320010101006\"," + // 商户订单号
+                "\"total_amount\":88.88," + // 支付金额
+                "\"subject\":\"Iphone6 16G\"," + // 订单标题
+                "\"store_id\":\"NJ_001\"," + // 门店编号
+                "\"timeout_express\":\"90m\"}" // 支付超时
+        );
 
-        System.out.println(request.getBizContent());
-        String payUrl = alipayClient.pageExecute(request, "GET").getBody(); // 调用SDK生成支付链接
+//        System.out.println(request.getBizContent());
+        AlipayTradePrecreateResponse response = alipayClient.execute(request);
 
-        System.out.println(payUrl);
-
-        return payUrl;
+// 2维码内容(qr_code)需要传递给前端显示
+        if(response.isSuccess()) {
+            System.out.println("qr_code:" + response.getQrCode());
+        } else {
+            System.out.println("failed:" + response.getMsg() + ":" + response.getSubMsg());
+        }
+        return "{\"qr_code\": \"" + response.getQrCode() + "\"}";
     }
 
     @RequestMapping("/notify")
@@ -92,17 +98,7 @@ public class AlipayController {
 
     @GetMapping("/return")
     public String handleReturn(HttpServletRequest request) {
-        // 获取支付宝返回的参数
-        String outTradeNo = request.getParameter("out_trade_no");
-        String tradeNo = request.getParameter("trade_no");
-        String totalAmount = request.getParameter("total_amount");
 
-        // 验证签名等操作
-
-        // 根据参数执行相应的业务逻辑
-        // ...
-
-        // 返回页面或重定向
-        return "success";
+        return "index";
     }
 }

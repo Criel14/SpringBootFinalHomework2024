@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>支付宝沙箱支付</title>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>支付宝二维码支付</title>
+  <style>
+    #qrcode {
+      width: 256px;
+      height: 256px;
+      margin: 20px auto;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-<button onclick="payWithAlipay()">支付</button>
-<div id="code-container"></div>
+<h1>请使用支付宝扫描下方二维码进行支付</h1>
+<canvas id="qrcode"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
 <script>
-  function payWithAlipay() {
-    axios.get('/pay')
-            .then(function(response) {
-              console.log(response.data);
-              const payHtml = response.data;
-              console.log(payHtml);
-              window.location.href=payHtml;
-            })
-            .catch(function(error) {
-              console.error(error);
+  // 发送 AJAX 请求获取二维码数据
+  fetch('/pay', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+          .then(response => response.json())
+          .then(data => {
+            // 获取二维码字符串
+            const qrCodeText = data.qr_code;
+            console.log('二维码数据:', qrCodeText)
+
+            const canvas = document.getElementById('qrcode');
+            QRCode.toCanvas(canvas, qrCodeText, function (error) {
+              if (error) {
+                console.error('生成二维码失败:', error);
+              }
             });
-  }
+          });
 </script>
 </body>
 </html>
