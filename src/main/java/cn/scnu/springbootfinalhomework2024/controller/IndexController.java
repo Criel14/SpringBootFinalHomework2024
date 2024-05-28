@@ -163,6 +163,8 @@ public class IndexController {
     }
 
 
+
+
     private List<Movie> findMovieByQuery(String query) {
         List<Movie> allMovies = new ArrayList<>();
         if (("all").equals(query)) {
