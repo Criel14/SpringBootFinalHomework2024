@@ -83,6 +83,12 @@ public class IndexController {
         }
     }
 
+    //vip页面
+    @RequestMapping("/vip")
+    public String vip() {
+        return "vip";
+    }
+
     // 免费专区
     @RequestMapping("/freeMovie")
     public String freeMovie(HttpSession httpSession ,Model model) {
@@ -185,4 +191,5 @@ public class IndexController {
         int toIndex = Math.min((page + 1) * size, allMovies.size());
         return allMovies.subList(fromIndex, toIndex);
     }
+
 }

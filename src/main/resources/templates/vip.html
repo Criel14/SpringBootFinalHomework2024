@@ -105,72 +105,14 @@
                 <div class="amount-display">￥148</div>
                 <div class="discount">共减 ￥90</div>
                 <div class="qr-code">
-                    <img id="qrCode" src="/images/qrcode.png" alt="QR Code">
+                    <canvas id="qrCode"></canvas>
                     <p>请扫码完成支付</p>
                 </div>
             </div>
             <div class="close" onclick="closeWindow()">X</div>
         </div>
     </div>
-<script>
-    // 页面加载完成后显示弹窗
-    window.onload = function() {
-        document.getElementById('paymentPopup').style.display = 'flex';
-    };
-
-    // 切换充值档位
-    function selectPlan(planId) {
-        const plans = document.querySelectorAll('.plan');
-        plans.forEach(plan => plan.classList.remove('selected'));
-        plans.forEach(plan => plan.classList.remove('selectedMid'));
-        document.getElementById(planId).classList.add('selected');
-        document.getElementById('plan-selector').style.backgroundColor = '#fff7e6';
-        if (planId === 'platinumVip') {
-            document.getElementById('goldVip').classList.add('selectedMid');
-            document.getElementById('diamondVip').classList.add('selectedMid');
-            document.getElementById('plan-selector').style.backgroundColor = '#fff';
-        }
-        updateAmountDisplay();
-    }
-
-    // 切换充值期限
-    function selectDuration(durationId) {
-        const durations = document.querySelectorAll('.duration');
-        durations.forEach(duration => duration.classList.remove('selected'));
-        document.getElementById(durationId).classList.add('selected');
-        updateAmountDisplay();
-    }
-
-    // 更新金额显示
-    function updateAmountDisplay() {
-        const selectedPlan = document.querySelector('.plan.selected');
-        const selectedDuration = document.querySelector('.duration.selected');
-        const amountDisplay = document.querySelector('.amount-display');
-        const discount = document.querySelector('.discount');
-        const price = selectedDuration.querySelector('.price').innerText;
-        amountDisplay.innerText = price;
-        discount.innerText = `共减 ￥${getDiscount(price)}`;
-    }
-
-    // 计算折扣
-    function getDiscount(price) {
-        const originalPrices = {
-            "￥148": 238,
-            "￥50": 68,
-            "￥15": 25
-        };
-        const currentPrice = parseFloat(price.replace('￥', ''));
-        const discount = originalPrices[price] - currentPrice;
-        return discount.toFixed(2);
-    }
-
-    function closeWindow() {
-        document.getElementById('paymentPopup').style.display = 'none';
-    }
-
-    function popWindow() {
-        document.getElementById('paymentPopup').style.display = 'flex';
-    }
-</script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+<script src="/js/vip.js"></script>
 </body>
 </html>

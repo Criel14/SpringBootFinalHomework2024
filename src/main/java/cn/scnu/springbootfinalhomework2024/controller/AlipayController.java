@@ -5,11 +5,10 @@ import com.alipay.api.internal.util.AlipaySignature;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -41,23 +40,25 @@ public class AlipayController {
 
     @GetMapping("/pay")
     @ResponseBody
-    public String pay() throws Exception {
+    public String pay(@RequestParam Integer price, @RequestParam String subject) throws Exception {
         AlipayClient alipayClient = new DefaultAlipayClient(gatewayUrl, appId, merchantPrivateKey, "json", "utf-8", alipayPublicKey, "RSA2");
 
         AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest();
         request.setNotifyUrl("http://127.0.0.1:8090/notify");
         request.setReturnUrl("http://127.0.0.1:8090/return");
 
-        // 设置请求参数
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        LocalDateTime now = LocalDateTime.now();
+        String timestamp = now.format(dtf);
+
         request.setBizContent("{" +
-                "\"out_trade_no\":\"20150320010101006\"," + // 商户订单号
-                "\"total_amount\":88.88," + // 支付金额
-                "\"subject\":\"Iphone6 16G\"," + // 订单标题
+                "\"out_trade_no\":\""+timestamp+"\"," + // 商户订单号为当前时间戳
+                "\"total_amount\":"+price.toString()+"," + // 支付金额
+                "\"subject\":\""+subject+"\"," + // 订单标题
                 "\"store_id\":\"NJ_001\"," + // 门店编号
                 "\"timeout_express\":\"90m\"}" // 支付超时
         );
 
-//        System.out.println(request.getBizContent());
         AlipayTradePrecreateResponse response = alipayClient.execute(request);
 
 // 2维码内容(qr_code)需要传递给前端显示
