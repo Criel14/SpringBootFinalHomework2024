@@ -83,12 +83,6 @@ public class IndexController {
         }
     }
 
-    //vip页面
-    @RequestMapping("/vip")
-    public String vip() {
-        return "vip";
-    }
-
     // 免费专区
     @RequestMapping("/freeMovie")
     public String freeMovie(HttpSession httpSession ,Model model) {

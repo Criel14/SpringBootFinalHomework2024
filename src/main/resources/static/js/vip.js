@@ -1,7 +1,25 @@
 // 页面加载完成后显示弹窗
 window.onload = function() {
-    document.getElementById('paymentPopup').style.display = 'flex';
     updateQrcode();
+
+    var isVip;
+    fetch('/isVip')
+        .then(response => response.json())
+        .then(data => {
+            isVip = data;
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+    if (isVip) {
+        document.getElementById('paymentPopup').style.display = 'none';
+        const vipButton = document.querySelector('.vip-button');
+        document.querySelector('.vip-title').innerText = '你已是尊贵的vip，专享4K超高清，极速观影特权';
+        vipButton.innerText = "会员专享";
+        vipButton.onclick = vipMovie;
+    }
 };
 
 // 切换充值档位
@@ -80,6 +98,8 @@ function updateQrcode() {
                     console.error('生成二维码失败:', error);
                 }
             });
+            canvas.style.width = '130px';
+            canvas.style.height = '130px';
         });
 }
 
@@ -127,4 +147,8 @@ function closeWindow() {
 
 function popWindow() {
     document.getElementById('paymentPopup').style.display = 'flex';
+}
+
+function vipMovie() {
+    window.location.href = "http://localhost:8090/vipMovie";
 }
