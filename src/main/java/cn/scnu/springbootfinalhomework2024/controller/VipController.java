@@ -19,6 +19,7 @@ public class VipController {
     @ResponseBody
     public Boolean isVip(HttpSession httpSession) {
         User loginedUser = new User();
+        loginedUser = (User) httpSession.getAttribute("user");
         return loginedUser.getIsVip() == 1;
     }
 }

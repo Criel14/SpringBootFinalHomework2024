@@ -2,24 +2,22 @@
 window.onload = function() {
     updateQrcode();
 
-    var isVip;
     fetch('/isVip')
         .then(response => response.json())
         .then(data => {
+            var isVip;
             isVip = data;
-            console.log(data);
+            if (isVip) {
+                document.getElementById('paymentPopup').style.display = 'none';
+                const vipButton = document.querySelector('.vip-button');
+                document.querySelector('.vip-title').innerText = '你已是尊贵的vip，专享4K超高清，极速观影特权';
+                vipButton.innerText = "会员专享";
+                vipButton.onclick = vipMovie;
+            }
         })
         .catch(error => {
             console.error('Error:', error);
         });
-
-    if (isVip) {
-        document.getElementById('paymentPopup').style.display = 'none';
-        const vipButton = document.querySelector('.vip-button');
-        document.querySelector('.vip-title').innerText = '你已是尊贵的vip，专享4K超高清，极速观影特权';
-        vipButton.innerText = "会员专享";
-        vipButton.onclick = vipMovie;
-    }
 };
 
 // 切换充值档位
