@@ -1,7 +1,9 @@
 package cn.scnu.springbootfinalhomework2024.service;
 
 import cn.scnu.springbootfinalhomework2024.entity.Movie;
+import cn.scnu.springbootfinalhomework2024.entity.Staff;
 import cn.scnu.springbootfinalhomework2024.mapper.MovieMapper;
+import cn.scnu.springbootfinalhomework2024.mapper.StaffMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -17,6 +19,9 @@ import java.util.stream.Collectors;
 public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     @Autowired
     private MovieMapper movieMapper;
+
+    @Autowired
+    private StaffMapper staffMapper;
 
     // 根据电影地区或电影类型查询电影
     public List<Movie> findMovie(String region, String type) {
@@ -136,4 +141,30 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieMapper.selectOne(queryWrapper);
     }
 
+
+    public List<String> getDirectorByid(int movieId){
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("movie_id",movieId);
+        queryWrapper.eq("staff_role",1);
+        List<Staff> staffList = staffMapper.selectList(queryWrapper);
+        List<String> directorList = new ArrayList<>();
+        for (Staff staff : staffList) {
+            directorList.add(staff.getStaffName());
+        }
+
+        return directorList;
+    }
+
+    public List<String> getActorByid(int movieId){
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("movie_id",movieId);
+        queryWrapper.eq("staff_role",0);
+        List<Staff> staffList = staffMapper.selectList(queryWrapper);
+        List<String> actorList = new ArrayList<>();
+        for (Staff staff : staffList) {
+            actorList.add(staff.getStaffName());
+        }
+
+        return actorList;
+    }
 }
