@@ -7,11 +7,24 @@
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" type="text/css" href="/css/login.css">
     <link rel="stylesheet" type="text/css" href="/css/navBar.css">
+    <link rel="stylesheet" type="text/css" href="/css/vipMovie.css">
 </head>
 
 <body>
 <!--顶部导航栏-->
 <div th:insert="headNavBar.html"></div>
+
+<!--顶层覆盖层——提醒氪金-->
+<div id="overlay" class="overlay">
+    <div class="overlay-content">
+        <span class="close-button" onclick="closeOverlay()">×</span>
+        <!-- 这里可以添加更多内容 -->
+        <p>您还未开通VIP会员，</p>
+        <p>成为会员享受更多权益</p>
+        <img src="/images/sup15yuan.png" alt="首月15元" onclick="toVipPage()">
+
+    </div>
+</div>
 
 <!--主要内容-->
 <div class="content">

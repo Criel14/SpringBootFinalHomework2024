@@ -159,11 +159,9 @@ public class IndexController {
 
         response.put("movies", paginatedMovies);
         response.put("total", Math.ceil((double) allMovies.size() / size));
+        response.put("resUser", redisTemplate.opsForValue().get("user"));
         return response;
     }
-
-
-
 
     private List<Movie> findMovieByQuery(String query) {
         List<Movie> allMovies = new ArrayList<>();

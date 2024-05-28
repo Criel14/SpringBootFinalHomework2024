@@ -3,8 +3,9 @@ var currentPage = 0;
 var pageSize = 5;
 var total = 0;
 // 分页查询的查询依据
-var nowQuery = ""
-
+var nowQuery = "";
+// 当前登录用户
+var currentUser = null;
 
 // 分类展示电影提交，query是分类依据
 // 主要是路径不一样，其他的都和index一样
@@ -16,6 +17,8 @@ function fetchMovies(query, page) {
         if (xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
             var movieList = response.movies;
+            // 赋值给currentUser，因为加载页面的时候就会调用本函数，所以可以写在这里
+            currentUser = response.resUser;
             total = response.total;
             console.log(movieList);
             console.log(total);
@@ -91,5 +94,33 @@ document.querySelector('.next-page').addEventListener('click', function () {
 
 // 页面加载时查找所有
 window.onload = function () {
+    // 首次加载时查找全部
     fetchMovies("all", currentPage);
+    fetch('/isVip')
+        .then(response => response.json())
+        .then(data => {
+            var isVip;
+            isVip = data;
+            if (!isVip) {
+                openOverlay();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+// 打开覆盖层
+function openOverlay() {
+    document.getElementById('overlay').style.display = 'flex';
+}
+
+// 关闭覆盖层
+function closeOverlay() {
+    document.getElementById('overlay').style.display = 'none';
+}
+
+// 进入会员中心
+function toVipPage() {
+    window.location.href = '/vip';
 }
