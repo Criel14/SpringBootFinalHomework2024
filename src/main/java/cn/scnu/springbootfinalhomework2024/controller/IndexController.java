@@ -85,12 +85,22 @@ public class IndexController {
 
     // 免费专区
     @RequestMapping("/freeMovie")
-    public String freeMovie() {
+    public String freeMovie(HttpSession httpSession ,Model model) {
+        if (httpSession.getAttribute("user") != null) {
+            loginedUser = (User) httpSession.getAttribute("user");
+            redisTemplate.opsForValue().set("user",loginedUser);
+            model.addAttribute("user", loginedUser);
+        }
         return "freeMovie";
     }
     // 会员专享
     @RequestMapping("/vipMovie")
-    public String vipMovie() {
+    public String vipMovie(HttpSession httpSession,Model model) {
+        if (httpSession.getAttribute("user") != null) {
+            loginedUser = (User) httpSession.getAttribute("user");
+            redisTemplate.opsForValue().set("user",loginedUser);
+            model.addAttribute("user", loginedUser);
+        }
         return "vipMovie";
     }
     //搜索页面
