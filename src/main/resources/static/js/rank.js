@@ -72,10 +72,10 @@ function searchRank(query) {
                 // 按不同榜单
                 if (query === "score") {
                     explain.textContent = "电影评分";
-                    mainData.textContent = "★ " + movie.movieScore;
+                    mainData.textContent = "★ " + parseFloat(movie.movieScore).toFixed(1);
                 } else if (query === "all") {
                     explain.textContent = "电影评分";
-                    mainData.textContent = "👍" + movie.movieScore;
+                    mainData.textContent = "👍" + parseFloat(movie.movieScore).toFixed(1);
                 } else if (query === "playCount") {
                     explain.textContent = "今日热度";
                     mainData.textContent = "🔥" + Math.floor(movie.totalPlays * movie.movieScore / 100);

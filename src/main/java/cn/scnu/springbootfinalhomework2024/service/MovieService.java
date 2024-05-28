@@ -142,7 +142,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     }
 
 
-    public List<String> getDirectorByid(int movieId){
+    public List<String> getDirectorsById(int movieId){
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("movie_id",movieId);
         queryWrapper.eq("staff_role",1);
@@ -155,7 +155,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return directorList;
     }
 
-    public List<String> getActorByid(int movieId){
+    public List<String> getActorsById(int movieId){
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("movie_id",movieId);
         queryWrapper.eq("staff_role",0);

@@ -31,7 +31,8 @@ public class PlayController {
         Map<String , Object> response = new HashMap<>();
         response.put("resMovie", movieService.findMovieById(movieId));
         response.put("resUser", redisTemplate.opsForValue().get("user"));
-        System.out.println(response.toString());
+        response.put("resDirectors", movieService.getDirectorsById(movieId));
+        response.put("resActors", movieService.getActorsById(movieId));
         // 将电影返回给前端
         return response;
     }

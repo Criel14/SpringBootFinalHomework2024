@@ -24,7 +24,7 @@ a {
 
 .main {
     width: 80%;
-    height: 2200px; /*这里改auto匹配不上，只能用电影总数 × movie-item的高度*/
+    height: 8100px; /*这里改auto匹配不上，只能用电影总数 × movie-item的高度*/
     margin-left: 12%;
     background-color: #151515;
     border-radius: 20px;
