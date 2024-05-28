@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <title>G543电影网——电影播放</title>
     <link rel="stylesheet" href="/css/moviePlay.css">
+    <link rel="stylesheet" href="/css/navBar.css">
 </head>
 <body>
+<!--顶部导航栏-->
+<div th:insert="headNavBar.html"></div>
+
+<!--主要内容-->
+<div class="content">
 
     <div class="movie-player">
         <iframe id="bili-radio"
@@ -14,8 +20,7 @@
         </iframe>
     </div>
 
+</div>
+
 </body>
-<script>
-    document.getElementById("bili-radio").style.height = document.getElementById("bili-radio").scrollWidth * 0.76 + "px";
-</script>
 </html>
