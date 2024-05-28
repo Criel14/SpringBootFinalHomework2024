@@ -5,6 +5,10 @@
     <title>G543电影网——电影播放</title>
     <link rel="stylesheet" href="/css/moviePlay.css">
     <link rel="stylesheet" href="/css/navBar.css">
+    <!-- 引入 ECharts 文件 -->
+    <script src="/js/echarts.common.js"></script>
+    <!-- 引入 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <!--顶部导航栏-->
@@ -27,4 +31,58 @@
 
 </body>
 <script src="/js/moviePlay.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        const movieId = getQueryParam('movieId');
+        // 发送 AJAX 请求获取 JSON 数据
+        $.ajax({
+            url: '/showMovieShowData', // 替换为你的后端 API 地址
+            data: {
+                movieId: movieId
+            },
+            type: 'GET',
+            success: function(data) {
+                var myChart = echarts.init(document.getElementById('chart'));
+
+                // 初始化图表配置项
+                var option = {
+                    title: {
+                        text: ''
+                    },
+                    tooltip: {},
+                    legend: {
+                        data: []
+                    },
+                    xAxis: {
+                        data: []
+                    },
+                    yAxis: {},
+                    series: [
+                        {
+                            name: '',
+                            type: '',
+                            data: []
+                        }
+                    ]
+                };
+                console.log(data)
+                // 更新图表配置项
+                option.title.text = data.text;
+                option.legend.data = data.legend;
+                option.xAxis.data = data.categories;
+                option.series[0].name = data.legend[0];
+                option.series[0].type = data.type
+                option.series[0].data = data.values;
+                console.log(option)
+
+                // 使用更新后的配置项重新渲染图表
+                myChart.setOption(option);
+            },
+            error: function() {
+                alert('获取数据失败');
+            }
+        });
+    });
+</script>
+
 </html>

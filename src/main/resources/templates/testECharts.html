@@ -29,11 +29,11 @@
                 // 初始化图表配置项
                 var option = {
                     title: {
-                        text: 'ECharts 入门示例'
+                        text: ''
                     },
                     tooltip: {},
                     legend: {
-                        data: ['电影数量']
+                        data: []
                     },
                     xAxis: {
                         data: []
@@ -41,7 +41,7 @@
                     yAxis: {},
                     series: [
                         {
-                            name: '销量',
+                            name: '',
                             type: 'bar',
                             data: []
                         }
@@ -49,8 +49,13 @@
                 };
                 console.log(data)
                 // 更新图表配置项
+                option.title.text = data.text;
+                option.legend.data = data.legend;
                 option.xAxis.data = data.categories;
+                option.series[0].name = data.legend[0];
+                option.series[0].type = data.type
                 option.series[0].data = data.values;
+                console.log(option)
 
                 // 使用更新后的配置项重新渲染图表
                 myChart.setOption(option);
