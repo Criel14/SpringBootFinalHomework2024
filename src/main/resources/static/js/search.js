@@ -39,7 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         var name = document.createElement('div');
                         name.classList.add('name');
                         name.textContent = movie.movieTitle;
-
+                        // 添加点击事件监听器
+                        li.addEventListener('click', function() {
+                            window.location.href = '/moviePlay?movieId=' + movie.movieId;
+                        });
                         li.appendChild(img);
                         li.appendChild(name);
                         resultsList.appendChild(li);
