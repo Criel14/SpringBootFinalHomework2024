@@ -13,7 +13,7 @@ public class Movie {
     private String movieDescription;
     private Date releaseDate;
     private int needVip;
-    private String movieLocalUrl;
+    private String videoUrl;
     private String movieRegion;
     private String movieType;
     private double movieScore;

@@ -1,6 +1,6 @@
 // 分页查询所用变量
 var currentPage = 0;
-var pageSize = 10;
+var pageSize = 5;
 var total = 0;
 // 分页查询的查询依据
 var nowQuery = ""
