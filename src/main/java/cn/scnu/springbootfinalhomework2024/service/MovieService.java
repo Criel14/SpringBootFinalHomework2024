@@ -1,8 +1,10 @@
 package cn.scnu.springbootfinalhomework2024.service;
 
 import cn.scnu.springbootfinalhomework2024.entity.Movie;
+import cn.scnu.springbootfinalhomework2024.entity.MoviePlayback;
 import cn.scnu.springbootfinalhomework2024.entity.Staff;
 import cn.scnu.springbootfinalhomework2024.mapper.MovieMapper;
+import cn.scnu.springbootfinalhomework2024.mapper.MoviePlaybackMapper;
 import cn.scnu.springbootfinalhomework2024.mapper.StaffMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -22,6 +24,9 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
 
     @Autowired
     private StaffMapper staffMapper;
+
+    @Autowired
+    private MoviePlaybackMapper moviePlaybackMapper;
 
     // 根据电影地区或电影类型查询电影
     public List<Movie> findMovie(String region, String type) {
@@ -166,5 +171,12 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         }
 
         return actorList;
+    }
+
+    public List<MoviePlayback> findMoviePlaybackByMovieId(String movieId) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("movie_id",movieId);
+        List<MoviePlayback> moviePlaybackList = moviePlaybackMapper.selectList(queryWrapper);
+        return moviePlaybackList;
     }
 }
