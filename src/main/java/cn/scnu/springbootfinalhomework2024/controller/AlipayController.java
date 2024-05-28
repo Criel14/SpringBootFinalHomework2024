@@ -56,7 +56,7 @@ public class AlipayController {
                 "    }");
 
         System.out.println(request.getBizContent());
-        String payUrl = alipayClient.pageExecute(request).getBody(); // 调用SDK生成支付链接
+        String payUrl = alipayClient.pageExecute(request, "GET").getBody(); // 调用SDK生成支付链接
 
         System.out.println(payUrl);
 
