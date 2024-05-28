@@ -130,5 +130,10 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return movieMapper.selectMoviesOrderByPlayCount();
     }
 
+    public Movie findMovieById(int id) {
+        QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("movie_id",id);
+        return movieMapper.selectOne(queryWrapper);
+    }
 
 }
