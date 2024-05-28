@@ -10,9 +10,8 @@
 <!--顶部导航栏-->
 <div th:insert="headNavBar.html"></div>
 
-<!--主要内容-->
+<!--电影主要内容-->
 <div class="content">
-
     <div class="movie-player">
         <iframe id="bili-radio"
                 src="//player.bilibili.com/player.html?isOutside=true&aid=1301499751&bvid=BV1Xu4m137RK&cid=1456582976&p=1&danmaku=0"
@@ -21,8 +20,10 @@
     </div>
 
     <div class="movie-info"></div>
-
 </div>
+
+<!--图表-->
+<div id="chart" class="chart"></div>
 
 </body>
 <script src="/js/moviePlay.js"></script>
