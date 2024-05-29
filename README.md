@@ -1,4 +1,4 @@
-#  SpringBootFinalHomework2024
+#  SpringBootFinalHomework2024——电影网站
 
 
 
@@ -129,7 +129,7 @@ viewing_timestamp (观看时间)
 
 ### 导入数据库
 
-打开项目根目录下的database.sql，在你的Mysql Command Line Client中使用如下命令，或直接复制sql文件的内容
+打开项目根目录下的database.sql，在你的Mysql Command Line Client中使用如下命令（注意修改路径），或直接复制sql文件的内容
 
 ```powershell
 source /project_path/database.sql;
