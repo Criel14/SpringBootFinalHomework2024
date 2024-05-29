@@ -15,8 +15,8 @@ function searchHistory() {
             // 绘制前端页面
             for (let i = 0; i < movieList.length; i++) {
                 // 获取这一行的电影和其观看时间
-                var movie = movieList[i];
-                var viewingTimestamp = userPlaybackHistoryList[i].viewingTimestamp;
+                let movie = movieList[i];
+                let viewingTimestamp = userPlaybackHistoryList[i].viewingTimestamp;
 
                 // 每部电影一个li
                 const li = document.createElement('li');
