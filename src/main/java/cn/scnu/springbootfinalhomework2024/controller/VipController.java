@@ -34,6 +34,7 @@ public class VipController {
         User loginedUser = new User();
         loginedUser = (User) httpSession.getAttribute("user");
         loginedUser.setIsVip(1);
+        userService.updateUser(loginedUser);
         httpSession.removeAttribute("user");
         httpSession.setAttribute("user", loginedUser);
         return true;

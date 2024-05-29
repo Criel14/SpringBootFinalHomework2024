@@ -14,6 +14,7 @@ function searchHistory() {
             resultsList.innerHTML = '';
             // 绘制前端页面
             for (let i = 0; i < movieList.length; i++) {
+                console.log(i + "-" +movieList[i].movieId)
                 // 获取这一行的电影和其观看时间
                 var movie = movieList[i];
                 var viewingTimestamp = userPlaybackHistoryList[i].viewingTimestamp;
@@ -21,6 +22,11 @@ function searchHistory() {
                 // 每部电影一个li
                 const li = document.createElement('li');
                 li.classList.add('movie-item');
+
+                // 添加点击事件监听器
+                li.addEventListener('click', function () {
+                    window.location.href = '/moviePlay?movieId=' + movie.movieId;
+                });
 
                 // 电影封面
                 const img = document.createElement('img');
@@ -50,10 +56,6 @@ function searchHistory() {
                 const tip = document.createElement('p');
                 tip.textContent = "继续观看";
 
-                // 添加点击事件监听器
-                data.addEventListener('click', function () {
-                    window.location.href = '/moviePlay?movieId=' + movie.movieId;
-                });
 
                 info.appendChild(title);
                 info.appendChild(viewTime);

@@ -43,4 +43,8 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         }
     }
 
+    public void updateUser(User loginedUser) {
+
+        userMapper.updateById(loginedUser);
+    }
 }
