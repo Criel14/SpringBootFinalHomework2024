@@ -33,10 +33,12 @@ public class VipController {
     public Boolean paySuccess(HttpSession httpSession) {
         User loginedUser = new User();
         loginedUser = (User) httpSession.getAttribute("user");
-        loginedUser.setIsVip(1);
-        userService.updateUser(loginedUser);
-        httpSession.removeAttribute("user");
-        httpSession.setAttribute("user", loginedUser);
+        if(loginedUser!=null) {
+            loginedUser.setIsVip(1);
+            userService.updateUser(loginedUser);
+            httpSession.removeAttribute("user");
+            httpSession.setAttribute("user", loginedUser);
+        }
         return true;
     }
 }
