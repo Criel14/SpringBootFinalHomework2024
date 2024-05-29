@@ -101,7 +101,9 @@ window.onload = function () {
         .then(data => {
             var isVip;
             isVip = data;
-            if (!isVip) {
+            if (isVip) {
+                closeOverlay();
+            } else {
                 openOverlay();
             }
         })

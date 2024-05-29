@@ -17,12 +17,34 @@
     }
 
     .content {
-        width: ;
+        width: 220px;
+        height: 40px;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #f86496;
+        cursor: pointer;
+    }
+
+    .content span {
+        color: white;
+        text-align: center;
+        font-size: 20px;
+        line-height: 40px;
+        margin-left: 20px;
     }
 </style>
 <body>
-    <div class="content">
-        <span>没做:)</span>
+    <div class="content" onclick="backToIndex()">
+        <span>没做:)  点击返回主页</span>
     </div>
 </body>
+
+<script>
+    function backToIndex() {
+        window.location.href = "/index"
+    }
+</script>
 </html>

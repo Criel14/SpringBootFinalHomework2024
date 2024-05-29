@@ -107,7 +107,7 @@ window.onload = function () {
                     .then(data => {
                         var isVip;
                         isVip = data;
-                        if (isVip !== 1 && resMovie.needVip === 1) {
+                        if (!isVip && resMovie.needVip === 1) {
                             movieVideo.style.display = "none";
                             needVipTip.style.display = "block";
                         } else {

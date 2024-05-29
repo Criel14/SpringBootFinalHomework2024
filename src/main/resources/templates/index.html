@@ -160,7 +160,6 @@
                 console.log(data)
                 // 更新图表配置项
                 option.title.text = data.text;
-                option.legend.data = data.legend;
                 option.xAxis.data = data.categories;
                 option.series[0].name = data.legend[0];
                 option.series[0].type = data.type
@@ -178,7 +177,7 @@
 
     function customBarColor(data) {
         const colors = [
-            '#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae',
+            '#c23531', '#ff8800', '#ffcc00', '#d48265', '#91c7ae',
             '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570',
             '#c4ccd3'
         ];
