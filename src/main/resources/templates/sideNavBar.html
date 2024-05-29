@@ -20,7 +20,7 @@
         <!--子标题——已登录-->
         <div class="navContent" th:if="${user!=null}">
             <!--未完成：用Thymeleaf做个判断，有登录和没登录显示不一样的内容-->
-            <a href="#">
+            <a th:href="nonePage">
                 <div class="item2">观看历史</div>
             </a>
         </div>

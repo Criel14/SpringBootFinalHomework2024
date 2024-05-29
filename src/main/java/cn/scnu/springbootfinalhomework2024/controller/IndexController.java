@@ -35,6 +35,12 @@ public class IndexController {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    // 空页面
+    @RequestMapping("/nonePage")
+    public String nonePage() {
+        return "nonePage";
+    }
+
 
     // 首页，若有用户信息，则表示是已登录状态的首页
     @RequestMapping("/index")
