@@ -1,6 +1,7 @@
 // 页面加载完成后显示弹窗
 window.onload = function() {
     updateQrcode();
+    document.getElementById('paymentPopup').style.display = 'none';
 
     fetch('/isVip')
         .then(response => response.json())
@@ -13,12 +14,33 @@ window.onload = function() {
                 document.querySelector('.vip-title').innerText = '你已是尊贵的vip，专享4K超高清，极速观影特权';
                 vipButton.innerText = "会员专享";
                 vipButton.onclick = vipMovie;
+            } else {
+                document.getElementById('paymentPopup').style.display = 'flex';
             }
         })
         .catch(error => {
             console.error('Error:', error);
         });
 };
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'P' || event.key === 'p') {
+        paySuccess();
+    }
+});
+
+//假装充值成功
+function paySuccess() {
+    console.log("pay");
+    fetch('/paySuccess')
+        .then(response => response.json())
+        .then(data => {
+            location.reload();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
 
 // 切换充值档位
 function selectPlan(planId) {
