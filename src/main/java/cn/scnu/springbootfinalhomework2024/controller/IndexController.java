@@ -4,6 +4,7 @@ package cn.scnu.springbootfinalhomework2024.controller;
 import cn.scnu.springbootfinalhomework2024.entity.Movie;
 import cn.scnu.springbootfinalhomework2024.entity.RegisterResponse;
 import cn.scnu.springbootfinalhomework2024.entity.User;
+import cn.scnu.springbootfinalhomework2024.entity.UserPlaybackHistory;
 import cn.scnu.springbootfinalhomework2024.service.MovieService;
 import cn.scnu.springbootfinalhomework2024.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -190,6 +191,27 @@ public class IndexController {
         int fromIndex = Math.min(page * size, allMovies.size());
         int toIndex = Math.min((page + 1) * size, allMovies.size());
         return allMovies.subList(fromIndex, toIndex);
+    }
+
+
+    @RequestMapping("/findUserHistoryMovie")
+    @ResponseBody
+    public Map<String, Object> findUserHistoryMovie() {
+        int userId = (int) redisTemplate.opsForValue().get("user");
+        Map<String, Object> response = new HashMap<>();
+
+        List<UserPlaybackHistory> userPlaybackHistoryList = movieService.findUserPlaybackHistoryByUserId(userId);
+        List<Movie> movieList = new ArrayList<>();
+
+        for (UserPlaybackHistory userPlaybackHistory : userPlaybackHistoryList) {
+            Movie movie = movieService.findMovieById(userPlaybackHistory.getMovieId());
+            movieList.add(movie);
+        }
+
+        response.put("movieList", movieList);
+        response.put("userPlaybackHistoryList", userPlaybackHistoryList);
+
+        return response;
     }
 
 }

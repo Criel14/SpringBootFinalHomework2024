@@ -35,6 +35,14 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     @Autowired
     private UserPlaybackHistoryMapper userPlaybackHistoryMapper;
 
+    public  List<UserPlaybackHistory> findUserPlaybackHistoryByUserId(int userId) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("user_id", userId);
+        queryWrapper.orderByDesc("viewing_timestamp");
+        List<UserPlaybackHistory> userPlaybackHistoryList = userPlaybackHistoryMapper.selectList(queryWrapper);
+        return userPlaybackHistoryList;
+    }
+
     // 根据电影地区或电影类型查询电影
     public List<Movie> findMovie(String region, String type) {
         QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
