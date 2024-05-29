@@ -25,7 +25,7 @@ public class EChartsController {
     }
 
 
-    @RequestMapping("/movie-data")
+    @RequestMapping("/showMovieTypeChart")
     @ResponseBody
     public Map<String, Object> getMovieData(){
         List<Movie> movieList = movieService.findAllMovie();
