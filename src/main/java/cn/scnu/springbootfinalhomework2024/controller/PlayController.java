@@ -1,6 +1,7 @@
 package cn.scnu.springbootfinalhomework2024.controller;
 
 
+import cn.scnu.springbootfinalhomework2024.entity.User;
 import cn.scnu.springbootfinalhomework2024.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -29,6 +30,13 @@ public class PlayController {
     @ResponseBody
     public Map<String, Object> moviePlayInfo(@RequestParam("movieId") Integer movieId) {
         Map<String , Object> response = new HashMap<>();
+
+        User user = (User) redisTemplate.opsForValue().get("user");
+        if(user != null) {
+            System.out.println("user: " + user);
+            movieService.InsertMovieHistory(user.getUserId(), movieId);
+        }
+
         response.put("resMovie", movieService.findMovieById(movieId));
         response.put("resUser", redisTemplate.opsForValue().get("user"));
         response.put("resDirectors", movieService.getDirectorsById(movieId));

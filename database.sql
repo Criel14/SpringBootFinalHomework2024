@@ -53,7 +53,6 @@ CREATE TABLE user_playback_history
     user_id           INT      NOT NULL,
     movie_id          INT      NOT NULL,
     viewing_timestamp DATETIME NOT NULL,
-    PRIMARY KEY (user_id, movie_id),
     FOREIGN KEY (user_id) REFERENCES user (user_id),
     FOREIGN KEY (movie_id) REFERENCES movie (movie_id)
 );

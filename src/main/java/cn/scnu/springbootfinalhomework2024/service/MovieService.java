@@ -3,9 +3,11 @@ package cn.scnu.springbootfinalhomework2024.service;
 import cn.scnu.springbootfinalhomework2024.entity.Movie;
 import cn.scnu.springbootfinalhomework2024.entity.MoviePlayback;
 import cn.scnu.springbootfinalhomework2024.entity.Staff;
+import cn.scnu.springbootfinalhomework2024.entity.UserPlaybackHistory;
 import cn.scnu.springbootfinalhomework2024.mapper.MovieMapper;
 import cn.scnu.springbootfinalhomework2024.mapper.MoviePlaybackMapper;
 import cn.scnu.springbootfinalhomework2024.mapper.StaffMapper;
+import cn.scnu.springbootfinalhomework2024.mapper.UserPlaybackHistoryMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import javax.sound.midi.Soundbank;
 import java.sql.SQLOutput;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -27,6 +31,9 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
 
     @Autowired
     private MoviePlaybackMapper moviePlaybackMapper;
+
+    @Autowired
+    private UserPlaybackHistoryMapper userPlaybackHistoryMapper;
 
     // 根据电影地区或电影类型查询电影
     public List<Movie> findMovie(String region, String type) {
@@ -178,5 +185,17 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         queryWrapper.eq("movie_id",movieId);
         List<MoviePlayback> moviePlaybackList = moviePlaybackMapper.selectList(queryWrapper);
         return moviePlaybackList;
+    }
+
+    public void InsertMovieHistory(int userId, Integer movieId) {
+        UserPlaybackHistory userPlaybackHistory = new UserPlaybackHistory();
+        userPlaybackHistory.setUserId(userId);
+        userPlaybackHistory.setMovieId(movieId);
+
+        LocalDateTime now = LocalDateTime.now();
+
+        userPlaybackHistory.setViewingTimestamp(now);
+        System.out.println(userPlaybackHistory);
+        userPlaybackHistoryMapper.insert(userPlaybackHistory);
     }
 }
