@@ -75,16 +75,36 @@
                 // 初始化图表配置项
                 var option = {
                     title: {
-                        text: ''
+                        text: '',
+                        textStyle: {
+                            color:'#fff'
+                        }
                     },
                     tooltip: {},
                     legend: {
-                        data: []
+                        data: [],
+                        textStyle:{
+                            color: '#ffffff'//字体颜色
+                        },
+
                     },
                     xAxis: {
-                        data: []
+                        data: [],
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#ffffff'
+                            }
+                        }
                     },
-                    yAxis: {},
+                    yAxis: {
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
                     series: [
                         {
                             name: '',
