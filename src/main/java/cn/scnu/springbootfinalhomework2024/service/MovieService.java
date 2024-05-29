@@ -193,14 +193,19 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     }
 
     public void insertMovieHistory(int userId, Integer movieId) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("movie_id", movieId);
         UserPlaybackHistory userPlaybackHistory = new UserPlaybackHistory();
         userPlaybackHistory.setUserId(userId);
         userPlaybackHistory.setMovieId(movieId);
-
         LocalDateTime now = LocalDateTime.now();
-
         userPlaybackHistory.setViewingTimestamp(now);
-        System.out.println(userPlaybackHistory);
-        userPlaybackHistoryMapper.insert(userPlaybackHistory);
+        if(userPlaybackHistoryMapper.selectList(queryWrapper).size() == 0) {
+            System.out.println(userPlaybackHistory);
+            userPlaybackHistoryMapper.insert(userPlaybackHistory);
+        }
+        else{
+            userPlaybackHistoryMapper.updateById(userPlaybackHistory);
+        }
     }
 }

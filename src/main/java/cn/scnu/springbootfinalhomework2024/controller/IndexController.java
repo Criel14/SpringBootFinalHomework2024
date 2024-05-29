@@ -202,6 +202,7 @@ public class IndexController {
         Map<String, Object> response = new HashMap<>();
 
         List<UserPlaybackHistory> userPlaybackHistoryList = movieService.findUserPlaybackHistoryByUserId(userId);
+
         List<Movie> movieList = new ArrayList<>();
 
         for (UserPlaybackHistory userPlaybackHistory : userPlaybackHistoryList) {
