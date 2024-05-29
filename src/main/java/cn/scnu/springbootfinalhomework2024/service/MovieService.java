@@ -14,10 +14,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.sound.midi.Soundbank;
-import java.sql.SQLOutput;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -35,7 +32,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     @Autowired
     private UserPlaybackHistoryMapper userPlaybackHistoryMapper;
 
-    public  List<UserPlaybackHistory> findUserPlaybackHistoryByUserId(int userId) {
+    public List<UserPlaybackHistory> findUserPlaybackHistoryByUserId(int userId) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("user_id", userId);
         queryWrapper.orderByDesc("viewing_timestamp");
@@ -157,15 +154,15 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
 
     public Movie findMovieById(int id) {
         QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("movie_id",id);
+        queryWrapper.eq("movie_id", id);
         return movieMapper.selectOne(queryWrapper);
     }
 
 
-    public List<String> getDirectorsById(int movieId){
+    public List<String> getDirectorsById(int movieId) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("movie_id",movieId);
-        queryWrapper.eq("staff_role",1);
+        queryWrapper.eq("movie_id", movieId);
+        queryWrapper.eq("staff_role", 1);
         List<Staff> staffList = staffMapper.selectList(queryWrapper);
         List<String> directorList = new ArrayList<>();
         for (Staff staff : staffList) {
@@ -175,10 +172,10 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return directorList;
     }
 
-    public List<String> getActorsById(int movieId){
+    public List<String> getActorsById(int movieId) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("movie_id",movieId);
-        queryWrapper.eq("staff_role",0);
+        queryWrapper.eq("movie_id", movieId);
+        queryWrapper.eq("staff_role", 0);
         List<Staff> staffList = staffMapper.selectList(queryWrapper);
         List<String> actorList = new ArrayList<>();
         for (Staff staff : staffList) {
@@ -190,12 +187,12 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
 
     public List<MoviePlayback> findMoviePlaybackByMovieId(String movieId) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("movie_id",movieId);
+        queryWrapper.eq("movie_id", movieId);
         List<MoviePlayback> moviePlaybackList = moviePlaybackMapper.selectList(queryWrapper);
         return moviePlaybackList;
     }
 
-    public void InsertMovieHistory(int userId, Integer movieId) {
+    public void insertMovieHistory(int userId, Integer movieId) {
         UserPlaybackHistory userPlaybackHistory = new UserPlaybackHistory();
         userPlaybackHistory.setUserId(userId);
         userPlaybackHistory.setMovieId(movieId);

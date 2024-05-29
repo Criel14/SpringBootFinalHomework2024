@@ -194,10 +194,11 @@ public class IndexController {
     }
 
 
-    @RequestMapping("/findUserHistoryMovie")
+    @RequestMapping("/history/movieList")
     @ResponseBody
     public Map<String, Object> findUserHistoryMovie() {
-        int userId = (int) redisTemplate.opsForValue().get("user");
+        User user = (User) redisTemplate.opsForValue().get("user");
+        int userId = user.getUserId();
         Map<String, Object> response = new HashMap<>();
 
         List<UserPlaybackHistory> userPlaybackHistoryList = movieService.findUserPlaybackHistoryByUserId(userId);
@@ -212,6 +213,16 @@ public class IndexController {
         response.put("userPlaybackHistoryList", userPlaybackHistoryList);
 
         return response;
+    }
+
+    @RequestMapping("/history")
+    public String history(HttpSession httpSession,Model model) {
+        if (httpSession.getAttribute("user") != null) {
+            loginedUser = (User) httpSession.getAttribute("user");
+            redisTemplate.opsForValue().set("user",loginedUser);
+            model.addAttribute("user", loginedUser);
+        }
+        return "history";
     }
 
 }

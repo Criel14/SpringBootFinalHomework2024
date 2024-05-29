@@ -34,7 +34,7 @@ public class PlayController {
         User user = (User) redisTemplate.opsForValue().get("user");
         if(user != null) {
             System.out.println("user: " + user);
-            movieService.InsertMovieHistory(user.getUserId(), movieId);
+            movieService.insertMovieHistory(user.getUserId(), movieId);
         }
 
         response.put("resMovie", movieService.findMovieById(movieId));
