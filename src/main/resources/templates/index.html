@@ -109,6 +109,55 @@
 <script src="/js/index.js"></script>
 <script src="/js/navBar.js"></script>
 <script type="text/javascript">
+
+    $(document).ready(function() {
+        // 发送 AJAX 请求获取 JSON 数据
+        $.ajax({
+            url: '/showMovieRegionChart', // 替换为你的后端 API 地址
+            type: 'GET',
+            success: function(data) {
+                var myChart = echarts.init(document.getElementById('region-chart'));
+
+                // 初始化图表配置项
+                var option = {
+                    title: {
+                        text: '',
+                        textStyle: {
+                            color:'#fff'
+                        }
+                    },
+                    legend: {
+                        data: [],
+                        textStyle:{
+                            color: '#ffffff'//字体颜色
+                        },
+                    },
+                    series: [
+                        {
+                            type: '',
+                            data: [],
+                            label:{
+                                color:"#fff"
+                            },
+                        }
+                    ]
+                };
+                console.log(data)
+                // 更新图表配置项
+                option.title.text = data.text;
+                option.series[0].type = data.type
+                option.series[0].data = data.values;
+                console.log(option)
+
+                // 使用更新后的配置项重新渲染图表
+                myChart.setOption(option);
+            },
+            error: function() {
+                alert('获取数据失败');
+            }
+        });
+    });
+
     $(document).ready(function() {
         // 发送 AJAX 请求获取 JSON 数据
         $.ajax({

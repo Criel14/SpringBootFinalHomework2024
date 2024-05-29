@@ -25,7 +25,7 @@ public class VipController {
         User loginedUser = new User();
         loginedUser = (User) httpSession.getAttribute("user");
         System.out.println(loginedUser);
-        return loginedUser.getIsVip() == 1;
+        return loginedUser != null && loginedUser.getIsVip() == 1;
     }
 
     @RequestMapping("/paySuccess")

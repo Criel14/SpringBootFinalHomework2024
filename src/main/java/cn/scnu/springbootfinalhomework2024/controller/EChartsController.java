@@ -24,10 +24,10 @@ public class EChartsController {
         return "testECharts";
     }
 
-
+    // 生成index的电影类型的柱状图
     @RequestMapping("/showMovieTypeChart")
     @ResponseBody
-    public Map<String, Object> getMovieData(){
+    public Map<String, Object> getMovieTypeChart(){
         List<Movie> movieList = movieService.findAllMovie();
         List<String> categoryList = new ArrayList<>(List.of("动作片","科幻片","动画片"));
         List<Integer> valueList = new ArrayList<>(List.of(0,0,0));
@@ -40,6 +40,37 @@ public class EChartsController {
         return dataMap;
     }
 
+    // 生成index的电影地区的饼状图
+    @RequestMapping("/showMovieRegionChart")
+    @ResponseBody
+    public Map<String, Object> getMovieRegionChart(){
+        List<Movie> movieList = movieService.findAllMovie();
+        List<String> categoryList = new ArrayList<>();
+        List<Integer> valueList = new ArrayList<>();
+        for(Movie movie : movieList) {
+            if (!categoryList.contains(movie.getMovieRegion())) {
+                categoryList.add(movie.getMovieRegion());
+                valueList.add(1);
+            }else{
+                valueList.set(categoryList.indexOf(movie.getMovieRegion()), valueList.get(categoryList.indexOf(movie.getMovieRegion())) + 1);
+            }
+        }
+        List<Object> dataList = new ArrayList<>();
+        for(int i = 0; i < categoryList.size(); i++) {
+            Map<String,Object> dataMap = new HashMap<>();
+            dataMap.put("name",categoryList.get(i));
+            dataMap.put("value",valueList.get(i));
+            dataList.add(dataMap);
+        }
+        Map<String,Object> dataMap = new HashMap<>();
+        dataMap.put("text","电影地区分布");
+        dataMap.put("type","pie");
+        dataMap.put("values",dataList);
+        System.out.println(dataMap);
+        return dataMap;
+    }
+
+    // 生成电影播放页面的播放数据的折线图
     @RequestMapping("/showMovieShowData")
     @ResponseBody
     public Map<String, Object> showMovieShowData(@RequestParam String movieId){
