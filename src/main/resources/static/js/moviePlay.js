@@ -40,8 +40,6 @@ window.onload = function () {
                 cover.src = '/cover/' + resMovie.movieCoverUrl;
                 cover.alt = resMovie.movieTitle;
 
-
-
                 // 电影标题
                 const title = document.createElement('p');
                 title.classList.add('movie-title');
@@ -100,6 +98,26 @@ window.onload = function () {
                 movieInfo.appendChild(basicInfo);
                 movieInfo.appendChild(description);
                 movieInfo.appendChild(staff);
+
+                // 如果不是vip，就不显示视频
+                const movieVideo = document.getElementById("bili-radio");
+                const needVipTip = document.getElementById("need-vip-tip");
+                fetch('/isVip')
+                    .then(response => response.json())
+                    .then(data => {
+                        var isVip;
+                        isVip = data;
+                        if (isVip !== 1 && resMovie.needVip === 1) {
+                            movieVideo.style.display = "none";
+                            needVipTip.style.display = "block";
+                        } else {
+                            movieVideo.style.display = "block";
+                            needVipTip.style.display = "none";
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
             } else {
                 console.error('Error:', xhr.statusText);
             }
@@ -108,4 +126,9 @@ window.onload = function () {
     } else {
         console.error('movieId not found in URL');
     }
+}
+
+// 进入会员中心
+function toVipPage() {
+    window.location.href = '/vip';
 }

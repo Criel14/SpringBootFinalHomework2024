@@ -5,10 +5,6 @@
     <title>G543电影网——电影播放</title>
     <link rel="stylesheet" href="/css/moviePlay.css">
     <link rel="stylesheet" href="/css/navBar.css">
-    <!-- 引入 ECharts 文件 -->
-    <script src="/js/echarts.common.js"></script>
-    <!-- 引入 jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <!--顶部导航栏-->
@@ -21,6 +17,34 @@
                 src="//player.bilibili.com/player.html?isOutside=true&aid=1301499751&bvid=BV1Xu4m137RK&cid=1456582976&p=1&danmaku=0"
                 scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
         </iframe>
+
+        <div id="need-vip-tip" class="need-vip-tip">
+            <div class="need-vip-tip-content">
+                <p>本电影是VIP会员专享内容</p>
+                <div class="vip-privilege">
+                    <div class="vip-privilege-item">
+                        <img src="/images/benefits/4k.svg" alt="4K" style="height: 90%">
+                        <span>会员享4K</span>
+                    </div>
+                    <div class="vip-privilege-item">
+                        <img src="/images/benefits/noAD.svg" alt="4K" style="height: 90%">
+                        <span>会员无广告</span>
+                    </div>
+                    <div class="vip-privilege-item">
+                        <img src="/images/benefits/priority.svg" alt="4K" style="height: 90%">
+                        <span>会员抢先看</span>
+                    </div>
+                    <div class="vip-privilege-item">
+                        <img src="/images/benefits/exclusive.svg" alt="4K" style="height: 90%">
+                        <span>会员享独家</span>
+                    </div>
+                </div>
+                <div class="to-be-vip">
+                    <img src="/images/vipTipDialog.png" alt="首月15元">
+                    <button class="to-be-vip-button" onclick="toVipPage()">开通VIP会员</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="movie-info"></div>
@@ -30,6 +54,10 @@
 <div id="chart" class="chart"></div>
 
 </body>
+<!-- 引入 jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- 引入 ECharts 文件 -->
+<script src="/js/echarts.common.js"></script>
 <script src="/js/moviePlay.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {

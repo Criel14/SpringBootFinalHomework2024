@@ -114,10 +114,89 @@ a {
     float: left;
 }
 
+/*非vip用户显示vip提示*/
+.need-vip-tip {
+    width: 100%;
+    height: 100%;
+    background-color: #341520;
+}
+
+.need-vip-tip-content {
+    width: 44%;
+    height: 50%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+}
+
+.need-vip-tip-content p {
+    font-size: 24px;
+    color: white;
+    float: left;
+}
+
+.need-vip-tip-content .vip-privilege {
+    width: 50%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+    left: 0;
+    float: left;
+    /*background-color: rgb(255, 226, 226);*/
+}
+
+.need-vip-tip-content .vip-privilege .vip-privilege-item {
+    width: 90%;
+    height: 20%;
+    margin-top: 5%;
+    /*background-color: #f86496;;*/
+    float: left;
+}
+
+.need-vip-tip-content .vip-privilege .vip-privilege-item span {
+    color: white;
+    font-size: 20px;
+    position: relative;
+    bottom: 30%;
+    margin-left: 6px;
+}
+
+.to-be-vip {
+    width: 30%;
+    height: 60%;
+    position: relative;
+    top: 20%;
+    left: 4%;
+    float: left;
+    /*background-color: rgb(231, 255, 226);*/
+}
+
+.to-be-vip img {
+    margin-top: 2%;
+    height: 44%;
+    width: 100%;
+    float: left;
+}
+
+.to-be-vip .to-be-vip-button {
+    height: 30%;
+    width: 100%;
+    float: left;
+    border-style: none;
+    border-radius: 20px;
+    background-color: #ff70a0;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
 
 /* 图表 */
 .chart {
-    width: 600px;
+    width: 100%;
     height: 500px;
     /*background-color: #1c87ff;*/
 }
